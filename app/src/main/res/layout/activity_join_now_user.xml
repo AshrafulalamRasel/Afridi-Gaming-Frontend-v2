@@ -169,14 +169,14 @@
                 android:id="@+id/playerId4EditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Player 3"
+                android:hint="Player 4"
                 android:enabled="false"
                 android:padding="10dp" />
             <Button
                 android:id="@+id/joinBut"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="7dp"
                 android:padding="10dp"
                 android:text="Join" />
         </LinearLayout>

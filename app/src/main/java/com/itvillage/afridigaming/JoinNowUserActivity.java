@@ -24,7 +24,8 @@ import io.reactivex.schedulers.Schedulers;
 
 public class JoinNowUserActivity extends AppCompatActivity {
 
-    private String gameId, gameName, totalEntryFee, entryFeePerPerson, myBalance, gameType;
+    private String gameId, gameName, entryFeePerPerson, myBalance, gameType;
+    private double totalEntryFee;
     private EditText playerId1EditText, playerId2EditText, playerId3EditText, playerId4EditText;
     private TextView myBalanceTextView, gameNameTextView, entryFeePerTotalMatchTextView, entryFeePerMatchTextView;
     private Button joinBut;
@@ -38,7 +39,7 @@ public class JoinNowUserActivity extends AppCompatActivity {
 
         gameId = getIntent().getExtras().getString("gameId");
         gameName = getIntent().getExtras().getString("gameName");
-        totalEntryFee = getIntent().getExtras().getString("totalEntryFee");
+        totalEntryFee = Double.valueOf(getIntent().getExtras().getString("totalEntryFee"));
         entryFeePerPerson = getIntent().getExtras().getString("entryFeePerPerson");
         gameType = getIntent().getExtras().getString("gameType");
 
@@ -63,16 +64,19 @@ public class JoinNowUserActivity extends AppCompatActivity {
                 radioSolo.setVisibility(View.VISIBLE);
                 radioDuo.setVisibility(View.INVISIBLE);
                 radioSquad.setVisibility(View.INVISIBLE);
+
                 break;
             case "duo":
                 radioSolo.setVisibility(View.VISIBLE);
                 radioDuo.setVisibility(View.VISIBLE);
                 radioSquad.setVisibility(View.INVISIBLE);
+
                 break;
             case "squad":
                 radioSolo.setVisibility(View.VISIBLE);
                 radioDuo.setVisibility(View.VISIBLE);
                 radioSquad.setVisibility(View.VISIBLE);
+
                 break;
         }
 
@@ -80,22 +84,33 @@ public class JoinNowUserActivity extends AppCompatActivity {
         rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 squadPlayerNo = ((RadioButton) findViewById(checkedId)).getText().toString();
-                switch (gameType.toLowerCase()) {
+                switch (squadPlayerNo.toLowerCase()) {
                     case "solo":
                         playerId1EditText.setEnabled(true);
                         playerId2EditText.setEnabled(false);
                         playerId3EditText.setEnabled(false);
+                        playerId4EditText.setEnabled(false);
+                        totalEntryFee =0.0;
+                        totalEntryFee =Double.valueOf(entryFeePerPerson) *1;
+                        entryFeePerTotalMatchTextView.setText("Total Entry Fee : " + totalEntryFee);
                         break;
                     case "duo":
                         playerId1EditText.setEnabled(true);
                         playerId2EditText.setEnabled(true);
                         playerId3EditText.setEnabled(false);
+                        playerId4EditText.setEnabled(false);
+                        totalEntryFee =0.0;
+                        totalEntryFee =Double.valueOf(entryFeePerPerson) *2;
+                        entryFeePerTotalMatchTextView.setText("Total Entry Fee : " + totalEntryFee);
                         break;
                     case "squad":
                         playerId1EditText.setEnabled(true);
                         playerId2EditText.setEnabled(true);
                         playerId3EditText.setEnabled(true);
                         playerId4EditText.setEnabled(true);
+                        totalEntryFee =0.0;
+                        totalEntryFee =Double.valueOf(entryFeePerPerson) *4;
+                        entryFeePerTotalMatchTextView.setText("Total Entry Fee : " + totalEntryFee);
                         break;
                 }
                 Toast.makeText(getBaseContext(), squadPlayerNo + " Selected", Toast.LENGTH_SHORT).show();
@@ -129,7 +144,7 @@ public class JoinNowUserActivity extends AppCompatActivity {
                     myBalance = String.valueOf(getUserProfile.getAcBalance());
                     myBalanceTextView.setText("Available Balance : " + myBalance);
                     gameNameTextView.setText(gameName);
-                    entryFeePerTotalMatchTextView.setText("Total Entry Fee : " + totalEntryFee);
+                    entryFeePerTotalMatchTextView.setText("Total Entry Fee : " + entryFeePerPerson);
                     entryFeePerMatchTextView.setText("Game Entry Fee Per Person: " + entryFeePerPerson);
                 }, err -> {
 
@@ -142,7 +157,7 @@ public class JoinNowUserActivity extends AppCompatActivity {
 
         RegistrationInGameService getUserService = new RegistrationInGameService(getApplicationContext());
         Observable<String> userCreateProfileResponseObservable =
-                getUserService.registrationInGame(gameId, squadPlayerNo.toLowerCase(), playerId1EditText.getText().toString(), playerId2EditText.getText().toString(), playerId3EditText.getText().toString());
+                getUserService.registrationInGame(gameId, squadPlayerNo.toLowerCase(), playerId1EditText.getText().toString(), playerId2EditText.getText().toString(), playerId3EditText.getText().toString(),playerId4EditText.getText().toString());
 
         userCreateProfileResponseObservable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
