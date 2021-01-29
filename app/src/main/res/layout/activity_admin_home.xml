@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".AdminHomeActivity">
+
+    <LinearLayout
+        android:id="@+id/game_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/add_money"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.132"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:background="@drawable/add_game_icon" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/base_color"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:text="Game List"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/add_money"
+        android:layout_width="131dp"
+        android:layout_height="170dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.752"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.121"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:background="@drawable/add_money" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/base_color"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:text="Approve Request"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/withdraw_request_admin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/logoutAdmin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.171"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/game_list"
+        app:layout_constraintVertical_bias="0.038"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:background="@drawable/add_money" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/base_color"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="Withdraw Request"
+            android:textColor="@color/black"
+            android:textSize="10dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/logoutAdmin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    <!--    <LinearLayout-->
+<!--        android:id="@+id/linearLayout255"-->
+<!--        android:layout_width="120dp"-->
+<!--        android:layout_height="120dp"-->
+<!--        android:orientation="vertical"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.752"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.461"-->
+<!--        tools:ignore="MissingConstraints">-->
+<!--        <ImageView-->
+<!--            android:layout_width="130dp"-->
+<!--            android:layout_height="100dp"-->
+<!--            android:background="@drawable/free_fire" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:fontFamily="monospace"-->
+<!--            android:gravity="center"-->
+<!--            android:background="@color/base_color"-->
+<!--            android:text="Free Fire"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="15dp"-->
+<!--            android:textStyle="bold" />-->
+
+
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="120dp"-->
+<!--        android:layout_height="120dp"-->
+<!--        android:orientation="vertical"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/linearLayout255"-->
+<!--        app:layout_constraintHorizontal_bias="0.505"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.461"-->
+<!--        tools:ignore="MissingConstraints">-->
+<!--        <ImageView-->
+<!--            android:layout_width="130dp"-->
+<!--            android:layout_height="100dp"-->
+<!--            android:background="@drawable/free_fire" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:fontFamily="monospace"-->
+<!--            android:gravity="center"-->
+<!--            android:text="Free Fire"-->
+<!--            android:background="@color/base_color"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="15dp"-->
+<!--            android:textStyle="bold" />-->
+
+
+<!--    </LinearLayout>-->
+</androidx.constraintlayout.widget.ConstraintLayout>

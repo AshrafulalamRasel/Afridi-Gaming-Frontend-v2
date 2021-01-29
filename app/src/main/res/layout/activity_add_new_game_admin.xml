@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="20dp"
+    tools:context=".AddNewGameAdminActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                android:hint="Enter Game Number"
+                app:hintTextColor="@color/text_color"
+                app:layout_constraintVertical_bias="0.133">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/gameNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/round_bg_logo_color"
+                    android:textColorHint="@color/deep_base_color" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="Enter Game Type"
+                app:hintTextColor="@color/text_color"
+                app:layout_constraintVertical_bias="0.133">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/gameType"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/round_bg_logo_color"
+                    android:textColorHint="@color/deep_base_color" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="Enter Game Name"
+                app:hintTextColor="@color/text_color"
+                app:layout_constraintVertical_bias="0.133">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/gameName"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/round_bg_logo_color"
+                    android:textColorHint="@color/deep_base_color" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="Enter Game Version"
+                app:hintTextColor="@color/text_color"
+                app:layout_constraintVertical_bias="0.133">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/gameVersion"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/round_bg_logo_color"
+                    android:textColorHint="@color/deep_base_color" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="Enter Map Name"
+                app:hintTextColor="@color/text_color"
+                app:layout_constraintVertical_bias="0.133">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/mapName"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/round_bg_logo_color"
+                    android:textColorHint="@color/deep_base_color" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="Enter Game Status"
+                app:hintTextColor="@color/text_color"
+                app:layout_constraintVertical_bias="0.133">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/gameStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/round_bg_logo_color"
+                    android:textColorHint="@color/deep_base_color" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="Enter Room Id"
+                app:hintTextColor="@color/text_color"
+                app:layout_constraintVertical_bias="0.133">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/roomId"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/round_bg_logo_color"
+                    android:textColorHint="@color/deep_base_color" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="Enter Room Password"
+                app:hintTextColor="@color/text_color"
+                app:layout_constraintVertical_bias="0.133">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/roomPass"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/round_bg_logo_color"
+                    android:textColorHint="@color/deep_base_color" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="Enter Total Prize"
+                app:hintTextColor="@color/text_color"
+                app:layout_constraintVertical_bias="0.133">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/totalPrize"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/round_bg_logo_color"
+                    android:textColorHint="@color/deep_base_color" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="Enter Winner Prize"
+                app:hintTextColor="@color/text_color"
+                app:layout_constraintVertical_bias="0.133">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/winnerPrize"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/round_bg_logo_color"
+                    android:textColorHint="@color/deep_base_color" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="Enter Second Prize"
+                app:hintTextColor="@color/text_color"
+                app:layout_constraintVertical_bias="0.133">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/secPrize"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/round_bg_logo_color"
+                    android:textColorHint="@color/deep_base_color" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="Enter Third Prize"
+                app:hintTextColor="@color/text_color"
+                app:layout_constraintVertical_bias="0.133">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/trdPrize"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/round_bg_logo_color"
+                    android:textColorHint="@color/deep_base_color" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="Enter Per Kill Prize"
+                app:hintTextColor="@color/text_color"
+                app:layout_constraintVertical_bias="0.133">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/perKillPrize"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/round_bg_logo_color"
+                    android:textColorHint="@color/deep_base_color" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="Enter Entry Fee"
+                app:hintTextColor="@color/text_color"
+                app:layout_constraintVertical_bias="0.133">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/entryFee"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/round_bg_logo_color"
+                    android:textColorHint="@color/deep_base_color" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/addNewGame"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="20dp"
+                android:text="Save">
+
+            </Button>
+        </LinearLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

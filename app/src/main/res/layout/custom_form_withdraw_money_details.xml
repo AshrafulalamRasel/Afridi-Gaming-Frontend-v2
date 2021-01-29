@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="20dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Ac No"
+            android:textColor="@color/base_color"
+            android:textSize="12dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/amount_no_withdraw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Amount"
+            android:textColor="@color/base_color"
+            android:textSize="12dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/amount_withdraw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <RadioGroup
+        android:id="@+id/paymentTypeGroup"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <RadioButton
+            android:id="@+id/bkash_r"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="bKash"
+            android:textSize="13dp" />
+        <RadioButton
+            android:id="@+id/radioSolo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Rocket"
+            android:textSize="13dp" />
+
+        <RadioButton
+            android:id="@+id/radioDuo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="Recharge"
+            android:textSize="13dp" />
+
+
+    </RadioGroup>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        tools:ignore="MissingConstraints">
+
+
+        <Button
+            android:id="@+id/withdraw_but"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Withdraw" />
+    </LinearLayout>
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textColor="#7E0303"
+    android:layout_marginTop="5dp"
+    android:text="We will be taken few time to verify your withdraw request."/>
+</LinearLayout>

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".JoinNowUserActivity">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/gameNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/base_color"
+                android:fontFamily="monospace"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="GAmening |gfh |jhgfhf"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/myBalanceTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Available Balance : 00"
+                android:textColor="@color/white_black"
+                android:textSize="13dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/entryFeePerTotalMatchTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Match Entry Fee Per Person : 20"
+                android:textColor="@color/white_black"
+                android:textSize="13dp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/entryFeePerMatchTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Match Entry Fee Per Person : 20"
+                android:textColor="@color/white_black"
+                android:textSize="13dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        app:layout_constraintVertical_bias="0.024"
+        tools:ignore="MissingConstraints">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/base_color"
+                android:fontFamily="monospace"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Squad Details"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="This Squad Match, You can join as Solo, Duo or Squad"
+                android:textColor="@color/white_black"
+                android:textSize="10dp"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/gameTypeGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/radioSolo"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Solo"
+                    android:textSize="13dp" />
+
+                <RadioButton
+                    android:id="@+id/radioDuo"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:text="Duo"
+                    android:textSize="13dp" />
+
+                <RadioButton
+                    android:id="@+id/radioSquad"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:text="Squad"
+                    android:textSize="13dp" />
+            </RadioGroup>
+
+            <EditText
+                android:id="@+id/playerId1EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Player 1"
+                android:enabled="false"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/playerId2EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Player 2"
+                android:enabled="false"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/playerId3EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Player 3"
+                android:enabled="false"
+                android:padding="10dp" />
+            <EditText
+                android:id="@+id/playerId4EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Player 3"
+                android:enabled="false"
+                android:padding="10dp" />
+            <Button
+                android:id="@+id/joinBut"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:padding="10dp"
+                android:text="Join" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.itvillage.afridigaming">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/logo_icon"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/logo_icon_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AfridiGaming"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".ApproveWithdrawRequestAdminActivity" />
+        <activity android:name=".WithdrawHistoryActivity" />
+        <activity android:name=".PaymentHistoryActivity" />
+        <activity android:name=".JoinNowUserActivity" />
+        <activity android:name=".AddNewGameAdminActivity" />
+        <activity android:name=".PasswordChange" />
+        <activity android:name=".myProfileAdding" />
+        <activity android:name=".UserBalanceActivity" />
+        <activity android:name=".GamesShowUserViewActivity" />
+        <activity android:name=".MoneyApprovalActivity" />
+        <activity android:name=".GameListActivity" />
+        <activity android:name=".AdminHomeActivity" />
+        <activity
+            android:name=".UserHomeActivity"
+            android:label="@string/title_activity_user_home" />
+        <activity
+            android:name=".SignUpActivity"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name=".LoginActivity"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
