@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -20,7 +19,6 @@ import com.itvillage.afridigaming.config.Utility;
 import com.itvillage.afridigaming.dto.response.RegisterUsersInGameEntity;
 import com.itvillage.afridigaming.services.UpdateAllRefundService;
 import com.itvillage.afridigaming.services.UpdateGameSatusService;
-import com.itvillage.afridigaming.services.UpdateRoomDetailsService;
 import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
 
 import java.util.ArrayList;
@@ -176,7 +174,7 @@ public class RefundListAdapter extends ArrayAdapter<String> {
                         userNameOfGameList.add(registerUsersInGameEntity.getPartnerOneName() + "   " + registerUsersInGameEntity.getPartnerTwoName() + "   " + registerUsersInGameEntity.getPartnerThreeName());
                     }
 
-                    AdminGameResultAddAdapter adapter = new AdminGameResultAddAdapter(context, playerIdList, gameIdArray.get(position), userNameOfGameList);
+                    AdminGameRefundAddAdapter adapter = new AdminGameRefundAddAdapter(context, playerIdList, gameIdArray.get(position), userNameOfGameList);
                     ListView playerList = dialogView.findViewById(R.id.playerList);
                     playerList.setAdapter(adapter);
 
