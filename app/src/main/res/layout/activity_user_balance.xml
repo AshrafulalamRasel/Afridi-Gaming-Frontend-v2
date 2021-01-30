@@ -30,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:text="100"
+                android:text="00"
                 android:textColor="@color/black"
                 android:textSize="60sp"
                 android:textStyle="bold" />
@@ -58,7 +58,7 @@
                 android:layout_marginRight="10dp"
                 android:background="@drawable/border_background"
                 android:padding="20dp"
-                android:text="Deposited : 100"
+                android:text="Deposited : 00"
                 android:textColor="@color/black"
                 android:textSize="20dp"
                 android:textStyle="bold" />
