@@ -74,8 +74,8 @@ public class NotificationsFragment extends Fragment {
 
                         RegisterUsersInGameEntityArray.add(gameResponse.getRegisterUsersInGameEntities());
 
-                        gameNameArray.add(gameResponse.getGameName() + " | Mobile Only | " + gameResponse.getGameNumber());
-                        gameSubNameArray.add(gameResponse.getCreatedAt());
+                        gameNameArray.add(gameResponse.getGameName() + " | "+ gameResponse.getGameplayOption()+" | " + gameResponse.getGameNumber());
+                        gameSubNameArray.add(gameResponse.getGameplayStartTime());
                         imageArray.add(R.drawable.free_fire);
                         gameTotalPrizeArray.add(String.valueOf(gameResponse.getTotalPrize()));
                         gamePerKillPrizeArray.add(String.valueOf(gameResponse.getPerKillPrize()));

@@ -82,8 +82,8 @@ public class GameListActivity extends AppCompatActivity {
 
                         RegisterUsersInGameEntityArray.add(gameResponse.getRegisterUsersInGameEntities());
                         gameIdList.add(gameResponse.getId());
-                        gameNameArray.add(gameResponse.getGameName() + " | Mobile Only | " + gameResponse.getGameNumber());
-                        gameSubNameArray.add(gameResponse.getCreatedAt());
+                        gameNameArray.add(gameResponse.getGameName() + " | "+ gameResponse.getGameplayOption()+" | " + gameResponse.getGameNumber());
+                        gameSubNameArray.add(gameResponse.getGameplayStartTime());
                         imageArray.add(R.drawable.free_fire);
                         gameTotalPrizeArray.add(String.valueOf(gameResponse.getTotalPrize()));
                         gamePerKillPrizeArray.add(String.valueOf(gameResponse.getPerKillPrize()));

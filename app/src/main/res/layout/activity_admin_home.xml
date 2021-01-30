@@ -103,6 +103,38 @@
             android:textStyle="bold" />
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/refund_admin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/logoutAdmin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.725"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/game_list"
+        app:layout_constraintVertical_bias="0.055"
+        tools:ignore="MissingConstraints">
+        <ImageView
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:background="@drawable/add_money" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/base_color"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="Refund Request"
+            android:textColor="@color/black"
+            android:textSize="10dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
     <Button
         android:id="@+id/logoutAdmin"
         android:layout_width="match_parent"

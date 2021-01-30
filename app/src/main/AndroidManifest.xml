@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AfridiGaming"
         android:usesCleartextTraffic="true">
+        <activity android:name=".RefundActivity"></activity>
         <activity android:name=".ApproveWithdrawRequestAdminActivity" />
         <activity android:name=".WithdrawHistoryActivity" />
         <activity android:name=".PaymentHistoryActivity" />

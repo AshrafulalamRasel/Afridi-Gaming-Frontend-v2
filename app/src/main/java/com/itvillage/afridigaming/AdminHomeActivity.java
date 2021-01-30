@@ -9,7 +9,7 @@ import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class AdminHomeActivity extends AppCompatActivity {
-    LinearLayout game_list, add_money,withdraw_request_admin;
+    LinearLayout game_list, add_money, withdraw_request_admin, refund_admin;
     Button logoutAdmin;
 
     @Override
@@ -21,11 +21,18 @@ public class AdminHomeActivity extends AppCompatActivity {
         add_money = findViewById(R.id.add_money);
         withdraw_request_admin = findViewById(R.id.withdraw_request_admin);
         logoutAdmin = findViewById(R.id.logoutAdmin);
+        refund_admin = findViewById(R.id.refund_admin);
 
+        refund_admin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), RefundActivity.class));
+            }
+        });
         logoutAdmin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
             }
         });
 

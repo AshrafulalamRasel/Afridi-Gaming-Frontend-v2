@@ -55,6 +55,25 @@ public class GameResponse {
 
     private String gameOwnerId;
 
+    private String gameplayOption;
+    private String gameplayStartTime;
+
+    public String getGameplayOption() {
+        return gameplayOption;
+    }
+
+    public void setGameplayOption(String gameplayOption) {
+        this.gameplayOption = gameplayOption;
+    }
+
+    public String getGameplayStartTime() {
+        return gameplayStartTime;
+    }
+
+    public void setGameplayStartTime(String gameplayStartTime) {
+        this.gameplayStartTime = gameplayStartTime;
+    }
+
     public String getId() {
         return id;
     }

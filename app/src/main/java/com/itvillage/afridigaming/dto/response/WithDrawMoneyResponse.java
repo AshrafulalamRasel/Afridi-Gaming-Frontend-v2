@@ -12,6 +12,15 @@ public class WithDrawMoneyResponse {
     private String userName;
     private Double currentBalance;
     private String updatedAt;
+    private String balanceStatus;
+
+    public String getBalanceStatus() {
+        return balanceStatus;
+    }
+
+    public void setBalanceStatus(String balanceStatus) {
+        this.balanceStatus = balanceStatus;
+    }
 
     public String getId() {
         return id;

@@ -10,8 +10,9 @@
         android:layout_margin="5dp">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#EFEAF8"
             android:orientation="vertical">
 
 
@@ -130,7 +131,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="5dp"
-                    android:visibility="invisible"
+
                     android:backgroundTint="#E40B0B"
                     android:text="Deny" />
 

@@ -28,6 +28,14 @@ public class UpdateNotificationStatusAndAddBalanceService {
                 .updateNotificationStatusAndAddBalanceApi(balanceId,userId,RequestBody.create(MediaType.parse("application/json"), updateRoomDetailsRequest));
     }
 
+    public Observable<String> deny(String balanceId) {
+
+
+        return ApiClient.getClient(context)
+                .create(UpdateNotificationStatusAndAddBalanceApi.class)
+                .deny(balanceId);
+    }
+
 
 
 }

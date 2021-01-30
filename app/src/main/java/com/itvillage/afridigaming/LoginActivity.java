@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.auth0.android.jwt.Claim;
 import com.auth0.android.jwt.JWT;
 import com.google.android.material.textfield.TextInputEditText;
+import com.itvillage.afridigaming.config.Utility;
 import com.itvillage.afridigaming.dto.response.LoginResponse;
 import com.itvillage.afridigaming.services.LoginService;
 import com.itvillage.afridigaming.util.ApplicationSharedPreferencesUtil;
@@ -79,8 +80,8 @@ public class LoginActivity extends AppCompatActivity {
         responseObservable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(loginIn -> {
-
-                    Log.e("Access Token",String.valueOf(loginIn.getAccessToken()));
+                    Utility.loggedId =String.valueOf(loginIn.getId());
+                    Log.e("Access Token",String.valueOf(loginIn.getId()));
                     onLoginSuccess(loginIn);
 
                 }, throwable -> {
@@ -113,6 +114,7 @@ public class LoginActivity extends AppCompatActivity {
         Claim subscriptionMetaData = parsedJWT.getClaim("scopes");
         String parsedValue = subscriptionMetaData.asString();
 
+
         Log.e("Access Token",parsedValue);
 
         if (parsedValue.equals("SUPER_ADMIN")){
@@ -124,9 +126,6 @@ public class LoginActivity extends AppCompatActivity {
             Intent intent = new Intent(LoginActivity.this, UserHomeActivity.class);
             startActivity(intent);
         }
-
-
-
 
         Toast.makeText(getApplicationContext(), "Login Successful.", Toast.LENGTH_LONG).show();
 

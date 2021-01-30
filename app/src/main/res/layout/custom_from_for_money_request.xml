@@ -20,7 +20,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Enter Requested Amount"
+            android:text="কত টাকা পাঠিয়েছেন"
             android:textColor="@color/base_color"
             android:textSize="12dp"
             android:textStyle="bold" />
@@ -42,7 +42,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Enter last 3 digit of payable ac no"
+            android:text="আপনার বিকাশ বা রকেটের লাস্ট ৪ ডিজিট দিন"
             android:textColor="@color/base_color"
             android:textSize="12dp"
             android:textStyle="bold" />
@@ -81,5 +81,12 @@
             android:layout_height="wrap_content"
             android:text="Send Request" />
     </LinearLayout>
-
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textColor="#ED0606"
+    android:padding="20dp"
+    android:text="আগে বিকাশ বা রকেটে সেন্টমানি করুন ,তারপর রিকুয়েস্ট সেন্ড করুন |"
+    android:textAlignment="center"
+    android:gravity="center_horizontal" />
 </LinearLayout>

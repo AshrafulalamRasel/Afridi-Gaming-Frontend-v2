@@ -39,13 +39,14 @@ public class WithdrawListAdapter extends ArrayAdapter<String> {
     private ArrayList<String> userNameArray;
     private ArrayList<String> currentBalanceArray;
     private ArrayList<String> updatedAtArray;
+    private ArrayList<String> balanceStatusArray;
 
 
 
     public WithdrawListAdapter(Activity context,
                                ArrayList<String> paymentGetawayNameArray, ArrayList<String> amountArray,
                                ArrayList<String> acNoOfPayableMobileNoArray, ArrayList<String> userNameArray,
-                               ArrayList<String> currentBalanceArray, ArrayList<String> updatedAtArray) {
+                               ArrayList<String> currentBalanceArray, ArrayList<String> updatedAtArray,ArrayList<String> balanceStatusArray) {
         super(context, R.layout.custom_withdraw_history_list_items, paymentGetawayNameArray);
 
         this.context = context;
@@ -55,6 +56,7 @@ public class WithdrawListAdapter extends ArrayAdapter<String> {
         this.userNameArray = userNameArray;
         this.currentBalanceArray = currentBalanceArray;
         this.updatedAtArray = updatedAtArray;
+        this.balanceStatusArray = balanceStatusArray;
 
     }
 
@@ -67,11 +69,11 @@ public class WithdrawListAdapter extends ArrayAdapter<String> {
         TextView payment_getway = (TextView) rowView.findViewById(R.id.payment_getway);
         TextView date_time = (TextView) rowView.findViewById(R.id.date_time);
         TextView tk = (TextView) rowView.findViewById(R.id.tk);
-        TextView cBlanace = (TextView) rowView.findViewById(R.id.cBlanace);
+        TextView status_payment = (TextView) rowView.findViewById(R.id.status_payment);
         payment_getway.setText(paymentGetawayNameArray.get(position));
         date_time.setText(updatedAtArray.get(position));
         tk.setText(amountArray.get(position));
-        cBlanace.setText(currentBalanceArray.get(position));
+        status_payment.setText("Request Status: "+balanceStatusArray.get(position));
 
         return rowView;
 

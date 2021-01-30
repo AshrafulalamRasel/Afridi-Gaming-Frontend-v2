@@ -14,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
+
 import com.itvillage.afridigaming.JoinNowUserActivity;
 import com.itvillage.afridigaming.R;
 import com.itvillage.afridigaming.dto.response.RegisterUsersInGameEntity;
@@ -93,6 +95,8 @@ public class GameListAdapter extends ArrayAdapter<String> {
         Button joinNowBut = rowView.findViewById(R.id.joinNow);
         Button playersListBut = rowView.findViewById(R.id.playersListBut);
 
+        CardView game_card = rowView.findViewById(R.id.game_card);
+
 
         titleText.setText(gameNameArray.get(position));
         imageView.setImageResource(imageArray.get(position));
@@ -129,6 +133,7 @@ public class GameListAdapter extends ArrayAdapter<String> {
         joinNowBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(context, JoinNowUserActivity.class);
                 intent.putExtra("gameId",gameIdArray.get(position));
                 intent.putExtra("gameName",gameNameArray.get(position));
@@ -166,6 +171,17 @@ public class GameListAdapter extends ArrayAdapter<String> {
                 alertDialog.show();
             }
 
+        });
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        ViewGroup viewGroup = context.findViewById(android.R.id.content);
+        View dialogView = LayoutInflater.from(context).inflate(R.layout.custom_add_game_ins, viewGroup, false);
+        builder.setView(dialogView);
+        AlertDialog alertDialog = builder.create();
+        game_card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.show();
+            }
         });
         return rowView;
 

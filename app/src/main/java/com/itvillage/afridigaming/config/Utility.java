@@ -17,6 +17,7 @@ import com.itvillage.afridigaming.R;
 
 public class Utility {
 
+    public static String loggedId;
 
     public static void wait(int time) {
 

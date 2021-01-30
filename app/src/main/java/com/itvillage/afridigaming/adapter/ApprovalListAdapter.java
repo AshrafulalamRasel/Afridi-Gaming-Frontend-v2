@@ -89,7 +89,7 @@ public class ApprovalListAdapter extends ArrayAdapter<String> {
         deny.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                deny(balanceIdList.get(position));
             }
         });
         return rowView;
@@ -115,6 +115,27 @@ public class ApprovalListAdapter extends ArrayAdapter<String> {
                 });
 
     }
+
+    @SuppressLint("CheckResult")
+    private void deny(String balanceId) {
+
+        UpdateNotificationStatusAndAddBalanceService updateNotificationStatusAndAddBalanceService = new UpdateNotificationStatusAndAddBalanceService(context);
+
+        Observable<String> responseObservable = updateNotificationStatusAndAddBalanceService.deny(balanceId);
+
+        responseObservable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(createUser -> {
+                    onLoginSuccess();
+
+                }, throwable -> {
+                    onLoginFailure(throwable);
+                }, () -> {
+
+                });
+
+    }
+
     private void onLoginFailure(Throwable throwable) {
 
         if (throwable instanceof HttpException) {

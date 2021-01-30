@@ -3,14 +3,17 @@ package com.itvillage.afridigaming;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 
-import com.itvillage.afridigaming.adapter.GameListAdapter;
-import com.itvillage.afridigaming.config.Utility;
+import com.itvillage.afridigaming.adapter.AdminGameListAdapter;
+import com.itvillage.afridigaming.adapter.RefundListAdapter;
 import com.itvillage.afridigaming.dto.response.GameResponse;
 import com.itvillage.afridigaming.dto.response.RegisterUsersInGameEntity;
-import com.itvillage.afridigaming.services.GetAllActiveGamesService;
+import com.itvillage.afridigaming.services.GetAllGamesService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,9 +22,12 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
-public class GamesShowUserViewActivity extends AppCompatActivity {
+public class RefundActivity extends AppCompatActivity {
 
-    ArrayList<String> gameIdArray = new ArrayList<>();
+    ListView refund_list;
+
+    ArrayList<String> gameIdList = new ArrayList<>();
+    ArrayList<String> roomIdAndPassList = new ArrayList<>();
     ArrayList<String> gameNameArray = new ArrayList<>();
     ArrayList<String> gameSubNameArray = new ArrayList<>();
     ArrayList<Integer> imageArray = new ArrayList<>();
@@ -36,24 +42,26 @@ public class GamesShowUserViewActivity extends AppCompatActivity {
     ArrayList<String> winnerPrizeArray = new ArrayList<>();
     ArrayList<String> secondPrizeArray = new ArrayList<>();
     ArrayList<String> thirdPrizeArray = new ArrayList<>();
-    ArrayList<String> roomIdAndPassList = new ArrayList<>();
+
+    ArrayList<Boolean> gameIsActiveList = new ArrayList<>();
+
 
     ArrayList<List<RegisterUsersInGameEntity>> RegisterUsersInGameEntityArray = new ArrayList<>();
 
-    private ListView game_list_show;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_games_show_user_view);
+        setContentView(R.layout.activity_refund_activuty);
 
         setAllGamesInList();
 
     }
+
     @SuppressLint("CheckResult")
     private void setAllGamesInList() {
-        GetAllActiveGamesService getAllActiveGamesService = new GetAllActiveGamesService(getApplicationContext());
+        GetAllGamesService getAllActiveGamesService = new GetAllGamesService(getApplicationContext());
         Observable<List<GameResponse>> listObservable =
-                getAllActiveGamesService.getAllActiveGame();
+                getAllActiveGamesService.getAllGames();
 
         listObservable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -61,7 +69,7 @@ public class GamesShowUserViewActivity extends AppCompatActivity {
                     for (GameResponse gameResponse : gameResponses) {
 
                         RegisterUsersInGameEntityArray.add(gameResponse.getRegisterUsersInGameEntities());
-                        gameIdArray.add(gameResponse.getId());
+                        gameIdList.add(gameResponse.getId());
                         gameNameArray.add(gameResponse.getGameName() + " | "+ gameResponse.getGameplayOption()+" | " + gameResponse.getGameNumber());
                         gameSubNameArray.add(gameResponse.getGameplayStartTime());
                         imageArray.add(R.drawable.free_fire);
@@ -71,38 +79,25 @@ public class GamesShowUserViewActivity extends AppCompatActivity {
                         gameTypeArray.add(gameResponse.getGameType());
                         gameVersionArray.add(gameResponse.getVersion());
                         gameMapArray.add(gameResponse.getMap());
-                        if(isPlayerRegister(gameResponse.getRegisterUsersInGameEntities())) {
-                            roomIdAndPassList.add("Room ID: " + gameResponse.getRoomId() + " | Password: " + gameResponse.getRoomPassword() + "");
-                        }else {
-                            roomIdAndPassList.add("");
-                        }
+                        roomIdAndPassList.add("Room ID: "+gameResponse.getRoomId()+" | Password: "+ gameResponse.getRoomPassword()+"");
+
                         winnerPrizeArray.add(String.valueOf(gameResponse.getWinnerPrize()));
                         secondPrizeArray.add(String.valueOf(gameResponse.getSecondPrize()));
                         thirdPrizeArray.add(String.valueOf(gameResponse.getThirdPrize()));
 
-                    }
-                    GameListAdapter adapter = new GameListAdapter(this, gameIdArray,gameNameArray, gameSubNameArray,
-                            imageArray, gameTotalPrizeArray, gamePerKillPrizeArray,
-                            gameEntryFeeArray, gameTypeArray, gameVersionArray, gameMapArray,winnerPrizeArray,secondPrizeArray,thirdPrizeArray,RegisterUsersInGameEntityArray,roomIdAndPassList);
-                    game_list_show = (ListView) findViewById(R.id.game_list_show);
-                    game_list_show.setAdapter(adapter);
+                        gameIsActiveList.add(gameResponse.isGameIsActive());
 
+
+                    }
+                    RefundListAdapter adapter = new RefundListAdapter(this, gameIdList,gameNameArray, gameSubNameArray, imageArray,gameTotalPrizeArray,
+                            gamePerKillPrizeArray, gameEntryFeeArray, gameTypeArray, gameVersionArray, gameMapArray,winnerPrizeArray,secondPrizeArray,thirdPrizeArray,
+                            RegisterUsersInGameEntityArray,gameIsActiveList,roomIdAndPassList);
+                    refund_list = (ListView) findViewById(R.id.refund_list);
+                    refund_list.setAdapter(adapter);
                 }, throwable -> {
                     throwable.printStackTrace();
                 }, () -> {
 
                 });
-    }
-
-    private boolean isPlayerRegister(List<RegisterUsersInGameEntity> registerUsersInGameEntities) {
-        for(RegisterUsersInGameEntity registerUsersInGameEntity: registerUsersInGameEntities)
-        {
-            if(registerUsersInGameEntity.getUserId().equals(Utility.loggedId)){
-                return true;
-            }else {
-                return false;
-            }
-        }
-        return false;
     }
 }

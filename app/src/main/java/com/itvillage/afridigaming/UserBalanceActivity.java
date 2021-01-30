@@ -53,7 +53,7 @@ public class UserBalanceActivity extends AppCompatActivity {
         amount = findViewById(R.id.amount);
         amountD = findViewById(R.id.amountD);
         withdraw_money_help_but = findViewById(R.id.withdraw_money_help_but);
-        winning_amount = findViewById(R.id.winning_amount);
+
 
         getUserProfile();
 
@@ -147,7 +147,6 @@ public class UserBalanceActivity extends AppCompatActivity {
         EditText payment_method = dialogView.findViewById(R.id.payment_method);
         Button sent_request = dialogView.findViewById(R.id.sent_request);
         payment_method.setText(by);
-
 
         sent_request.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -4,11 +4,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 <androidx.cardview.widget.CardView
-    android:layout_width="wrap_content"
+    android:id="@+id/game_card"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#EFEAF8"
         android:orientation="vertical">
 
         <LinearLayout
@@ -23,13 +25,13 @@
                 android:padding="5dp" />
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/title"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
@@ -41,7 +43,7 @@
 
                 <TextView
                     android:id="@+id/subtitle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:text="TextView" />
@@ -253,6 +255,17 @@
             android:textColor="#770000"
             android:textSize="12dp"
             android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="সর্বোচ্চ ৪৪ জন জয়েন করা যাবে ।"
+            android:textColor="#770000"
+            android:textSize="12dp"
+            android:textStyle="bold" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

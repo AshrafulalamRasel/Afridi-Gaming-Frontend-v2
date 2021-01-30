@@ -132,8 +132,6 @@ public class JoinNowUserActivity extends AppCompatActivity {
 
     @SuppressLint("CheckResult")
     private void getUserProfileBalance() {
-
-
         GetUserService getUserService = new GetUserService(getApplicationContext());
         Observable<UserCreateProfileResponse> userCreateProfileResponseObservable =
                 getUserService.getUserProfile();
