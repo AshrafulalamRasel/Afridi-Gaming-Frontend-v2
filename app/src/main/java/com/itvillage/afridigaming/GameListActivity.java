@@ -44,7 +44,7 @@ public class GameListActivity extends AppCompatActivity {
     ArrayList<String> thirdPrizeArray = new ArrayList<>();
 
     ArrayList<Boolean> gameIsActiveList = new ArrayList<>();
-
+    ArrayList<String> maxPlayersList = new ArrayList<>();
 
     ArrayList<List<RegisterUsersInGameEntity>> RegisterUsersInGameEntityArray = new ArrayList<>();
 
@@ -96,14 +96,14 @@ public class GameListActivity extends AppCompatActivity {
                         winnerPrizeArray.add(String.valueOf(gameResponse.getWinnerPrize()));
                         secondPrizeArray.add(String.valueOf(gameResponse.getSecondPrize()));
                         thirdPrizeArray.add(String.valueOf(gameResponse.getThirdPrize()));
-
+                        maxPlayersList.add(gameResponse.getMaxPlayers());
                         gameIsActiveList.add(gameResponse.isGameIsActive());
 
 
                     }
                     AdminGameListAdapter adapter = new AdminGameListAdapter(this, gameIdList,gameNameArray, gameSubNameArray, imageArray,gameTotalPrizeArray,
                             gamePerKillPrizeArray, gameEntryFeeArray, gameTypeArray, gameVersionArray, gameMapArray,winnerPrizeArray,secondPrizeArray,thirdPrizeArray,
-                            RegisterUsersInGameEntityArray,gameIsActiveList,roomIdAndPassList);
+                            RegisterUsersInGameEntityArray,gameIsActiveList,roomIdAndPassList,maxPlayersList);
                     list = (ListView) findViewById(R.id.game_list);
                     list.setAdapter(adapter);
                 }, throwable -> {

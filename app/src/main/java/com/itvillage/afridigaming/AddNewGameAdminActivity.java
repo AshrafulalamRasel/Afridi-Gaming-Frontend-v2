@@ -20,7 +20,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 public class AddNewGameAdminActivity extends AppCompatActivity {
-    private TextInputEditText gameNumber,gameType,gameName,gameVersion,mapName,gameStatus,roomId,roomPass,totalPrize,winnerPrize,secPrize,trdPrize,perKillPrize,entryFee,game_start_time,play_device;
+    private TextInputEditText gameNumber,gameType,gameName,gameVersion,mapName,gameMaxPlayer,roomId,roomPass,totalPrize,winnerPrize,secPrize,trdPrize,perKillPrize,entryFee,game_start_time,play_device;
     private Button addNewGame;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ public class AddNewGameAdminActivity extends AppCompatActivity {
         gameName = findViewById(R.id.gameName);
         gameVersion = findViewById(R.id.gameVersion);
         mapName = findViewById(R.id.mapName);
-        gameStatus = findViewById(R.id.gameStatus);
+        gameMaxPlayer = findViewById(R.id.gameMaxPlayer);
         roomId = findViewById(R.id.roomId);
         roomPass = findViewById(R.id.roomPass);
         totalPrize = findViewById(R.id.totalPrize);
@@ -49,7 +49,7 @@ public class AddNewGameAdminActivity extends AppCompatActivity {
         addNewGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addGame(gameNumber.getText().toString(), gameType.getText().toString(), gameName.getText().toString(),gameVersion.getText().toString(), mapName.getText().toString(),gameStatus.getText().toString(), roomId.getText().toString(),roomPass.getText().toString(),totalPrize.getText().toString()
+                addGame(gameNumber.getText().toString(), gameType.getText().toString(), gameName.getText().toString(),gameVersion.getText().toString(), mapName.getText().toString(),gameMaxPlayer.getText().toString(), roomId.getText().toString(),roomPass.getText().toString(),totalPrize.getText().toString()
               ,winnerPrize.getText().toString(),secPrize.getText().toString(),trdPrize.getText().toString(),perKillPrize.getText().toString(),entryFee.getText().toString(),game_start_time.getText().toString(),play_device.getText().toString());
             }
         });
@@ -57,12 +57,12 @@ public class AddNewGameAdminActivity extends AppCompatActivity {
 
 
     @SuppressLint("CheckResult")
-    private void addGame(String gameNumber,String gameType,String gameName , String version, String map,String gameStatus,
+    private void addGame(String gameNumber,String gameType,String gameName , String version, String map,String gameMaxPlayer,
                          String roomId,String roomPassword,String totalPrize,String winnerPrize,String secondPrize,String thirdPrize,String perKillPrize,String entryFee,String game_start_time,String play_device) {
 
         CreateNewGameService createNewGameService = new CreateNewGameService(this);
 
-        Observable<String> gameSetRequestObservable = createNewGameService.createGame(gameNumber,gameType,gameName,version,map,gameStatus,roomId,roomPassword,totalPrize,winnerPrize,secondPrize,thirdPrize,perKillPrize,entryFee,game_start_time,play_device);
+        Observable<String> gameSetRequestObservable = createNewGameService.createGame(gameNumber,gameType,gameName,version,map,gameMaxPlayer,roomId,roomPassword,totalPrize,winnerPrize,secondPrize,thirdPrize,perKillPrize,entryFee,game_start_time,play_device);
 
 
         gameSetRequestObservable.subscribeOn(Schedulers.io())

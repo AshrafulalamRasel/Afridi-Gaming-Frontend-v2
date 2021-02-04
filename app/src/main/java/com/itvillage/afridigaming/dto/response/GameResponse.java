@@ -16,7 +16,6 @@ public class GameResponse {
 
     private String updatedBy;
 
-
     private String updatedAt;
 
     private String gameNumber;
@@ -26,6 +25,8 @@ public class GameResponse {
 
 
     private String gameName;
+
+    private String maxPlayers;
 
 
     private String version;
@@ -56,23 +57,11 @@ public class GameResponse {
     private String gameOwnerId;
 
     private String gameplayOption;
+
     private String gameplayStartTime;
 
-    public String getGameplayOption() {
-        return gameplayOption;
-    }
+    private List<RegisterUsersInGameEntity> registerUsersInGameEntities;
 
-    public void setGameplayOption(String gameplayOption) {
-        this.gameplayOption = gameplayOption;
-    }
-
-    public String getGameplayStartTime() {
-        return gameplayStartTime;
-    }
-
-    public void setGameplayStartTime(String gameplayStartTime) {
-        this.gameplayStartTime = gameplayStartTime;
-    }
 
     public String getId() {
         return id;
@@ -90,6 +79,13 @@ public class GameResponse {
         this.createdBy = createdBy;
     }
 
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
+    }
 
     public String getUpdatedBy() {
         return updatedBy;
@@ -97,14 +93,6 @@ public class GameResponse {
 
     public void setUpdatedBy(String updatedBy) {
         this.updatedBy = updatedBy;
-    }
-
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
     }
 
     public String getUpdatedAt() {
@@ -137,6 +125,14 @@ public class GameResponse {
 
     public void setGameName(String gameName) {
         this.gameName = gameName;
+    }
+
+    public String getMaxPlayers() {
+        return maxPlayers;
+    }
+
+    public void setMaxPlayers(String maxPlayers) {
+        this.maxPlayers = maxPlayers;
     }
 
     public String getVersion() {
@@ -243,6 +239,22 @@ public class GameResponse {
         this.gameOwnerId = gameOwnerId;
     }
 
+    public String getGameplayOption() {
+        return gameplayOption;
+    }
+
+    public void setGameplayOption(String gameplayOption) {
+        this.gameplayOption = gameplayOption;
+    }
+
+    public String getGameplayStartTime() {
+        return gameplayStartTime;
+    }
+
+    public void setGameplayStartTime(String gameplayStartTime) {
+        this.gameplayStartTime = gameplayStartTime;
+    }
+
     public List<RegisterUsersInGameEntity> getRegisterUsersInGameEntities() {
         return registerUsersInGameEntities;
     }
@@ -250,8 +262,4 @@ public class GameResponse {
     public void setRegisterUsersInGameEntities(List<RegisterUsersInGameEntity> registerUsersInGameEntities) {
         this.registerUsersInGameEntities = registerUsersInGameEntities;
     }
-
-    private List<RegisterUsersInGameEntity> registerUsersInGameEntities;
-
-
 }

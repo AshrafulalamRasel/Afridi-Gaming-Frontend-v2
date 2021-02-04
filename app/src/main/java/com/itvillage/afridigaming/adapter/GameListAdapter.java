@@ -4,6 +4,7 @@ package com.itvillage.afridigaming.adapter;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,16 +13,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
 
 import com.itvillage.afridigaming.JoinNowUserActivity;
 import com.itvillage.afridigaming.R;
+import com.itvillage.afridigaming.config.Utility;
 import com.itvillage.afridigaming.dto.response.RegisterUsersInGameEntity;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class GameListAdapter extends ArrayAdapter<String> {
 
@@ -43,6 +48,7 @@ public class GameListAdapter extends ArrayAdapter<String> {
     private ArrayList<String> secondPrizeArray;
     private ArrayList<String> thirdPrizeArray ;
     private ArrayList<String> roomIdAndPassList;
+    private ArrayList<String> maxPlayersList;
 
     private ArrayList<List<RegisterUsersInGameEntity>> registerUsersInGameEntityArray;
 
@@ -53,7 +59,8 @@ public class GameListAdapter extends ArrayAdapter<String> {
                            ArrayList<String> gameEntryFeeArray, ArrayList<String> gameTypeArray,
                            ArrayList<String> gameVersionArray, ArrayList<String> gameMapArray,ArrayList<String> winnerPrizeArray,
                            ArrayList<String> secondPrizeArray,ArrayList<String> thirdPrizeArray,
-                           ArrayList<List<RegisterUsersInGameEntity>> registerUsersInGameEntityArray,ArrayList<String> roomIdAndPassList) {
+                           ArrayList<List<RegisterUsersInGameEntity>> registerUsersInGameEntityArray,ArrayList<String> roomIdAndPassList,
+                           ArrayList<String> maxPlayersList) {
         super(context, R.layout.custom_game_list_items, gameIdArray);
 
         this.context = context;
@@ -72,6 +79,7 @@ public class GameListAdapter extends ArrayAdapter<String> {
         this.thirdPrizeArray = thirdPrizeArray;
         this.registerUsersInGameEntityArray = registerUsersInGameEntityArray;
         this.roomIdAndPassList = roomIdAndPassList;
+        this.maxPlayersList = maxPlayersList;
 
     }
 
@@ -96,6 +104,15 @@ public class GameListAdapter extends ArrayAdapter<String> {
         Button playersListBut = rowView.findViewById(R.id.playersListBut);
 
         CardView game_card = rowView.findViewById(R.id.game_card);
+        TextView player_fill_up_showed = rowView.findViewById(R.id.player_fill_up_showed);
+        ProgressBar progressBar = rowView.findViewById(R.id.progressBar);
+
+        int progressStatus = registerUsersInGameEntityArray.get(position).size();
+        int progressMaxStatus = Integer.valueOf(maxPlayersList.get(position));
+
+        player_fill_up_showed.setText(progressStatus+"/"+progressMaxStatus);
+        progressBar.setMax(progressMaxStatus);
+        progressBar.setProgress(progressStatus);
 
 
         titleText.setText(gameNameArray.get(position));
@@ -133,16 +150,18 @@ public class GameListAdapter extends ArrayAdapter<String> {
         joinNowBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Intent intent = new Intent(context, JoinNowUserActivity.class);
-                intent.putExtra("gameId",gameIdArray.get(position));
-                intent.putExtra("gameName",gameNameArray.get(position));
-                intent.putExtra("gameType",gameTypeArray.get(position));
-                intent.putExtra("gameName",gameNameArray.get(position));
-                intent.putExtra("totalEntryFee",String.valueOf(Integer.valueOf(gameEntryFeeArray.get(position))*3));
-                intent.putExtra("entryFeePerPerson",gameEntryFeeArray.get(position));
-
-                context.startActivity(intent);
+                if(progressStatus > progressMaxStatus) {
+                    Intent intent = new Intent(context, JoinNowUserActivity.class);
+                    intent.putExtra("gameId", gameIdArray.get(position));
+                    intent.putExtra("gameName", gameNameArray.get(position));
+                    intent.putExtra("gameType", gameTypeArray.get(position));
+                    intent.putExtra("gameName", gameNameArray.get(position));
+                    intent.putExtra("totalEntryFee", String.valueOf(Integer.valueOf(gameEntryFeeArray.get(position)) * 3));
+                    intent.putExtra("entryFeePerPerson", gameEntryFeeArray.get(position));
+                    context.startActivity(intent);
+                }else{
+                    Utility.onErrorAlert("Players Full",context);
+                }
             }
         });
         playersListBut.setOnClickListener(new View.OnClickListener() {

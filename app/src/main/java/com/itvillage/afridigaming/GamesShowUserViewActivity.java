@@ -37,6 +37,7 @@ public class GamesShowUserViewActivity extends AppCompatActivity {
     ArrayList<String> secondPrizeArray = new ArrayList<>();
     ArrayList<String> thirdPrizeArray = new ArrayList<>();
     ArrayList<String> roomIdAndPassList = new ArrayList<>();
+    ArrayList<String> maxPlayersList = new ArrayList<>();
 
     ArrayList<List<RegisterUsersInGameEntity>> RegisterUsersInGameEntityArray = new ArrayList<>();
 
@@ -71,6 +72,7 @@ public class GamesShowUserViewActivity extends AppCompatActivity {
                         gameTypeArray.add(gameResponse.getGameType());
                         gameVersionArray.add(gameResponse.getVersion());
                         gameMapArray.add(gameResponse.getMap());
+                        maxPlayersList.add(gameResponse.getMaxPlayers());
                         if(isPlayerRegister(gameResponse.getRegisterUsersInGameEntities())) {
                             roomIdAndPassList.add("Room ID: " + gameResponse.getRoomId() + " | Password: " + gameResponse.getRoomPassword() + "");
                         }else {
@@ -83,7 +85,7 @@ public class GamesShowUserViewActivity extends AppCompatActivity {
                     }
                     GameListAdapter adapter = new GameListAdapter(this, gameIdArray,gameNameArray, gameSubNameArray,
                             imageArray, gameTotalPrizeArray, gamePerKillPrizeArray,
-                            gameEntryFeeArray, gameTypeArray, gameVersionArray, gameMapArray,winnerPrizeArray,secondPrizeArray,thirdPrizeArray,RegisterUsersInGameEntityArray,roomIdAndPassList);
+                            gameEntryFeeArray, gameTypeArray, gameVersionArray, gameMapArray,winnerPrizeArray,secondPrizeArray,thirdPrizeArray,RegisterUsersInGameEntityArray,roomIdAndPassList,maxPlayersList);
                     game_list_show = (ListView) findViewById(R.id.game_list_show);
                     game_list_show.setAdapter(adapter);
 

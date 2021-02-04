@@ -53,6 +53,8 @@ public class AdminGameListAdapter extends ArrayAdapter<String> {
 
     private ArrayList<Boolean> gameIsActiveList;
 
+    private ArrayList<String> maxPlayersList;
+
     private ArrayList<List<RegisterUsersInGameEntity>> registerUsersInGameEntityArray;
 
     public AdminGameListAdapter(Activity context,
@@ -63,7 +65,8 @@ public class AdminGameListAdapter extends ArrayAdapter<String> {
                                 ArrayList<String> gameVersionArray, ArrayList<String> gameMapArray,
                                 ArrayList<String> winnerPrizeArray, ArrayList<String> secondPrizeArray,
                                 ArrayList<String> thirdPrizeArray, ArrayList<List<RegisterUsersInGameEntity>> registerUsersInGameEntityArray,
-                                ArrayList<Boolean> gameIsActiveList,ArrayList<String> roomIdAndPassList) {
+                                ArrayList<Boolean> gameIsActiveList,ArrayList<String> roomIdAndPassList,
+                                ArrayList<String> maxPlayersList) {
         super(context, R.layout.custom_admin_game_list_items, gameIdArray);
 
         this.context = context;
@@ -83,6 +86,7 @@ public class AdminGameListAdapter extends ArrayAdapter<String> {
         this.registerUsersInGameEntityArray = registerUsersInGameEntityArray;
         this.gameIsActiveList = gameIsActiveList;
         this.roomIdAndPassList = roomIdAndPassList;
+        this.maxPlayersList = maxPlayersList;
 
     }
 
@@ -106,6 +110,7 @@ public class AdminGameListAdapter extends ArrayAdapter<String> {
         TextView gameStatus = (TextView) rowView.findViewById(R.id.gameStatus);
         TextView totalRegistration = (TextView) rowView.findViewById(R.id.totalRegistration);
         TextView roomIdANdPass = (TextView) rowView.findViewById(R.id.roomIdANdPass);
+        TextView numberOfPlayers = (TextView) rowView.findViewById(R.id.numberOfPlayers);
 
         Button prizeDetailsShowBut = rowView.findViewById(R.id.prizeDetailsShowBut);
         Button publishOrUn = rowView.findViewById(R.id.publishOrUn);
@@ -125,6 +130,7 @@ public class AdminGameListAdapter extends ArrayAdapter<String> {
         mapText.setText(gameMapArray.get(position));
 
         roomIdANdPass.setText(roomIdAndPassList.get(position));
+        numberOfPlayers.setText(registerUsersInGameEntityArray.get(position).size()+"/"+maxPlayersList.get(position));
 
         gameStatus.setText(String.valueOf(gameIsActiveList.get(position)));
         if(gameIsActiveList.get(position))
