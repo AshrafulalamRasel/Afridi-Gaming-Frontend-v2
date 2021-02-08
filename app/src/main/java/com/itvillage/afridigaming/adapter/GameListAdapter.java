@@ -125,14 +125,15 @@ public class GameListAdapter extends ArrayAdapter<String> {
         typeText.setText(gameTypeArray.get(position));
         versionText.setText(gameVersionArray.get(position));
         mapText.setText(gameMapArray.get(position));
-        for(RegisterUsersInGameEntity registerUsersInGameEntity: registerUsersInGameEntityArray.get(position)){
-            if(registerUsersInGameEntity.getUserId().equals(Utility.loggedId))
-            {
-                roomIdANdPass.setText(roomIdAndPassList.get(position));
-            }else{
-                roomIdANdPass.setText("");
-            }
-        }
+        roomIdANdPass.setText(roomIdAndPassList.get(position));
+//        for(RegisterUsersInGameEntity registerUsersInGameEntity: registerUsersInGameEntityArray.get(position)){
+//            if(registerUsersInGameEntity.getUserId().equals(Utility.loggedId))
+//            {
+//                roomIdANdPass.setText(roomIdAndPassList.get(position));
+//            }else{
+//                roomIdANdPass.setText("");
+//            }
+//        }
 
 
         prizeDetailsShowBut.setOnClickListener(new View.OnClickListener() {
@@ -158,7 +159,7 @@ public class GameListAdapter extends ArrayAdapter<String> {
         joinNowBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(progressStatus > progressMaxStatus) {
+                if(progressStatus < progressMaxStatus) {
                     Intent intent = new Intent(context, JoinNowUserActivity.class);
                     intent.putExtra("gameId", gameIdArray.get(position));
                     intent.putExtra("gameName", gameNameArray.get(position));
