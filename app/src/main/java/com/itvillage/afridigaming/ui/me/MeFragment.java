@@ -2,11 +2,9 @@ package com.itvillage.afridigaming.ui.me;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,7 +36,7 @@ import io.reactivex.schedulers.Schedulers;
 public class MeFragment extends Fragment {
 
     private MeViewModel mViewModel;
-    private TextView userProfileName,availableBalance,totalkill,totalWins;
+    private TextView userProfileName, availableBalance, totalkill, totalWins, show_email;
     private View view;
 
     public static MeFragment newInstance() {
@@ -61,6 +59,7 @@ public class MeFragment extends Fragment {
         availableBalance = view.findViewById(R.id.availableBalance);
         totalkill = view.findViewById(R.id.totalkill);
         totalWins = view.findViewById(R.id.totalWins);
+        show_email = view.findViewById(R.id.show_email);
 
 
         getUserProfile();
@@ -100,11 +99,11 @@ public class MeFragment extends Fragment {
                     Intent shareIntent = new Intent(Intent.ACTION_SEND);
                     shareIntent.setType("text/plain");
                     shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Afridi Gaming");
-                    String shareMessage= "\nLet me recommend you this application\n\n";
-                    shareMessage = shareMessage + "https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID +"\n\n";
+                    String shareMessage = "\nLet me recommend you this application\n\n";
+                    shareMessage = shareMessage + "https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID + "\n\n";
                     shareIntent.putExtra(Intent.EXTRA_TEXT, shareMessage);
                     startActivity(Intent.createChooser(shareIntent, "choose one"));
-                } catch(Exception e) {
+                } catch (Exception e) {
                     //e.toString();
                 }
             }
@@ -197,6 +196,7 @@ public class MeFragment extends Fragment {
                     availableBalance.setText(Double.toString(getUserProfile.getAcBalance()));
                     totalkill.setText(Integer.toString(getUserProfile.getTotalKill()));
                     totalWins.setText(Double.toString(getUserProfile.getTotalEarn()));
+                    show_email.setText("");
 
                 }, throwable -> {
                     throwable.printStackTrace();
