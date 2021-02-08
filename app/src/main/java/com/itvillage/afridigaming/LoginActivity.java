@@ -95,10 +95,19 @@ public class LoginActivity extends AppCompatActivity {
         EditText email = dialogView.findViewById(R.id.email_forget_password);
         EditText new_password_forget_password = dialogView.findViewById(R.id.new_password_forget_password);
         EditText retype_password_forget_password = dialogView.findViewById(R.id.retype_password_forget_password);
-        if(retype_password_forget_password.getText().equals(new_password_forget_password.getText()))
-        {
-            resetPassword(email.getText().toString(),new_password_forget_password.getText().toString());
-        }
+        Button update_room_but = dialogView.findViewById(R.id.update_room_but);
+        update_room_but.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(retype_password_forget_password.getText().toString().equals(new_password_forget_password.getText().toString()))
+                {
+                    resetPassword(email.getText().toString(),new_password_forget_password.getText().toString());
+                }else {
+                    Toast.makeText(getApplicationContext(),"Password not match",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
 
 
         builder.setView(dialogView);

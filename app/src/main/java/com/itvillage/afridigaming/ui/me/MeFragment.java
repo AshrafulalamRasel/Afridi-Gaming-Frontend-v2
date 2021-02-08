@@ -113,7 +113,7 @@ public class MeFragment extends Fragment {
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
                 ViewGroup viewGroup = v.findViewById(android.R.id.content);
-                View dialogView = LayoutInflater.from(v.getContext()).inflate(R.layout.custom_add_monet_help, viewGroup, false);
+                View dialogView = LayoutInflater.from(v.getContext()).inflate(R.layout.custom_add_help_line, viewGroup, false);
                 ImageView facebook = dialogView.findViewById(R.id.facebook);
                 ImageView youtube = dialogView.findViewById(R.id.youtube);
                 ImageView telegram = dialogView.findViewById(R.id.telegram);

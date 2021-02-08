@@ -5,35 +5,24 @@ import androidx.cardview.widget.CardView;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.auth0.android.jwt.Claim;
-import com.auth0.android.jwt.JWT;
 import com.itvillage.afridigaming.config.Utility;
-import com.itvillage.afridigaming.dto.response.LoginResponse;
-import com.itvillage.afridigaming.dto.response.RegisterUsersInGameEntity;
 import com.itvillage.afridigaming.dto.response.UserCreateProfileResponse;
 import com.itvillage.afridigaming.services.GetUserService;
-import com.itvillage.afridigaming.services.LoginService;
 import com.itvillage.afridigaming.services.PostMoneyRequestService;
 import com.itvillage.afridigaming.services.WithdrawMoneyRequestService;
 import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
-
-import java.util.ArrayList;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -63,7 +52,7 @@ public class UserBalanceActivity extends AppCompatActivity {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         ViewGroup viewGroup = findViewById(android.R.id.content);
-        View dialogView = LayoutInflater.from(this).inflate(R.layout.custom_add_monet_help, viewGroup, false);
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.custom_add_to_add_balance, viewGroup, false);
         builder.setView(dialogView);
         AlertDialog alertDialog = builder.create();
 
