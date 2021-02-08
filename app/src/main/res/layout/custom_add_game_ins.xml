@@ -37,6 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="20dp"
+        android:textSize="10sp"
         android:textColor="@color/purple_500"
         android:text="@string/how_to_play_game"
         tools:layout_editor_absoluteX="0dp"

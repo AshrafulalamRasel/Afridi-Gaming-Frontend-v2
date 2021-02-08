@@ -4,12 +4,14 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -113,6 +115,31 @@ public class MeFragment extends Fragment {
                 AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
                 ViewGroup viewGroup = v.findViewById(android.R.id.content);
                 View dialogView = LayoutInflater.from(v.getContext()).inflate(R.layout.custom_add_monet_help, viewGroup, false);
+                ImageView facebook = dialogView.findViewById(R.id.facebook);
+                ImageView youtube = dialogView.findViewById(R.id.youtube);
+                ImageView telegram = dialogView.findViewById(R.id.telegram);
+                facebook.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String link = getResources().getString(R.string.facebook);
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(link)));
+                    }
+                });
+                youtube.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String link = getResources().getString(R.string.youtubelink);
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(link)));
+                    }
+                });
+
+                telegram.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String link = getResources().getString(R.string.telegramlink);
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(link)));
+                    }
+                });
                 builder.setView(dialogView);
                 AlertDialog alertDialog = builder.create();
                 alertDialog.show();

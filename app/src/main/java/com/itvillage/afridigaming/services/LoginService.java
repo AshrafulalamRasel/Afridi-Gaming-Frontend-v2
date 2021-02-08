@@ -15,6 +15,7 @@ public class LoginService {
 
     private final Context context;
     private final String LOGIN_REQUEST_BODY_FORMAT = "{ \"username\": \"%s\", \"password\": \"%s\" }";
+    private final String FORGET_PASSWORD_REQUEST_BODY_FORMAT = "{ \"email\": \"%s\", \"password\": \"%s\" }";
 
     public LoginService(Context context) {
         this.context = context;
@@ -29,6 +30,13 @@ public class LoginService {
                 .signIn(RequestBody.create(MediaType.parse("application/json"), loginRequestBody));
     }
 
+    public Observable<String> resetPassword(String email, String password) {
 
+        String loginRequestBody = String.format(FORGET_PASSWORD_REQUEST_BODY_FORMAT, email, password);
+
+        return ApiClient.getClient(context)
+                .create(LoginApi.class)
+                .resetPassword(RequestBody.create(MediaType.parse("application/json"), loginRequestBody));
+    }
 
 }

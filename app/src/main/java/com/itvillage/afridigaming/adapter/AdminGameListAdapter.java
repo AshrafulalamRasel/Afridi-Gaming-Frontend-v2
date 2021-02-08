@@ -65,7 +65,7 @@ public class AdminGameListAdapter extends ArrayAdapter<String> {
                                 ArrayList<String> gameVersionArray, ArrayList<String> gameMapArray,
                                 ArrayList<String> winnerPrizeArray, ArrayList<String> secondPrizeArray,
                                 ArrayList<String> thirdPrizeArray, ArrayList<List<RegisterUsersInGameEntity>> registerUsersInGameEntityArray,
-                                ArrayList<Boolean> gameIsActiveList,ArrayList<String> roomIdAndPassList,
+                                ArrayList<Boolean> gameIsActiveList, ArrayList<String> roomIdAndPassList,
                                 ArrayList<String> maxPlayersList) {
         super(context, R.layout.custom_admin_game_list_items, gameIdArray);
 
@@ -130,13 +130,12 @@ public class AdminGameListAdapter extends ArrayAdapter<String> {
         mapText.setText(gameMapArray.get(position));
 
         roomIdANdPass.setText(roomIdAndPassList.get(position));
-        numberOfPlayers.setText(registerUsersInGameEntityArray.get(position).size()+"/"+maxPlayersList.get(position));
+        numberOfPlayers.setText(registerUsersInGameEntityArray.get(position).size() + "/" + maxPlayersList.get(position));
 
         gameStatus.setText(String.valueOf(gameIsActiveList.get(position)));
-        if(gameIsActiveList.get(position))
-        {
+        if (gameIsActiveList.get(position)) {
             publishOrUn.setText("Unpublished");
-        }else {
+        } else {
             publishOrUn.setText("published");
         }
         totalRegistration.setText("" + numberOfPlayer);
@@ -175,7 +174,7 @@ public class AdminGameListAdapter extends ArrayAdapter<String> {
 
                     for (RegisterUsersInGameEntity registerUsersInGameEntity : registerUsersInGameEntityArray.get(position)) {
                         playerIdList.add(registerUsersInGameEntity.getUserId());
-                        userNameOfGameList.add(registerUsersInGameEntity.getPartnerOneName() + "   " + registerUsersInGameEntity.getPartnerTwoName() + "   " + registerUsersInGameEntity.getPartnerThreeName());
+                        userNameOfGameList.add(registerUsersInGameEntity.getPartnerOneName() + "   " + registerUsersInGameEntity.getPartnerTwoName() + "   " + registerUsersInGameEntity.getPartnerThreeName() + "," + registerUsersInGameEntity.getPartnerNameFour());
                     }
 
                     AdminGameResultAddAdapter adapter = new AdminGameResultAddAdapter(context, playerIdList, gameIdArray.get(position), userNameOfGameList);
@@ -288,7 +287,7 @@ public class AdminGameListAdapter extends ArrayAdapter<String> {
             HttpException httpException = (HttpException) throwable;
 
             if (httpException.code() == 500 || httpException.code() == 401) {
-                Utility.onErrorAlert("Something Wrong",context);
+                Utility.onErrorAlert("Something Wrong", context);
 
             }
 
@@ -297,7 +296,7 @@ public class AdminGameListAdapter extends ArrayAdapter<String> {
 
     private void onLoginSuccess() {
 
-        Utility.onSuccessAlert("Updated",context);
+        Utility.onSuccessAlert("Updated", context);
 
     }
 }

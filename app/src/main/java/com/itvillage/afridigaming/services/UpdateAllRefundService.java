@@ -2,13 +2,10 @@ package com.itvillage.afridigaming.services;
 
 import android.content.Context;
 
-import com.itvillage.afridigaming.UpdateAllRefundApi;
-import com.itvillage.afridigaming.api.UpdateGameResultApi;
+import com.itvillage.afridigaming.api.UpdateAllRefundApi;
 import com.itvillage.afridigaming.config.ApiClient;
 
 import io.reactivex.Observable;
-import okhttp3.MediaType;
-import okhttp3.RequestBody;
 
 public class UpdateAllRefundService {
 

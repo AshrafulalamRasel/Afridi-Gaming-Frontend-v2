@@ -16,6 +16,16 @@ public class RegisterUsersInGameEntity {
 
     private String partnerThreeName;
 
+    private String partnerNameFour;
+
+    public String getPartnerNameFour() {
+        return partnerNameFour;
+    }
+
+    public void setPartnerNameFour(String partnerNameFour) {
+        this.partnerNameFour = partnerNameFour;
+    }
+
     public String getUserId() {
         return userId;
     }

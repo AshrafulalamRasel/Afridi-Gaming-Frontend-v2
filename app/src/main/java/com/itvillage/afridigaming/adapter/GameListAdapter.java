@@ -4,18 +4,15 @@ package com.itvillage.afridigaming.adapter;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
 
@@ -106,8 +103,24 @@ public class GameListAdapter extends ArrayAdapter<String> {
         CardView game_card = rowView.findViewById(R.id.game_card);
         TextView player_fill_up_showed = rowView.findViewById(R.id.player_fill_up_showed);
         ProgressBar progressBar = rowView.findViewById(R.id.progressBar);
+        List<String> players = new ArrayList<>();
+        for(RegisterUsersInGameEntity registerUsersInGameEntity : registerUsersInGameEntityArray.get(position))
+        {
+            if (!registerUsersInGameEntity.getPartnerOneName().equals("")) {
+                players.add(registerUsersInGameEntity.getPartnerOneName());
+            }
+            if (!registerUsersInGameEntity.getPartnerTwoName().equals("")) {
+                players.add(registerUsersInGameEntity.getPartnerTwoName());
+            }
+            if (!registerUsersInGameEntity.getPartnerThreeName().equals("")) {
+                players.add(registerUsersInGameEntity.getPartnerThreeName());
+            }
+            if (!registerUsersInGameEntity.getPartnerNameFour().equals("")) {
+                players.add(registerUsersInGameEntity.getPartnerNameFour());
+            }
+        }
 
-        int progressStatus = registerUsersInGameEntityArray.get(position).size();
+        int progressStatus = players.size();
         int progressMaxStatus = Integer.valueOf(maxPlayersList.get(position));
 
         player_fill_up_showed.setText(progressStatus+"/"+progressMaxStatus);
@@ -126,15 +139,6 @@ public class GameListAdapter extends ArrayAdapter<String> {
         versionText.setText(gameVersionArray.get(position));
         mapText.setText(gameMapArray.get(position));
         roomIdANdPass.setText(roomIdAndPassList.get(position));
-//        for(RegisterUsersInGameEntity registerUsersInGameEntity: registerUsersInGameEntityArray.get(position)){
-//            if(registerUsersInGameEntity.getUserId().equals(Utility.loggedId))
-//            {
-//                roomIdANdPass.setText(roomIdAndPassList.get(position));
-//            }else{
-//                roomIdANdPass.setText("");
-//            }
-//        }
-
 
         prizeDetailsShowBut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -186,7 +190,7 @@ public class GameListAdapter extends ArrayAdapter<String> {
                     playerName.add("No Registered Player Found!!");
                 }
                 for (RegisterUsersInGameEntity registerUsersInGameEntity : registerUsersInGameEntityArray.get(position)) {
-                    playerName.add(registerUsersInGameEntity.getPartnerOneName() + "," + registerUsersInGameEntity.getPartnerTwoName() + "," + registerUsersInGameEntity.getPartnerThreeName());
+                    playerName.add(registerUsersInGameEntity.getPartnerOneName() + "," + registerUsersInGameEntity.getPartnerTwoName() + "," + registerUsersInGameEntity.getPartnerThreeName()+","+registerUsersInGameEntity.getPartnerNameFour());
                 }
 
                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(dialogView.getContext(), android.R.layout.simple_list_item_1, playerName);

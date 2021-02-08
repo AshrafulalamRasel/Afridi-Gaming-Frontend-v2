@@ -1,4 +1,4 @@
-package com.itvillage.afridigaming;
+package com.itvillage.afridigaming.api;
 
 import io.reactivex.Observable;
 import okhttp3.RequestBody;
