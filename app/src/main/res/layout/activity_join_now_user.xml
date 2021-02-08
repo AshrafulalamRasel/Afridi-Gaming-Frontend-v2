@@ -55,7 +55,7 @@
                 android:fontFamily="monospace"
                 android:gravity="center"
                 android:padding="5dp"
-                android:text="Match Entry Fee Per Person : 20"
+                android:text="Match Entry Fee Per Person : 00"
                 android:textColor="@color/white_black"
                 android:textSize="13dp"
                 android:textStyle="bold" />
@@ -66,7 +66,7 @@
                 android:fontFamily="monospace"
                 android:gravity="center"
                 android:padding="5dp"
-                android:text="Match Entry Fee Per Person : 20"
+                android:text="Match Entry Fee Per Person : 00"
                 android:textColor="@color/white_black"
                 android:textSize="13dp"
                 android:textStyle="bold" />

@@ -54,8 +54,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="end"
-    android:textColor="#159108"
-        android:text="10"
+        android:textColor="#159108"
+        android:text="00"
         android:textAlignment="viewEnd"
         android:textSize="25dp" />
     <TextView

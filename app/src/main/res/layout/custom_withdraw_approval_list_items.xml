@@ -47,7 +47,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:gravity="center"
-                        android:text="20"
+                        android:text="00"
                         android:textColor="@color/black"
                         android:textSize="12dp" />
                 </LinearLayout>
@@ -77,7 +77,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:gravity="center"
-                        android:text="20"
+                        android:text="00"
                         android:textColor="@color/black" />
                 </LinearLayout>
 
@@ -106,7 +106,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:gravity="center"
-                        android:text="20"
+                        android:text="00"
                         android:textColor="@color/black" />
                 </LinearLayout>
             </LinearLayout>
