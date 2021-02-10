@@ -21,7 +21,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Ac No"
+            android:text="Account No"
             android:textColor="@color/base_color"
             android:textSize="12dp"
             android:textStyle="bold" />
@@ -29,6 +29,7 @@
         <EditText
             android:id="@+id/amount_no_withdraw"
             android:layout_width="match_parent"
+            android:inputType="number"
             android:layout_height="wrap_content" />
     </LinearLayout>
 
@@ -44,6 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Amount"
+
             android:textColor="@color/base_color"
             android:textSize="12dp"
             android:textStyle="bold" />
@@ -51,6 +53,7 @@
         <EditText
             android:id="@+id/amount_withdraw"
             android:layout_width="match_parent"
+            android:inputType="number"
             android:layout_height="wrap_content" />
     </LinearLayout>
     <RadioGroup
@@ -101,5 +104,6 @@
     android:layout_height="wrap_content"
     android:textColor="#7E0303"
     android:layout_marginTop="5dp"
-    android:text="We will be taken few time to verify your withdraw request."/>
+    android:gravity="center"
+    android:text="Minimum Withdraw 100 tk"/>
 </LinearLayout>

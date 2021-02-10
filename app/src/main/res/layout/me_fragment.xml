@@ -14,25 +14,26 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="150dp"
             android:layout_margin="10dp"
             android:gravity="center"
             android:orientation="vertical">
 
             <ImageView
                 android:layout_width="100dp"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
                 android:background="@drawable/logo" />
 
             <TextView
                 android:id="@+id/userProfileName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="3dp"
                 android:fontFamily="serif-monospace"
                 android:gravity="center"
-                android:padding="4dp"
-                android:text="null"
-                android:textColor="@color/black"
+               android:textSize="15dp"
+                android:text="Update Your Profile"
+                android:textColor="@color/teal_700"
                 android:textStyle="bold" />
 
             <TextView
@@ -42,7 +43,7 @@
                 android:fontFamily="serif-monospace"
                 android:gravity="center"
                 android:padding="4dp"
-                android:text=""
+
                 android:textColor="@color/black"
                 android:textStyle="bold" />
         </LinearLayout>

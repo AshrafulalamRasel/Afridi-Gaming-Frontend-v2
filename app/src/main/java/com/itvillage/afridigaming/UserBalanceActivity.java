@@ -94,8 +94,12 @@ public class UserBalanceActivity extends AppCompatActivity {
                 withdraw_but.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        withdrawMoney(payAcType,amount_withdraw.getText().toString(),amount_no_withdraw.getText().toString());
-                        alertDialog.dismiss();
+                        if(Integer.parseInt(amount_withdraw.getText().toString()) >=100) {
+                            withdrawMoney(payAcType, amount_withdraw.getText().toString(), amount_no_withdraw.getText().toString());
+                            alertDialog.dismiss();
+                        }else {
+                            Toast.makeText(getApplicationContext(),"Minimum Withdraw 100 tk",Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
 
