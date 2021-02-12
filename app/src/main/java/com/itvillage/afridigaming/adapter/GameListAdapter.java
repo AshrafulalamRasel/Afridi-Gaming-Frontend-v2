@@ -43,7 +43,7 @@ public class GameListAdapter extends ArrayAdapter<String> {
 
     private ArrayList<String> winnerPrizeArray;
     private ArrayList<String> secondPrizeArray;
-    private ArrayList<String> thirdPrizeArray ;
+    private ArrayList<String> thirdPrizeArray;
     private ArrayList<String> roomIdAndPassList;
     private ArrayList<String> maxPlayersList;
 
@@ -54,9 +54,9 @@ public class GameListAdapter extends ArrayAdapter<String> {
                            ArrayList<String> gameSubNameArray, ArrayList<Integer> imageArray,
                            ArrayList<String> gameTotalPrizeArray, ArrayList<String> gamePerKillPrizeArray,
                            ArrayList<String> gameEntryFeeArray, ArrayList<String> gameTypeArray,
-                           ArrayList<String> gameVersionArray, ArrayList<String> gameMapArray,ArrayList<String> winnerPrizeArray,
-                           ArrayList<String> secondPrizeArray,ArrayList<String> thirdPrizeArray,
-                           ArrayList<List<RegisterUsersInGameEntity>> registerUsersInGameEntityArray,ArrayList<String> roomIdAndPassList,
+                           ArrayList<String> gameVersionArray, ArrayList<String> gameMapArray, ArrayList<String> winnerPrizeArray,
+                           ArrayList<String> secondPrizeArray, ArrayList<String> thirdPrizeArray,
+                           ArrayList<List<RegisterUsersInGameEntity>> registerUsersInGameEntityArray, ArrayList<String> roomIdAndPassList,
                            ArrayList<String> maxPlayersList) {
         super(context, R.layout.custom_game_list_items, gameIdArray);
 
@@ -104,8 +104,7 @@ public class GameListAdapter extends ArrayAdapter<String> {
         TextView player_fill_up_showed = rowView.findViewById(R.id.player_fill_up_showed);
         ProgressBar progressBar = rowView.findViewById(R.id.progressBar);
         List<String> players = new ArrayList<>();
-        for(RegisterUsersInGameEntity registerUsersInGameEntity : registerUsersInGameEntityArray.get(position))
-        {
+        for (RegisterUsersInGameEntity registerUsersInGameEntity : registerUsersInGameEntityArray.get(position)) {
             if (!registerUsersInGameEntity.getPartnerOneName().equals("")) {
                 players.add(registerUsersInGameEntity.getPartnerOneName());
             }
@@ -123,7 +122,7 @@ public class GameListAdapter extends ArrayAdapter<String> {
         int progressStatus = players.size();
         int progressMaxStatus = Integer.valueOf(maxPlayersList.get(position));
 
-        player_fill_up_showed.setText(progressStatus+"/"+progressMaxStatus);
+        player_fill_up_showed.setText(progressStatus + "/" + progressMaxStatus);
         progressBar.setMax(progressMaxStatus);
         progressBar.setProgress(progressStatus);
 
@@ -151,9 +150,9 @@ public class GameListAdapter extends ArrayAdapter<String> {
                 TextView runnerUp1Prize = (TextView) dialogView.findViewById(R.id.runnerUp1Prize);
                 TextView runnerUp2Prize = (TextView) dialogView.findViewById(R.id.runnerUp2Prize);
 
-                winnerPrize.setText("Winner - "+ winnerPrizeArray.get(position) +" tk");
-                runnerUp1Prize.setText("Runner Up 1 - "+ secondPrizeArray.get(position) +" tk");
-                runnerUp2Prize.setText("Runner Up 2 - "+ thirdPrizeArray.get(position) +" tk");
+                winnerPrize.setText("Winner - " + winnerPrizeArray.get(position) + " tk");
+                runnerUp1Prize.setText("Runner Up 1 - " + secondPrizeArray.get(position) + " tk");
+                runnerUp2Prize.setText("Runner Up 2 - " + thirdPrizeArray.get(position) + " tk");
 
                 builder.setView(dialogView);
                 AlertDialog alertDialog = builder.create();
@@ -163,17 +162,21 @@ public class GameListAdapter extends ArrayAdapter<String> {
         joinNowBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(progressStatus < progressMaxStatus) {
-                    Intent intent = new Intent(context, JoinNowUserActivity.class);
-                    intent.putExtra("gameId", gameIdArray.get(position));
-                    intent.putExtra("gameName", gameNameArray.get(position));
-                    intent.putExtra("gameType", gameTypeArray.get(position));
-                    intent.putExtra("gameName", gameNameArray.get(position));
-                    intent.putExtra("totalEntryFee", String.valueOf(Integer.valueOf(gameEntryFeeArray.get(position)) * 3));
-                    intent.putExtra("entryFeePerPerson", gameEntryFeeArray.get(position));
-                    context.startActivity(intent);
-                }else{
-                    Utility.onErrorAlert("Players Full",context);
+                if (progressStatus < progressMaxStatus) {
+                    if (progressStatus == progressMaxStatus) {
+                        Utility.onErrorAlert("Players Full", context);
+                    } else {
+                        Intent intent = new Intent(context, JoinNowUserActivity.class);
+                        intent.putExtra("gameId", gameIdArray.get(position));
+                        intent.putExtra("gameName", gameNameArray.get(position));
+                        intent.putExtra("gameType", gameTypeArray.get(position));
+                        intent.putExtra("gameName", gameNameArray.get(position));
+                        intent.putExtra("totalEntryFee", String.valueOf(Integer.valueOf(gameEntryFeeArray.get(position)) * 3));
+                        intent.putExtra("entryFeePerPerson", gameEntryFeeArray.get(position));
+                        context.startActivity(intent);
+                    }
+                } else {
+                    Utility.onErrorAlert("Players Full", context);
                 }
             }
         });
@@ -185,12 +188,11 @@ public class GameListAdapter extends ArrayAdapter<String> {
                 View dialogView = LayoutInflater.from(v.getContext()).inflate(R.layout.custom_dialog_for_list_show, viewGroup, false);
 
                 ArrayList<String> playerName = new ArrayList<>();
-                if(registerUsersInGameEntityArray.isEmpty())
-                {
+                if (registerUsersInGameEntityArray.isEmpty()) {
                     playerName.add("No Registered Player Found!!");
                 }
                 for (RegisterUsersInGameEntity registerUsersInGameEntity : registerUsersInGameEntityArray.get(position)) {
-                    playerName.add(registerUsersInGameEntity.getPartnerOneName() + "," + registerUsersInGameEntity.getPartnerTwoName() + "," + registerUsersInGameEntity.getPartnerThreeName()+","+registerUsersInGameEntity.getPartnerNameFour());
+                    playerName.add(registerUsersInGameEntity.getPartnerOneName() + "," + registerUsersInGameEntity.getPartnerTwoName() + "," + registerUsersInGameEntity.getPartnerThreeName() + "," + registerUsersInGameEntity.getPartnerNameFour());
                 }
 
                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(dialogView.getContext(), android.R.layout.simple_list_item_1, playerName);
