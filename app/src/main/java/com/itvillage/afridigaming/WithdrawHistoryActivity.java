@@ -29,7 +29,7 @@ public class WithdrawHistoryActivity extends AppCompatActivity {
     private ArrayList<String> userNameArray = new ArrayList<>();
     private ArrayList<String> currentBalanceArray = new ArrayList<>();
     private ArrayList<String> updatedAtArray = new ArrayList<>();
-    private ArrayList<String> balanceStatusArray = new ArrayList<>();
+    private ArrayList<Boolean> statusArray = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,13 +53,13 @@ public class WithdrawHistoryActivity extends AppCompatActivity {
                         amountArray.add(String.valueOf(withDrawMoneyResponse.getAmount()));
                         acNoOfPayableMobileNoArray.add(withDrawMoneyResponse.getLastThreeDigitOfPayableMobileNo());
                         userNameArray.add(withDrawMoneyResponse.getUserName());
-                        balanceStatusArray.add(withDrawMoneyResponse.getBalanceStatus());
+                        statusArray.add(withDrawMoneyResponse.isAuthorityProcessed());
                         currentBalanceArray.add("Current Balance: "+ String.valueOf(withDrawMoneyResponse.getCurrentBalance()));
                         updatedAtArray.add(String.valueOf(withDrawMoneyResponse.getUpdatedAt()));
 
 
                     }
-                    WithdrawListAdapter withdrawListAdapter = new WithdrawListAdapter(this, paymentGetawayNameArray, amountArray,acNoOfPayableMobileNoArray,userNameArray,currentBalanceArray,updatedAtArray,balanceStatusArray);
+                    WithdrawListAdapter withdrawListAdapter = new WithdrawListAdapter(this, paymentGetawayNameArray, amountArray,acNoOfPayableMobileNoArray,userNameArray,currentBalanceArray,updatedAtArray,statusArray);
                     ListView withdraw_list = findViewById(R.id.withdraw_list);
                     withdraw_list.setAdapter(withdrawListAdapter);
 

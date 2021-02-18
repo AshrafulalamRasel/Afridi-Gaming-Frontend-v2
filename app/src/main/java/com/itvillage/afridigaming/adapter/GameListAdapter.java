@@ -1,9 +1,11 @@
 package com.itvillage.afridigaming.adapter;
 
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,10 +21,18 @@ import androidx.cardview.widget.CardView;
 import com.itvillage.afridigaming.JoinNowUserActivity;
 import com.itvillage.afridigaming.R;
 import com.itvillage.afridigaming.config.Utility;
+import com.itvillage.afridigaming.dto.response.GameResponse;
 import com.itvillage.afridigaming.dto.response.RegisterUsersInGameEntity;
+import com.itvillage.afridigaming.dto.response.RoomIdAndPasswordResponse;
+import com.itvillage.afridigaming.services.GetAllActiveGamesService;
+import com.itvillage.afridigaming.services.GetRoomIdPasswordService;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 
 public class GameListAdapter extends ArrayAdapter<String> {
@@ -94,7 +104,7 @@ public class GameListAdapter extends ArrayAdapter<String> {
         TextView typeText = (TextView) rowView.findViewById(R.id.typeText);
         TextView versionText = (TextView) rowView.findViewById(R.id.versionText);
         TextView mapText = (TextView) rowView.findViewById(R.id.mapText);
-        TextView roomIdANdPass = (TextView) rowView.findViewById(R.id.roomIdANdPassForUser);
+        Button roomIdANdPass = (Button) rowView.findViewById(R.id.roomIdANdPassForUser);
 
         Button prizeDetailsShowBut = rowView.findViewById(R.id.prizeDetailsShowBut);
         Button joinNowBut = rowView.findViewById(R.id.joinNow);
@@ -137,7 +147,15 @@ public class GameListAdapter extends ArrayAdapter<String> {
         typeText.setText(gameTypeArray.get(position));
         versionText.setText(gameVersionArray.get(position));
         mapText.setText(gameMapArray.get(position));
-        roomIdANdPass.setText(roomIdAndPassList.get(position));
+
+        roomIdANdPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                getGameIdAndPass(gameIdArray.get(position));
+
+            }
+        });
 
         prizeDetailsShowBut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -221,4 +239,44 @@ public class GameListAdapter extends ArrayAdapter<String> {
 
     }
 
+    @SuppressLint("CheckResult")
+    private void getGameIdAndPass(String roomId) {
+        GetRoomIdPasswordService getRoomIdPasswordService = new GetRoomIdPasswordService(context);
+        Observable<RoomIdAndPasswordResponse> RegisterUsersInGameEntityArray =
+                getRoomIdPasswordService.getRoomIdPassword(roomId);
+
+        RegisterUsersInGameEntityArray.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(res -> {
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    ViewGroup viewGroup = context.findViewById(android.R.id.content);
+                    View dialogView = LayoutInflater.from(context).inflate(R.layout.custom_room_id_password_show, viewGroup, false);
+
+                    TextView room_id_and_pass = (TextView) dialogView.findViewById(R.id.room_id_and_pass);
+                    room_id_and_pass.setText("Room Id:"+res.getRoomId()+" Password:"+res.getRoomPassword());
+
+                    builder.setView(dialogView);
+                    AlertDialog alertDialog = builder.create();
+                    alertDialog.show();
+
+                }, throwable -> {
+                    throwable.printStackTrace();
+                }, () -> {
+
+                });
+    }
+    private boolean isPlayerRegister(List<RegisterUsersInGameEntity> registerUsersInGameEntities) {
+        boolean res = false;
+        for(RegisterUsersInGameEntity registerUsersInGameEntity: registerUsersInGameEntities)
+        {
+
+            if(registerUsersInGameEntity.getUserId().equals(Utility.loggedId)){
+                res= true;
+            }else {
+                res= false;
+            }
+        }
+        return res;
+    }
 }

@@ -13,6 +13,15 @@ public class WithDrawMoneyResponse {
     private Double currentBalance;
     private String updatedAt;
     private String balanceStatus;
+    private boolean authorityProcessed;
+
+    public boolean isAuthorityProcessed() {
+        return authorityProcessed;
+    }
+
+    public void setAuthorityProcessed(boolean authorityProcessed) {
+        this.authorityProcessed = authorityProcessed;
+    }
 
     public String getBalanceStatus() {
         return balanceStatus;

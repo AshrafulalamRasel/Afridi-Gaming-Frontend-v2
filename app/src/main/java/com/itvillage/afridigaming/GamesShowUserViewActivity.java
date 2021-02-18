@@ -73,11 +73,7 @@ public class GamesShowUserViewActivity extends AppCompatActivity {
                         gameVersionArray.add(gameResponse.getVersion());
                         gameMapArray.add(gameResponse.getMap());
                         maxPlayersList.add(gameResponse.getMaxPlayers());
-                        if(isPlayerRegister(gameResponse.getRegisterUsersInGameEntities())) {
-                            roomIdAndPassList.add("Room ID: " + gameResponse.getRoomId() + " | Password: " + gameResponse.getRoomPassword() + "");
-                        }else {
-                            roomIdAndPassList.add("");
-                        }
+                        roomIdAndPassList.add("Room ID: " + gameResponse.getRoomId() + " | Password: " + gameResponse.getRoomPassword() + "");
                         winnerPrizeArray.add(String.valueOf(gameResponse.getWinnerPrize()));
                         secondPrizeArray.add(String.valueOf(gameResponse.getSecondPrize()));
                         thirdPrizeArray.add(String.valueOf(gameResponse.getThirdPrize()));
@@ -96,15 +92,5 @@ public class GamesShowUserViewActivity extends AppCompatActivity {
                 });
     }
 
-    private boolean isPlayerRegister(List<RegisterUsersInGameEntity> registerUsersInGameEntities) {
-        for(RegisterUsersInGameEntity registerUsersInGameEntity: registerUsersInGameEntities)
-        {
-            if(registerUsersInGameEntity.getUserId().equals(Utility.loggedId)){
-                return true;
-            }else {
-                return false;
-            }
-        }
-        return false;
-    }
+
 }

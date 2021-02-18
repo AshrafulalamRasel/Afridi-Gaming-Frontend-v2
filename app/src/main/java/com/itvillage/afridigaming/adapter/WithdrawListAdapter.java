@@ -39,14 +39,14 @@ public class WithdrawListAdapter extends ArrayAdapter<String> {
     private ArrayList<String> userNameArray;
     private ArrayList<String> currentBalanceArray;
     private ArrayList<String> updatedAtArray;
-    private ArrayList<String> balanceStatusArray;
+    private ArrayList<Boolean> statusArray;
 
 
 
     public WithdrawListAdapter(Activity context,
                                ArrayList<String> paymentGetawayNameArray, ArrayList<String> amountArray,
                                ArrayList<String> acNoOfPayableMobileNoArray, ArrayList<String> userNameArray,
-                               ArrayList<String> currentBalanceArray, ArrayList<String> updatedAtArray,ArrayList<String> balanceStatusArray) {
+                               ArrayList<String> currentBalanceArray, ArrayList<String> updatedAtArray,ArrayList<Boolean> balanceStatusArray) {
         super(context, R.layout.custom_withdraw_history_list_items, paymentGetawayNameArray);
 
         this.context = context;
@@ -56,7 +56,7 @@ public class WithdrawListAdapter extends ArrayAdapter<String> {
         this.userNameArray = userNameArray;
         this.currentBalanceArray = currentBalanceArray;
         this.updatedAtArray = updatedAtArray;
-        this.balanceStatusArray = balanceStatusArray;
+        this.statusArray = balanceStatusArray;
 
     }
 
@@ -73,8 +73,11 @@ public class WithdrawListAdapter extends ArrayAdapter<String> {
         payment_getway.setText(paymentGetawayNameArray.get(position));
         date_time.setText(updatedAtArray.get(position));
         tk.setText(amountArray.get(position));
-        status_payment.setText("Request Status: "+balanceStatusArray.get(position));
-
+        if(statusArray.get(position)) {
+            status_payment.setText("Request Status: Success");
+        }else{
+            status_payment.setText("Request Status: Pending");
+        }
         return rowView;
 
     }
