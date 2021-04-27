@@ -2,11 +2,10 @@ package com.itvillage.afridigaming;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,7 +29,7 @@ public class JoinNowUserActivity extends AppCompatActivity {
     private TextView myBalanceTextView, gameNameTextView, entryFeePerTotalMatchTextView, entryFeePerMatchTextView;
     private Button joinBut;
     private String squadPlayerNo = null;
-    private RadioButton radioSolo,radioDuo,radioSquad;
+    // private RadioButton radioSolo,radioDuo,radioSquad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,69 +52,88 @@ public class JoinNowUserActivity extends AppCompatActivity {
         playerId3EditText = findViewById(R.id.playerId3EditText);
         playerId4EditText = findViewById(R.id.playerId4EditText);
 
-        radioSolo = findViewById(R.id.radioSolo);
-        radioDuo = findViewById(R.id.radioDuo);
-        radioSquad = findViewById(R.id.radioSquad);
+//        radioSolo = findViewById(R.id.radioSolo);
+//        radioDuo = findViewById(R.id.radioDuo);
+//        radioSquad = findViewById(R.id.radioSquad);
         /*
-        Radio Button Show By Game Type
+        Edit Text Show By Game Type
         * */
+        Log.e("0----",gameType.toLowerCase());
         switch (gameType.toLowerCase()) {
             case "solo":
-                radioSolo.setVisibility(View.VISIBLE);
-                radioDuo.setVisibility(View.INVISIBLE);
-                radioSquad.setVisibility(View.INVISIBLE);
-
+                playerId1EditText.setVisibility(View.VISIBLE);
+                playerId2EditText.setVisibility(View.INVISIBLE);
+                playerId3EditText.setVisibility(View.INVISIBLE);
+                playerId4EditText.setVisibility(View.INVISIBLE);
+                totalEntryFee = 0.0;
+                totalEntryFee = Double.valueOf(entryFeePerPerson) * 1;
+                entryFeePerTotalMatchTextView.setText("Total Entry Fee : " + totalEntryFee);
                 break;
             case "duo":
-                radioSolo.setVisibility(View.VISIBLE);
-                radioDuo.setVisibility(View.VISIBLE);
-                radioSquad.setVisibility(View.INVISIBLE);
-
+                playerId1EditText.setVisibility(View.VISIBLE);
+                playerId2EditText.setVisibility(View.VISIBLE);
+                playerId3EditText.setVisibility(View.INVISIBLE);
+                playerId4EditText.setVisibility(View.INVISIBLE);
+                totalEntryFee = 0.0;
+                totalEntryFee = Double.valueOf(entryFeePerPerson) * 2;
+                entryFeePerTotalMatchTextView.setText("Total Entry Fee : " + totalEntryFee);
                 break;
             case "squad":
-                radioSolo.setVisibility(View.VISIBLE);
-                radioDuo.setVisibility(View.VISIBLE);
-                radioSquad.setVisibility(View.VISIBLE);
-
+                playerId1EditText.setVisibility(View.VISIBLE);
+                playerId2EditText.setVisibility(View.VISIBLE);
+                playerId3EditText.setVisibility(View.VISIBLE);
+                playerId4EditText.setVisibility(View.VISIBLE);
+                totalEntryFee = 0.0;
+                totalEntryFee = Double.valueOf(entryFeePerPerson) * 4;
+                entryFeePerTotalMatchTextView.setText("Total Entry Fee : " + totalEntryFee);
+                break;
+            case "squad vs squad":
+                playerId1EditText.setVisibility(View.VISIBLE);
+                playerId2EditText.setVisibility(View.VISIBLE);
+                playerId3EditText.setVisibility(View.VISIBLE);
+                playerId4EditText.setVisibility(View.VISIBLE);
+                totalEntryFee = 0.0;
+                totalEntryFee = Double.valueOf(entryFeePerPerson) * 4;
+                entryFeePerTotalMatchTextView.setText("Total Entry Fee : " + totalEntryFee);
                 break;
         }
 
-        RadioGroup rg = (RadioGroup) findViewById(R.id.gameTypeGroup);
-        rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                squadPlayerNo = ((RadioButton) findViewById(checkedId)).getText().toString();
-                switch (squadPlayerNo.toLowerCase()) {
-                    case "solo":
-                        playerId1EditText.setEnabled(true);
-                        playerId2EditText.setEnabled(false);
-                        playerId3EditText.setEnabled(false);
-                        playerId4EditText.setEnabled(false);
-                        totalEntryFee =0.0;
-                        totalEntryFee =Double.valueOf(entryFeePerPerson) *1;
-                        entryFeePerTotalMatchTextView.setText("Total Entry Fee : " + totalEntryFee);
-                        break;
-                    case "duo":
-                        playerId1EditText.setEnabled(true);
-                        playerId2EditText.setEnabled(true);
-                        playerId3EditText.setEnabled(false);
-                        playerId4EditText.setEnabled(false);
-                        totalEntryFee =0.0;
-                        totalEntryFee =Double.valueOf(entryFeePerPerson) *2;
-                        entryFeePerTotalMatchTextView.setText("Total Entry Fee : " + totalEntryFee);
-                        break;
-                    case "squad":
-                        playerId1EditText.setEnabled(true);
-                        playerId2EditText.setEnabled(true);
-                        playerId3EditText.setEnabled(true);
-                        playerId4EditText.setEnabled(true);
-                        totalEntryFee =0.0;
-                        totalEntryFee =Double.valueOf(entryFeePerPerson) *4;
-                        entryFeePerTotalMatchTextView.setText("Total Entry Fee : " + totalEntryFee);
-                        break;
-                }
-                Toast.makeText(getBaseContext(), squadPlayerNo + " Selected", Toast.LENGTH_SHORT).show();
-            }
-        });
+//        /*
+//        Radio Button Show By Game Type
+//        * */
+//        switch (gameType.toLowerCase()) {
+//            case "solo":
+//                radioSolo.setVisibility(View.VISIBLE);
+//                radioDuo.setVisibility(View.INVISIBLE);
+//                radioSquad.setVisibility(View.INVISIBLE);
+//
+//                break;
+//            case "duo":
+//                radioSolo.setVisibility(View.VISIBLE);
+//                radioDuo.setVisibility(View.VISIBLE);
+//                radioSquad.setVisibility(View.INVISIBLE);
+//
+//                break;
+//            case "squad":
+//                radioSolo.setVisibility(View.VISIBLE);
+//                radioDuo.setVisibility(View.VISIBLE);
+//                radioSquad.setVisibility(View.VISIBLE);
+//
+//            case "squad vs squad":
+//                radioSolo.setVisibility(View.VISIBLE);
+//                radioDuo.setVisibility(View.VISIBLE);
+//                radioSquad.setVisibility(View.VISIBLE);
+//                break;
+//        }
+
+//        RadioGroup rg = (RadioGroup) findViewById(R.id.gameTypeGroup);
+//        rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+//            public void onCheckedChanged(RadioGroup group, int checkedId) {
+//                squadPlayerNo = ((RadioButton) findViewById(checkedId)).getText().toString();
+//
+//                Toast.makeText(getBaseContext(), squadPlayerNo + " Selected", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
 
         getUserProfileBalance();
@@ -155,7 +173,7 @@ public class JoinNowUserActivity extends AppCompatActivity {
 
         RegistrationInGameService getUserService = new RegistrationInGameService(getApplicationContext());
         Observable<String> userCreateProfileResponseObservable =
-                getUserService.registrationInGame(gameId, squadPlayerNo.toLowerCase(), playerId1EditText.getText().toString(), playerId2EditText.getText().toString(), playerId3EditText.getText().toString(),playerId4EditText.getText().toString());
+                getUserService.registrationInGame(gameId, squadPlayerNo.toLowerCase(), playerId1EditText.getText().toString(), playerId2EditText.getText().toString(), playerId3EditText.getText().toString(), playerId4EditText.getText().toString());
 
         userCreateProfileResponseObservable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

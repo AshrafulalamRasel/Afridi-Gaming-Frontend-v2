@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.itvillage.afridigaming.dto.request.GameSetRequest;
@@ -55,18 +56,20 @@ public class AddNewGameAdminActivity extends AppCompatActivity {
 
         // Spinner Drop down elements
         List<String> categories = new ArrayList<String>();
-        categories.add("Solo");
-        categories.add("Duo");
-        categories.add("Squared");
-        categories.add("Squared vs Squared");
+        categories.add("SOLO");
+        categories.add("DUO");
+        categories.add("SQUAD");
+        categories.add("SQUAD VS SQUAD");
 
         // Creating adapter for spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+        gameType.setAdapter(dataAdapter);
 
         addNewGame = findViewById(R.id.addNewGame);
         addNewGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.e("---------",gameType.getSelectedItem().toString());
                 addGame(gameNumber.getText().toString(), gameType.getSelectedItem().toString(), gameName.getText().toString(),gameVersion.getText().toString(), mapName.getText().toString(),gameMaxPlayer.getText().toString(), roomId.getText().toString(),roomPass.getText().toString(),totalPrize.getText().toString()
               ,winnerPrize.getText().toString(),secPrize.getText().toString(),trdPrize.getText().toString(),perKillPrize.getText().toString(),entryFee.getText().toString(),game_start_time.getText().toString(),play_device.getText().toString());
             }

@@ -265,7 +265,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Show Room Id and Password"
+            android:text="রুম আইডি এবং পাসওয়ার্ড দেখান"
             android:textColor="@color/white"
             android:textSize="15dp"
             android:textStyle="bold" />
@@ -274,9 +274,9 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="5dp"
-            android:text="Room ID and Password publish before 15 mins from start game"
+            android:text="রুম আইডি এবং পাসওয়ার্ড গেমটি শুরু হওয়ার 15 মিনিটের আগে প্রকাশিত হবে"
             android:textColor="#770000"
-            android:textSize="12dp"
+            android:textSize="10dp"
             android:textStyle="bold" />
 
 
