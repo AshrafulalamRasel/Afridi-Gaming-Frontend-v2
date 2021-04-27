@@ -7,7 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.itvillage.afridigaming.dto.request.GameSetRequest;
@@ -15,12 +17,19 @@ import com.itvillage.afridigaming.dto.response.LoginResponse;
 import com.itvillage.afridigaming.services.CreateNewGameService;
 import com.itvillage.afridigaming.services.LoginService;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 public class AddNewGameAdminActivity extends AppCompatActivity {
-    private TextInputEditText gameNumber,gameType,gameName,gameVersion,mapName,gameMaxPlayer,roomId,roomPass,totalPrize,winnerPrize,secPrize,trdPrize,perKillPrize,entryFee,game_start_time,play_device;
+    private TextInputEditText gameNumber,gameName,gameVersion,mapName,
+            gameMaxPlayer,roomId,roomPass,totalPrize,winnerPrize,secPrize,trdPrize,
+            perKillPrize,entryFee,game_start_time,play_device;
+    private Spinner gameType;
+
     private Button addNewGame;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +37,7 @@ public class AddNewGameAdminActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_new_game_admin);
 
         gameNumber = findViewById(R.id.gameNumber);
-        gameType = findViewById(R.id.gameType);
+        gameType =  (Spinner) findViewById(R.id.gameType);
         gameName = findViewById(R.id.gameName);
         gameVersion = findViewById(R.id.gameVersion);
         mapName = findViewById(R.id.mapName);
@@ -44,12 +53,21 @@ public class AddNewGameAdminActivity extends AppCompatActivity {
         game_start_time = findViewById(R.id.game_start_time);
         play_device = findViewById(R.id.play_device);
 
+        // Spinner Drop down elements
+        List<String> categories = new ArrayList<String>();
+        categories.add("Solo");
+        categories.add("Duo");
+        categories.add("Squared");
+        categories.add("Squared vs Squared");
+
+        // Creating adapter for spinner
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
 
         addNewGame = findViewById(R.id.addNewGame);
         addNewGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addGame(gameNumber.getText().toString(), gameType.getText().toString(), gameName.getText().toString(),gameVersion.getText().toString(), mapName.getText().toString(),gameMaxPlayer.getText().toString(), roomId.getText().toString(),roomPass.getText().toString(),totalPrize.getText().toString()
+                addGame(gameNumber.getText().toString(), gameType.getSelectedItem().toString(), gameName.getText().toString(),gameVersion.getText().toString(), mapName.getText().toString(),gameMaxPlayer.getText().toString(), roomId.getText().toString(),roomPass.getText().toString(),totalPrize.getText().toString()
               ,winnerPrize.getText().toString(),secPrize.getText().toString(),trdPrize.getText().toString(),perKillPrize.getText().toString(),entryFee.getText().toString(),game_start_time.getText().toString(),play_device.getText().toString());
             }
         });
