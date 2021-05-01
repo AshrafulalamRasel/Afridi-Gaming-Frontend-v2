@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ListView;
 
 import com.itvillage.afridigaming.adapter.GameListAdapter;
@@ -48,6 +50,7 @@ public class GamesShowUserViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_games_show_user_view);
 
         setAllGamesInList();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
     @SuppressLint("CheckResult")
@@ -91,6 +94,20 @@ public class GamesShowUserViewActivity extends AppCompatActivity {
 
                 });
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
 
+        return super.onOptionsItemSelected(item);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
+
+    }
 
 }

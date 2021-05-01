@@ -74,8 +74,6 @@ public class HomeFragment extends Fragment {
                         fileIdArray.add(imageUrlResponse.getFileId());
                         webUrlArray.add(imageUrlResponse.getWebUrl());
                         imageUrlArray.add(imageUrlResponse.getImageUrl());
-                        Log.e("gfg",imageUrlResponse.getImageUrl());
-
 
                     }
                     ViewPager mViewPager = (ViewPager) root.findViewById(R.id.viewPage);

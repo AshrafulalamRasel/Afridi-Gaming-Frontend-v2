@@ -6,6 +6,8 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -32,7 +34,7 @@ public class myProfileAdding extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_profile_adding);
 
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
        // btnBack = findViewById(R.id.btnBackPares);
         firstNameEditText = findViewById(R.id.firstNameEditText);
@@ -79,5 +81,19 @@ public class myProfileAdding extends AppCompatActivity {
                 });
 
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
 
+        return super.onOptionsItemSelected(item);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
+
+    }
 }

@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -34,6 +36,7 @@ public class PaymentHistoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment_history);
         setContentView(R.layout.activity_withdraw_history);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getWithdrawList();
     }
     @SuppressLint("CheckResult")
@@ -66,5 +69,21 @@ public class PaymentHistoryActivity extends AppCompatActivity {
                 }, () -> {
 
                 });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
+
     }
 }

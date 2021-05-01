@@ -2,6 +2,8 @@ package com.itvillage.afridigaming;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -34,6 +36,7 @@ public class MoneyApprovalActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_money_approval);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getAllRequestedNotification();
 
     }
@@ -63,5 +66,21 @@ public class MoneyApprovalActivity extends AppCompatActivity {
                 }, err -> {
 
                 });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
+
     }
 }

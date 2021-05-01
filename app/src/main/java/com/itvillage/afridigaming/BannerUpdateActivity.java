@@ -9,6 +9,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -39,7 +41,7 @@ public class BannerUpdateActivity extends AppCompatActivity {
 
         update_slider_1_but = findViewById(R.id.update_slider_1_but);
         list_images = findViewById(R.id.list_images);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         web_url_1 = findViewById(R.id.web_url_1);
 
@@ -104,5 +106,19 @@ public class BannerUpdateActivity extends AppCompatActivity {
 
         }
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
 
+        return super.onOptionsItemSelected(item);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
+
+    }
 }

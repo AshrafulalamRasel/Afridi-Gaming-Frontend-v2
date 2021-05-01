@@ -3,6 +3,8 @@ package com.itvillage.afridigaming;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,6 +38,7 @@ public class JoinNowUserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join_now_user);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         gameId = getIntent().getExtras().getString("gameId");
         gameName = getIntent().getExtras().getString("gameName");
         totalEntryFee = Double.valueOf(getIntent().getExtras().getString("totalEntryFee"));
@@ -212,6 +215,21 @@ public class JoinNowUserActivity extends AppCompatActivity {
 
         Utility.onSuccessAlert("Registration Success", this);
         Toast.makeText(getApplicationContext(), "Login Successful.", Toast.LENGTH_LONG).show();
+
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
 
     }
 }

@@ -1,17 +1,15 @@
 package com.itvillage.afridigaming;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ListView;
 
-import com.itvillage.afridigaming.adapter.AdminGameListAdapter;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.itvillage.afridigaming.adapter.AdminImageListAdapter;
-import com.itvillage.afridigaming.dto.response.GameResponse;
 import com.itvillage.afridigaming.dto.response.ImageUrlResponse;
-import com.itvillage.afridigaming.services.GetAllGamesService;
 import com.itvillage.afridigaming.services.GetAllImagesService;
 
 import java.util.ArrayList;
@@ -24,15 +22,16 @@ import io.reactivex.schedulers.Schedulers;
 public class ImagesListActivity extends AppCompatActivity {
 
     private ListView image_list;
-    private ArrayList<String> fileNameArray= new ArrayList<>();
-    private ArrayList<String> fileIdArray= new ArrayList<>();
-    private ArrayList<String> webUrlArray= new ArrayList<>();
-    private ArrayList<String> imageUrlArray= new ArrayList<>();
+    private ArrayList<String> fileNameArray = new ArrayList<>();
+    private ArrayList<String> fileIdArray = new ArrayList<>();
+    private ArrayList<String> webUrlArray = new ArrayList<>();
+    private ArrayList<String> imageUrlArray = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_images_list);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getAllIMages();
     }
 
@@ -50,11 +49,10 @@ public class ImagesListActivity extends AppCompatActivity {
                         fileIdArray.add(imageUrlResponse.getFileId());
                         webUrlArray.add(imageUrlResponse.getWebUrl());
                         imageUrlArray.add(imageUrlResponse.getImageUrl());
-                        Log.e("gfg",imageUrlResponse.getImageUrl());
 
 
                     }
-                    AdminImageListAdapter adapter = new AdminImageListAdapter(this,fileNameArray,fileIdArray,webUrlArray,imageUrlArray);
+                    AdminImageListAdapter adapter = new AdminImageListAdapter(this, fileNameArray, fileIdArray, webUrlArray, imageUrlArray);
                     image_list = findViewById(R.id.image_list);
                     image_list.setAdapter(adapter);
                 }, throwable -> {
@@ -62,5 +60,21 @@ public class ImagesListActivity extends AppCompatActivity {
                 }, () -> {
 
                 });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
+
     }
 }

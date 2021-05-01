@@ -8,6 +8,8 @@ import android.app.AlertDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -42,7 +44,7 @@ public class UserBalanceActivity extends AppCompatActivity {
         amount = findViewById(R.id.amount);
         amountD = findViewById(R.id.amountD);
         withdraw_money_help_but = findViewById(R.id.withdraw_money_help_but);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         getUserProfile();
 
@@ -217,6 +219,22 @@ public class UserBalanceActivity extends AppCompatActivity {
                 }, () -> {
 
                 });
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
 
     }
 }

@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ListView;
 
 import com.itvillage.afridigaming.adapter.PalyedGameListAdapter;
@@ -35,7 +37,7 @@ public class WithdrawHistoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_withdraw_history);
         getWithdrawList();
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @SuppressLint("CheckResult")
@@ -68,5 +70,20 @@ public class WithdrawHistoryActivity extends AppCompatActivity {
                 }, () -> {
 
                 });
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
+
     }
 }

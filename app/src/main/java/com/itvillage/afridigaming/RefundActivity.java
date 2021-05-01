@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -44,15 +46,13 @@ public class RefundActivity extends AppCompatActivity {
     ArrayList<String> thirdPrizeArray = new ArrayList<>();
 
     ArrayList<Boolean> gameIsActiveList = new ArrayList<>();
-
-
     ArrayList<List<RegisterUsersInGameEntity>> RegisterUsersInGameEntityArray = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_refund_activuty);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setAllGamesInList();
 
     }
@@ -99,5 +99,21 @@ public class RefundActivity extends AppCompatActivity {
                 }, () -> {
 
                 });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
+
     }
 }

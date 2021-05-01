@@ -22,6 +22,7 @@ import com.itvillage.afridigaming.BuildConfig;
 import com.itvillage.afridigaming.LoginActivity;
 import com.itvillage.afridigaming.PasswordChange;
 import com.itvillage.afridigaming.PaymentHistoryActivity;
+import com.itvillage.afridigaming.PaymentReportActivity;
 import com.itvillage.afridigaming.R;
 import com.itvillage.afridigaming.UserBalanceActivity;
 import com.itvillage.afridigaming.WithdrawHistoryActivity;
@@ -91,7 +92,7 @@ public class MeFragment extends Fragment {
                 p_report.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        startActivity(new Intent(dialogView.getContext(), PaymentHistoryActivity.class));
+                        startActivity(new Intent(dialogView.getContext(), PaymentReportActivity.class));
                     }
                 });
 

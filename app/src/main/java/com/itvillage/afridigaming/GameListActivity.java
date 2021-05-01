@@ -3,6 +3,8 @@ package com.itvillage.afridigaming;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -55,7 +57,7 @@ public class GameListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game_list);
 
         addGameBut = findViewById(R.id.addGameBut);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         addGameBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,7 +66,6 @@ public class GameListActivity extends AppCompatActivity {
         });
 
         setAllGamesInList();
-
 
 
     }
@@ -82,7 +83,7 @@ public class GameListActivity extends AppCompatActivity {
 
                         RegisterUsersInGameEntityArray.add(gameResponse.getRegisterUsersInGameEntities());
                         gameIdList.add(gameResponse.getId());
-                        gameNameArray.add(gameResponse.getGameName() + " | "+ gameResponse.getGameplayOption()+" | " + gameResponse.getGameNumber());
+                        gameNameArray.add(gameResponse.getGameName() + " | " + gameResponse.getGameplayOption() + " | " + gameResponse.getGameNumber());
                         gameSubNameArray.add(gameResponse.getGameplayStartTime());
                         imageArray.add(R.drawable.free_fire);
                         gameTotalPrizeArray.add(String.valueOf(gameResponse.getTotalPrize()));
@@ -91,7 +92,7 @@ public class GameListActivity extends AppCompatActivity {
                         gameTypeArray.add(gameResponse.getGameType());
                         gameVersionArray.add(gameResponse.getVersion());
                         gameMapArray.add(gameResponse.getMap());
-                        roomIdAndPassList.add("Room ID: "+gameResponse.getRoomId()+" | Password: "+ gameResponse.getRoomPassword()+"");
+                        roomIdAndPassList.add("Room ID: " + gameResponse.getRoomId() + " | Password: " + gameResponse.getRoomPassword() + "");
 
                         winnerPrizeArray.add(String.valueOf(gameResponse.getWinnerPrize()));
                         secondPrizeArray.add(String.valueOf(gameResponse.getSecondPrize()));
@@ -101,9 +102,9 @@ public class GameListActivity extends AppCompatActivity {
 
 
                     }
-                    AdminGameListAdapter adapter = new AdminGameListAdapter(this, gameIdList,gameNameArray, gameSubNameArray, imageArray,gameTotalPrizeArray,
-                            gamePerKillPrizeArray, gameEntryFeeArray, gameTypeArray, gameVersionArray, gameMapArray,winnerPrizeArray,secondPrizeArray,thirdPrizeArray,
-                            RegisterUsersInGameEntityArray,gameIsActiveList,roomIdAndPassList,maxPlayersList);
+                    AdminGameListAdapter adapter = new AdminGameListAdapter(this, gameIdList, gameNameArray, gameSubNameArray, imageArray, gameTotalPrizeArray,
+                            gamePerKillPrizeArray, gameEntryFeeArray, gameTypeArray, gameVersionArray, gameMapArray, winnerPrizeArray, secondPrizeArray, thirdPrizeArray,
+                            RegisterUsersInGameEntityArray, gameIsActiveList, roomIdAndPassList, maxPlayersList);
                     list = (ListView) findViewById(R.id.game_list);
                     list.setAdapter(adapter);
                 }, throwable -> {
@@ -111,5 +112,21 @@ public class GameListActivity extends AppCompatActivity {
                 }, () -> {
 
                 });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
+
     }
 }
