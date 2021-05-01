@@ -3,6 +3,7 @@ package com.itvillage.afridigaming.ui.ongoing;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,10 +17,14 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.itvillage.afridigaming.GamesShowUserViewActivity;
 import com.itvillage.afridigaming.R;
+import com.itvillage.afridigaming.adapter.AdminImageListAdapter;
 import com.itvillage.afridigaming.config.ImageAdapter;
 import com.itvillage.afridigaming.dto.response.GameResponse;
+import com.itvillage.afridigaming.dto.response.ImageUrlResponse;
 import com.itvillage.afridigaming.services.GetAllActiveGamesService;
+import com.itvillage.afridigaming.services.GetAllImagesService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Observable;
@@ -31,7 +36,10 @@ public class HomeFragment extends Fragment {
     private HomeViewModel homeViewModel;
     private View root;
     TextView founded_match;
-
+    private ArrayList<String> fileNameArray= new ArrayList<>();
+    private ArrayList<String> fileIdArray= new ArrayList<>();
+    private ArrayList<String> webUrlArray= new ArrayList<>();
+    private ArrayList<String> imageUrlArray= new ArrayList<>();
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
@@ -46,11 +54,38 @@ public class HomeFragment extends Fragment {
                startActivity(new Intent(root.getContext(), GamesShowUserViewActivity.class));
             }
         });
+        getAllIMages();
         setAllGamesInList();
-        ViewPager mViewPager = (ViewPager) root.findViewById(R.id.viewPage);
-        ImageAdapter adapterView = new ImageAdapter(root.getContext());
-        mViewPager.setAdapter(adapterView);
+
         return root;
+    }
+
+    @SuppressLint("CheckResult")
+    private void getAllIMages() {
+        GetAllImagesService getAllImagesService = new GetAllImagesService(this.getActivity());
+        Observable<List<ImageUrlResponse>> listObservable =
+                getAllImagesService.getImages();
+
+        listObservable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(imageUrlResponses -> {
+                    for (ImageUrlResponse imageUrlResponse : imageUrlResponses) {
+                        fileNameArray.add(imageUrlResponse.getFileName());
+                        fileIdArray.add(imageUrlResponse.getFileId());
+                        webUrlArray.add(imageUrlResponse.getWebUrl());
+                        imageUrlArray.add(imageUrlResponse.getImageUrl());
+                        Log.e("gfg",imageUrlResponse.getImageUrl());
+
+
+                    }
+                    ViewPager mViewPager = (ViewPager) root.findViewById(R.id.viewPage);
+                    ImageAdapter adapterView = new ImageAdapter(this.getActivity(),fileNameArray,fileIdArray,webUrlArray,imageUrlArray);
+                    mViewPager.setAdapter(adapterView);
+                }, throwable -> {
+                    throwable.printStackTrace();
+                }, () -> {
+
+                });
     }
 
     @SuppressLint("CheckResult")

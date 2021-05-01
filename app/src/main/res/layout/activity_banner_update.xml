@@ -9,7 +9,14 @@
     android:layout_gravity="center"
     android:gravity="center"
     tools:context=".BannerUpdateActivity">
-
+    <Button
+        android:id="@+id/list_images"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Image List"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="45dp" />
     <TextView
         android:id="@+id/status_1"
         android:layout_width="wrap_content"
@@ -37,21 +44,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="Upload Your Image"
+        android:textColor="#CC0A0A"
+        android:text="* Upload .jpg type image .Size 700*700"
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-    <EditText
-        android:id="@+id/web_url_2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="WebUrl -2"/>
-    <Button
-        android:id="@+id/update_slider_2_but"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="Upload Slider 2"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="45dp" />
+
 </LinearLayout>

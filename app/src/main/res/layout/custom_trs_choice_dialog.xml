@@ -17,4 +17,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Payment History" />
+    <Button
+        android:id="@+id/p_report"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Payment Report" />
 </LinearLayout>

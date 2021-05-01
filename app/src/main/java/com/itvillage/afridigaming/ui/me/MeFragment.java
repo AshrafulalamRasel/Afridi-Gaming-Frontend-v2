@@ -73,6 +73,7 @@ public class MeFragment extends Fragment {
 
                 Button w_history = dialogView.findViewById(R.id.w_history);
                 Button p_history = dialogView.findViewById(R.id.p_history);
+                Button p_report = dialogView.findViewById(R.id.p_report);
 
                 w_history.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -81,6 +82,13 @@ public class MeFragment extends Fragment {
                     }
                 });
                 p_history.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(dialogView.getContext(), PaymentHistoryActivity.class));
+                    }
+                });
+
+                p_report.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         startActivity(new Intent(dialogView.getContext(), PaymentHistoryActivity.class));

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.itvillage.afridigaming" >
+    package="com.itvillage.afridigaming">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/logo_icon"
@@ -11,9 +12,10 @@
         android:roundIcon="@mipmap/logo_icon_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AfridiGaming"
-        android:usesCleartextTraffic="true" >
-        <activity android:name=".BannerUpdateActivity" >
-        </activity>
+        android:usesCleartextTraffic="true">
+        <activity android:name=".ImagesListActivity"></activity>
+        <activity android:name=".PaymentReportActivity" />
+        <activity android:name=".BannerUpdateActivity" />
         <activity android:name=".RefundActivity" />
         <activity android:name=".ApproveWithdrawRequestAdminActivity" />
         <activity android:name=".WithdrawHistoryActivity" />
@@ -38,7 +40,7 @@
             android:theme="@style/NoActionBar" />
         <activity
             android:name=".MainActivity"
-            android:theme="@style/NoActionBar" >
+            android:theme="@style/NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

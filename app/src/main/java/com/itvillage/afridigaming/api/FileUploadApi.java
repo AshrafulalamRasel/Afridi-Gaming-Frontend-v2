@@ -6,6 +6,6 @@ import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 public interface FileUploadApi {
-    @POST("api/auth/user/signup")
+    @POST("api/auth/upload/image")
     Observable<String> fileUpload(@Body RequestBody body);
 }

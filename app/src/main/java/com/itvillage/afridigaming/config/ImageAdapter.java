@@ -3,20 +3,36 @@ package com.itvillage.afridigaming.config;
 
 import android.content.Context;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.bumptech.glide.Glide;
 import com.itvillage.afridigaming.R;
+
+import java.util.ArrayList;
 
 public class ImageAdapter extends PagerAdapter {
     Context mContext;
+    private ArrayList<String> fileNameArray;
+    private ArrayList<String> fileIdArray;
+    private ArrayList<String> webUrlArray;
+    private ArrayList<String> imageUrlArray;
 
-    public ImageAdapter(Context context) {
+    public ImageAdapter(Context context,ArrayList<String> fileNameArray, ArrayList<String> fileIdArray,
+                        ArrayList<String> webUrlArray, ArrayList<String> imageUrlArray) {
         this.mContext = context;
+
+        this.fileNameArray = fileNameArray;
+        this.fileIdArray = fileIdArray;
+        this.webUrlArray = webUrlArray;
+        this.imageUrlArray = imageUrlArray;
     }
 
     @Override
@@ -24,16 +40,18 @@ public class ImageAdapter extends PagerAdapter {
         return view == ((ImageView) object);
     }
 
-    private int[] sliderImageId = new int[]{
-            R.drawable.free_fire_2, R.drawable.free_fire_banner,
-    };
-
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         ImageView imageView = new ImageView(mContext);
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        imageView.setImageResource(sliderImageId[position]);
+        Glide.with(mContext).load(imageUrlArray.get(position)).into(imageView);
         ((ViewPager) container).addView(imageView, 0);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mContext.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(webUrlArray.get(position))));
+            }
+        });
         return imageView;
     }
 
@@ -44,6 +62,6 @@ public class ImageAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return sliderImageId.length;
+        return imageUrlArray.size();
     }
 }
