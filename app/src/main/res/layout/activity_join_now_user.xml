@@ -148,7 +148,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Player 1"
-                android:enabled="false"
                 android:padding="10dp" />
 
             <EditText
@@ -156,7 +155,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Player 2"
-                android:enabled="false"
                 android:padding="10dp" />
 
             <EditText
@@ -164,14 +162,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Player 3"
-                android:enabled="false"
                 android:padding="10dp" />
             <EditText
                 android:id="@+id/playerId4EditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Player 4"
-                android:enabled="false"
                 android:padding="10dp" />
             <Button
                 android:id="@+id/joinBut"
