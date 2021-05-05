@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AfridiGaming"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ImagesListActivity"></activity>
+        <activity android:name=".NotificationActivity"></activity>
+        <activity android:name=".ImagesListActivity" />
         <activity android:name=".PaymentReportActivity" />
         <activity android:name=".BannerUpdateActivity" />
         <activity android:name=".RefundActivity" />
