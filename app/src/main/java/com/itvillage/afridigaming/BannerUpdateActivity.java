@@ -57,15 +57,12 @@ public class BannerUpdateActivity extends AppCompatActivity {
         update_slider_1_but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(isStoragePermissionGranted()) {
                     Intent i = new Intent(
                             Intent.ACTION_PICK,
                             android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 
                     startActivityForResult(i, SELECT_PICTURE);
-                }else{
-                    Toast.makeText(getApplicationContext(),"Permission Deny",Toast.LENGTH_SHORT).show();
-                }
+
             }
         });
         list_images.setOnClickListener(new View.OnClickListener() {
@@ -128,31 +125,5 @@ public class BannerUpdateActivity extends AppCompatActivity {
         return true;
 
     }
-    public  boolean isStoragePermissionGranted() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                    == PackageManager.PERMISSION_GRANTED) {
-                Log.v(TAG,"Permission is granted");
-                return true;
-            } else {
 
-                Log.v(TAG,"Permission is revoked");
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
-                return false;
-            }
-        }
-        else { //permission is automatically granted on sdk<23 upon installation
-            Log.v(TAG,"Permission is granted");
-            return true;
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-            Log.v(TAG,"Permission: "+permissions[0]+ "was "+grantResults[0]);
-            //resume tasks needing this permission
-        }
-    }
 }

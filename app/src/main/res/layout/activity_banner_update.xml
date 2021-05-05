@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:textColor="#CC0A0A"
-        android:text="* Upload .jpg type image .Size 700*700"
+        android:text="* Upload .jpg type image .** Give File Storage Permission"
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
