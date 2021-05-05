@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,7 +19,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 public class NotificationActivity extends AppCompatActivity {
-    private TextView notiSubjact, notiBody;
+    private EditText notiSubjact, notiBody;
     private Button sendNotification;
 
     @Override
