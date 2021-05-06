@@ -1,5 +1,6 @@
 package com.itvillage.afridigaming.services;
 
+import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -12,6 +13,7 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
 import android.util.Log;
+import android.widget.ListView;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -19,9 +21,17 @@ import androidx.core.app.NotificationCompat;
 
 import com.itvillage.afridigaming.MainActivity;
 import com.itvillage.afridigaming.R;
+import com.itvillage.afridigaming.adapter.WithdrawListAdapter;
+import com.itvillage.afridigaming.dto.response.GetNotificationResponse;
+import com.itvillage.afridigaming.dto.response.WithDrawMoneyResponse;
 
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 public class NotificationBackgroundService extends Service {
     public int counter=0;
@@ -95,6 +105,23 @@ public class NotificationBackgroundService extends Service {
         }
 
         mNotificationManager.notify(0, mBuilder.build());
+    }
+    @SuppressLint("CheckResult")
+    private void getWithdrawList() {
+        GetNotificationListService getNotificationListService = new GetNotificationListService(this);
+        Observable<List<GetNotificationResponse>> listObservable =
+                getNotificationListService.getNotificationListService();
+
+        listObservable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(withDrawMoneysResponse -> {
+
+
+                }, throwable -> {
+                    throwable.printStackTrace();
+                }, () -> {
+
+                });
     }
 
     private Timer timer;
