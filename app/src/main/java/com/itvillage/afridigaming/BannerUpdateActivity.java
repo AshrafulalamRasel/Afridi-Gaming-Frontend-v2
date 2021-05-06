@@ -138,7 +138,6 @@ public class BannerUpdateActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(BannerUpdateActivity.this, new String[] { permission }, requestCode);
         }
         else {
-            Toast.makeText(BannerUpdateActivity.this, "Permission already granted", Toast.LENGTH_SHORT).show();
         }
     }
 
