@@ -1,8 +1,10 @@
 package com.itvillage.afridigaming;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.content.Intent;
@@ -37,6 +39,7 @@ public class BannerUpdateActivity extends AppCompatActivity {
     private static final int SELECT_PICTURE = 1;
     private static final int SELECT_PICTURE_2 = 2;
     private String selectedImagePath;
+    private static final int STORAGE_PERMISSION_CODE = 101;
     private final String TAG = "Banner Update Activity";
 
     @Override
@@ -57,6 +60,7 @@ public class BannerUpdateActivity extends AppCompatActivity {
         update_slider_1_but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                checkPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, STORAGE_PERMISSION_CODE);
                     Intent i = new Intent(
                             Intent.ACTION_PICK,
                             android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -125,5 +129,39 @@ public class BannerUpdateActivity extends AppCompatActivity {
         return true;
 
     }
+    // Function to check and request permission.
+    public void checkPermission(String permission, int requestCode)
+    {
+        if (ContextCompat.checkSelfPermission(BannerUpdateActivity.this, permission) == PackageManager.PERMISSION_DENIED) {
 
+            // Requesting the permission
+            ActivityCompat.requestPermissions(BannerUpdateActivity.this, new String[] { permission }, requestCode);
+        }
+        else {
+            Toast.makeText(BannerUpdateActivity.this, "Permission already granted", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    // This function is called when the user accepts or decline the permission.
+    // Request Code is used to check which permission called this function.
+    // This request code is provided when the user is prompt for permission.
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String[] permissions,
+                                           @NonNull int[] grantResults)
+    {
+        super.onRequestPermissionsResult(requestCode,
+                permissions,
+                grantResults);
+
+        if (requestCode == STORAGE_PERMISSION_CODE) {
+            if (grantResults.length > 0
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(BannerUpdateActivity.this, "Storage Permission Granted", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(BannerUpdateActivity.this, "Storage Permission Denied", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
 }
