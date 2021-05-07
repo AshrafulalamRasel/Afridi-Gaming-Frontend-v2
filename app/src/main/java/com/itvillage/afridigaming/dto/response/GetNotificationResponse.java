@@ -21,4 +21,12 @@ public class GetNotificationResponse {
     public void setNotificationBody(String notificationBody) {
         this.notificationBody = notificationBody;
     }
+
+    @Override
+    public String toString() {
+        return "GetNotificationResponse{" +
+                "notificationSubject='" + notificationSubject + '\'' +
+                ", notificationBody='" + notificationBody + '\'' +
+                '}';
+    }
 }

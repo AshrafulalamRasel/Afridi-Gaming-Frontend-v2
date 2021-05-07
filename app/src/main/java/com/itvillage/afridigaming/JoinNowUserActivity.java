@@ -30,7 +30,7 @@ public class JoinNowUserActivity extends AppCompatActivity {
     private EditText playerId1EditText, playerId2EditText, playerId3EditText, playerId4EditText;
     private TextView myBalanceTextView, gameNameTextView, entryFeePerTotalMatchTextView, entryFeePerMatchTextView;
     private Button joinBut;
-    private String squadPlayerNo = null;
+    private String getGameType = null;
     // private RadioButton radioSolo,radioDuo,radioSquad;
 
     @Override
@@ -64,6 +64,7 @@ public class JoinNowUserActivity extends AppCompatActivity {
         Log.e("0----",gameType.toLowerCase());
         switch (gameType.toLowerCase()) {
             case "solo":
+                getGameType = "Solo";
                 playerId1EditText.setVisibility(View.VISIBLE);
                 playerId2EditText.setVisibility(View.INVISIBLE);
                 playerId3EditText.setVisibility(View.INVISIBLE);
@@ -73,7 +74,7 @@ public class JoinNowUserActivity extends AppCompatActivity {
                 entryFeePerTotalMatchTextView.setText("Total Entry Fee : " + totalEntryFee);
                 break;
             case "duo":
-                playerId1EditText.setVisibility(View.VISIBLE);
+                getGameType = "Duo";                playerId1EditText.setVisibility(View.VISIBLE);
                 playerId2EditText.setVisibility(View.VISIBLE);
                 playerId3EditText.setVisibility(View.INVISIBLE);
                 playerId4EditText.setVisibility(View.INVISIBLE);
@@ -82,6 +83,7 @@ public class JoinNowUserActivity extends AppCompatActivity {
                 entryFeePerTotalMatchTextView.setText("Total Entry Fee : " + totalEntryFee);
                 break;
             case "squad":
+                getGameType = "Squad";
                 playerId1EditText.setVisibility(View.VISIBLE);
                 playerId2EditText.setVisibility(View.VISIBLE);
                 playerId3EditText.setVisibility(View.VISIBLE);
@@ -91,6 +93,7 @@ public class JoinNowUserActivity extends AppCompatActivity {
                 entryFeePerTotalMatchTextView.setText("Total Entry Fee : " + totalEntryFee);
                 break;
             case "squad vs squad":
+                getGameType = "Squad";
                 playerId1EditText.setVisibility(View.VISIBLE);
                 playerId2EditText.setVisibility(View.VISIBLE);
                 playerId3EditText.setVisibility(View.VISIBLE);
@@ -176,7 +179,7 @@ public class JoinNowUserActivity extends AppCompatActivity {
 
         RegistrationInGameService getUserService = new RegistrationInGameService(getApplicationContext());
         Observable<String> userCreateProfileResponseObservable =
-                getUserService.registrationInGame(gameId, squadPlayerNo.toLowerCase(), playerId1EditText.getText().toString(), playerId2EditText.getText().toString(), playerId3EditText.getText().toString(), playerId4EditText.getText().toString());
+                getUserService.registrationInGame(gameId, getGameType.toLowerCase(), playerId1EditText.getText().toString(), playerId2EditText.getText().toString(), playerId3EditText.getText().toString(), playerId4EditText.getText().toString());
 
         userCreateProfileResponseObservable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

@@ -69,8 +69,8 @@ public class NotificationBackgroundService extends Service {
         this.sendBroadcast(broadcastIntent);
     }
 
-    private void addNotification() {
-        Log.e("dvsvs","dsfsdf");
+    private void addNotification(String title, String body) {
+
         NotificationManager mNotificationManager;
 
         NotificationCompat.Builder mBuilder =
@@ -79,13 +79,13 @@ public class NotificationBackgroundService extends Service {
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, ii, 0);
 
         NotificationCompat.BigTextStyle bigText = new NotificationCompat.BigTextStyle();
-        bigText.setBigContentTitle("Today's Bible Verse");
-        bigText.setSummaryText("Text in detail");
+        bigText.setBigContentTitle(title);
+        bigText.setSummaryText(body);
 
         mBuilder.setContentIntent(pendingIntent);
-        mBuilder.setSmallIcon(R.mipmap.ic_launcher_round);
-        mBuilder.setContentTitle("Your Title");
-        mBuilder.setContentText("Your text");
+        mBuilder.setSmallIcon(R.mipmap.logo_icon);
+        mBuilder.setContentTitle(title);
+        mBuilder.setContentText(body);
         mBuilder.setPriority(Notification.PRIORITY_MAX);
         mBuilder.setStyle(bigText);
 
@@ -107,18 +107,23 @@ public class NotificationBackgroundService extends Service {
         mNotificationManager.notify(0, mBuilder.build());
     }
     @SuppressLint("CheckResult")
-    private void getWithdrawList() {
+    private void getNotificationDetails() {
         GetNotificationListService getNotificationListService = new GetNotificationListService(this);
         Observable<List<GetNotificationResponse>> listObservable =
                 getNotificationListService.getNotificationListService();
 
         listObservable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(withDrawMoneysResponse -> {
-
-
+                .subscribe(getNotificationResponse -> {
+                    if(!getNotificationResponse.isEmpty()) {
+                        addNotification(getNotificationResponse.get(0).getNotificationSubject(),
+                                getNotificationResponse.get(0).getNotificationBody());
+                        Log.e("---------", getNotificationResponse.get(0).getNotificationSubject());
+                    }else{
+                        Log.e("---------", "No Notification Found");
+                    }
                 }, throwable -> {
-                    throwable.printStackTrace();
+                    Log.e("---------",throwable.getMessage());
                 }, () -> {
 
                 });
@@ -130,11 +135,13 @@ public class NotificationBackgroundService extends Service {
         timer = new Timer();
         timerTask = new TimerTask() {
             public void run() {
-                addNotification();
+               // addNotification();
                 Log.i("Count", "=========  "+ (counter++));
+                getNotificationDetails();
+
             }
         };
-        timer.schedule(timerTask, 1000, 1000); //
+        timer.schedule(timerTask, 20000, 1000); //
     }
 
     public void stoptimertask() {

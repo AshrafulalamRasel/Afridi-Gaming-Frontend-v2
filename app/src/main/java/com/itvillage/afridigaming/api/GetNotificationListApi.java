@@ -9,6 +9,6 @@ import io.reactivex.Observable;
 import retrofit2.http.GET;
 
 public interface GetNotificationListApi {
-    @GET("api/auth/user/show/balance/request/allTransaction")
+    @GET("api/auth/getNotification/history/delete")
     Observable<List<GetNotificationResponse>> getNotificationList();
 }
