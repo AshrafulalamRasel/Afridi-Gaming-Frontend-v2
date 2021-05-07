@@ -40,11 +40,6 @@ public class NotificationBackgroundService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-
-//        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.O)
-//            startMyOwnForeground();
-//        else
-//            startForeground(1, new Notification());
     }
 
 
@@ -92,7 +87,6 @@ public class NotificationBackgroundService extends Service {
         mNotificationManager =
                 (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
 
-// === Removed some obsoletes
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
         {
             String channelId = "Your_channel_id";
@@ -118,9 +112,9 @@ public class NotificationBackgroundService extends Service {
                     if(!getNotificationResponse.isEmpty()) {
                         addNotification(getNotificationResponse.get(0).getNotificationSubject(),
                                 getNotificationResponse.get(0).getNotificationBody());
-                        Log.e("---------", getNotificationResponse.get(0).getNotificationSubject());
+
                     }else{
-                        Log.e("---------", "No Notification Found");
+                        Log.e("Notification Status: ", "No Notification Found");
                     }
                 }, throwable -> {
                     Log.e("---------",throwable.getMessage());
@@ -136,7 +130,7 @@ public class NotificationBackgroundService extends Service {
         timerTask = new TimerTask() {
             public void run() {
                // addNotification();
-                Log.i("Count", "=========  "+ (counter++));
+//                Log.i("Count", "=========  "+ (counter++));
                 getNotificationDetails();
 
             }
