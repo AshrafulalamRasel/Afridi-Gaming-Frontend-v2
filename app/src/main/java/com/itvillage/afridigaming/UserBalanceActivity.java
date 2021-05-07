@@ -96,12 +96,8 @@ public class UserBalanceActivity extends AppCompatActivity {
                 withdraw_but.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(Integer.parseInt(amount_withdraw.getText().toString()) >=100) {
                             withdrawMoney(payAcType, amount_withdraw.getText().toString(), amount_no_withdraw.getText().toString());
                             alertDialog.dismiss();
-                        }else {
-                            Toast.makeText(getApplicationContext(),"Minimum Withdraw 100 tk",Toast.LENGTH_SHORT).show();
-                        }
                     }
                 });
 
@@ -185,7 +181,7 @@ public class UserBalanceActivity extends AppCompatActivity {
             HttpException httpException = (HttpException) throwable;
 
             if (httpException.code() == 500 || httpException.code() == 401) {
-                Utility.onErrorAlert("Something Wrong",this);
+                Utility.onErrorAlert("Keep 100tk In Your Account.",this);
 
             }
             Log.e("Error", "" + throwable.getMessage());

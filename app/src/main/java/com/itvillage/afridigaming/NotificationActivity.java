@@ -3,6 +3,8 @@ package com.itvillage.afridigaming;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,6 +32,7 @@ public class NotificationActivity extends AppCompatActivity {
         notiSubjact = findViewById(R.id.notiSubjact);
         notiBody = findViewById(R.id.notiBody);
         sendNotification = findViewById(R.id.sendNotification);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         sendNotification.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,10 +43,10 @@ public class NotificationActivity extends AppCompatActivity {
                 observable.subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(notification -> {
-                            Toast.makeText(getApplicationContext(), "Notification Send within 5mins", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Notification Send.", Toast.LENGTH_LONG).show();
 
                         }, throwable -> {
-                            Toast.makeText(getApplicationContext(), "Something wrong", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Notification Send.", Toast.LENGTH_LONG).show();
                             Log.e("err", throwable.getMessage());
                             throwable.printStackTrace();
                         }, () -> {
@@ -52,6 +55,20 @@ public class NotificationActivity extends AppCompatActivity {
             }
         });
 
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
 
     }
 }
