@@ -10,22 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.auth0.android.jwt.Claim;
-import com.auth0.android.jwt.JWT;
 import com.itvillage.afridigaming.AdminHomeActivity;
-import com.itvillage.afridigaming.LoginActivity;
 import com.itvillage.afridigaming.R;
-import com.itvillage.afridigaming.UserHomeActivity;
-import com.itvillage.afridigaming.config.Utility;
-import com.itvillage.afridigaming.dto.response.LoginResponse;
+import com.itvillage.afridigaming.util.Utility;
 import com.itvillage.afridigaming.dto.response.RegisterUsersInGameEntity;
-import com.itvillage.afridigaming.dto.response.UpdatePasswordResponse;
 import com.itvillage.afridigaming.services.UpdateNotificationStatusAndAddBalanceService;
-import com.itvillage.afridigaming.services.UpdatePasswordService;
 import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
 
 import java.util.ArrayList;

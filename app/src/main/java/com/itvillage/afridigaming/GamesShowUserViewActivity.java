@@ -9,7 +9,6 @@ import android.view.MenuItem;
 import android.widget.ListView;
 
 import com.itvillage.afridigaming.adapter.GameListAdapter;
-import com.itvillage.afridigaming.config.Utility;
 import com.itvillage.afridigaming.dto.response.GameResponse;
 import com.itvillage.afridigaming.dto.response.RegisterUsersInGameEntity;
 import com.itvillage.afridigaming.services.GetAllActiveGamesService;

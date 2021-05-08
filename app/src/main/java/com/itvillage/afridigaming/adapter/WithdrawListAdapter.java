@@ -1,33 +1,16 @@
 package com.itvillage.afridigaming.adapter;
 
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.itvillage.afridigaming.R;
-import com.itvillage.afridigaming.config.Utility;
-import com.itvillage.afridigaming.dto.response.RegisterUsersInGameEntity;
-import com.itvillage.afridigaming.services.UpdateGameSatusService;
-import com.itvillage.afridigaming.services.UpdateRoomDetailsService;
-import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
 
 public class WithdrawListAdapter extends ArrayAdapter<String> {
 

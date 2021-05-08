@@ -1,4 +1,4 @@
-package com.itvillage.afridigaming.config;
+package com.itvillage.afridigaming.util;
 
 import android.app.Activity;
 import android.app.AlertDialog;

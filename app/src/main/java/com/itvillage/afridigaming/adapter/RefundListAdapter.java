@@ -15,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.itvillage.afridigaming.R;
-import com.itvillage.afridigaming.config.Utility;
+import com.itvillage.afridigaming.util.Utility;
 import com.itvillage.afridigaming.dto.response.RegisterUsersInGameEntity;
 import com.itvillage.afridigaming.services.UpdateAllRefundService;
 import com.itvillage.afridigaming.services.UpdateGameSatusService;

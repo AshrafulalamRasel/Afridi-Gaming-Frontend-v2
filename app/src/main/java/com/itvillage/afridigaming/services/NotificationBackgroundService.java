@@ -19,6 +19,7 @@ import androidx.core.app.NotificationCompat;
 import com.itvillage.afridigaming.MainActivity;
 import com.itvillage.afridigaming.R;
 import com.itvillage.afridigaming.dto.response.GetNotificationResponse;
+import com.itvillage.afridigaming.util.ApplicationSharedPreferencesUtil;
 
 import java.util.List;
 import java.util.Timer;
@@ -103,9 +104,19 @@ public class NotificationBackgroundService extends Service {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(getNotificationResponse -> {
                     if (!getNotificationResponse.isEmpty()) {
-                        Log.e("----",getNotificationResponse.get(0).toString());
-//                        addNotification(getNotificationResponse.get(0).getNotificationSubject(),
-//                                getNotificationResponse.get(0).getNotificationBody());
+                        ApplicationSharedPreferencesUtil applicationSharedPreferencesUtil = new ApplicationSharedPreferencesUtil(this);
+
+                          if (getNotificationResponse.get(0).getId().equals(applicationSharedPreferencesUtil.getPref("previousId"))) {
+                           //   Log.e(applicationSharedPreferencesUtil.getPref("previousId") + "----", getNotificationResponse.get(0).getId());
+
+                          } else {
+                             // Log.e(applicationSharedPreferencesUtil.getPref("previousId") + "###", getNotificationResponse.get(0).getId());
+                              addNotification(getNotificationResponse.get(0).getNotificationSubject(),
+                                      getNotificationResponse.get(0).getNotificationBody());
+                              applicationSharedPreferencesUtil.putPref("previousId", getNotificationResponse.get(0).getId());
+                          }
+
+
 
                     } else {
                         //  Log.e("Notification Status: ", "No Notification Found");

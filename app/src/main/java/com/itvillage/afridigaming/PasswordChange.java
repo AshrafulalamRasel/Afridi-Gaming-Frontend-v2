@@ -3,22 +3,15 @@ package com.itvillage.afridigaming;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 
 import com.google.android.material.textfield.TextInputEditText;
-import com.itvillage.afridigaming.config.Utility;
-import com.itvillage.afridigaming.dto.response.UpdatePasswordResponse;
-import com.itvillage.afridigaming.dto.response.UserCreateProfileResponse;
+import com.itvillage.afridigaming.util.Utility;
 import com.itvillage.afridigaming.services.UpdatePasswordService;
-import com.itvillage.afridigaming.services.UserCreateService;
-import com.itvillage.afridigaming.ui.me.MeFragment;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;

@@ -2,7 +2,7 @@ package com.itvillage.afridigaming.dto.response;
 
 
 public class GetNotificationResponse {
-
+    private String id;
     private String notificationSubject;
     private String notificationBody;
 
@@ -22,10 +22,19 @@ public class GetNotificationResponse {
         this.notificationBody = notificationBody;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "GetNotificationResponse{" +
-                "notificationSubject='" + notificationSubject + '\'' +
+                "id='" + id + '\'' +
+                ", notificationSubject='" + notificationSubject + '\'' +
                 ", notificationBody='" + notificationBody + '\'' +
                 '}';
     }

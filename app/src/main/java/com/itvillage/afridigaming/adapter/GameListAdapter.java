@@ -5,7 +5,6 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,11 +19,9 @@ import androidx.cardview.widget.CardView;
 
 import com.itvillage.afridigaming.JoinNowUserActivity;
 import com.itvillage.afridigaming.R;
-import com.itvillage.afridigaming.config.Utility;
-import com.itvillage.afridigaming.dto.response.GameResponse;
+import com.itvillage.afridigaming.util.Utility;
 import com.itvillage.afridigaming.dto.response.RegisterUsersInGameEntity;
 import com.itvillage.afridigaming.dto.response.RoomIdAndPasswordResponse;
-import com.itvillage.afridigaming.services.GetAllActiveGamesService;
 import com.itvillage.afridigaming.services.GetRoomIdPasswordService;
 
 import java.util.ArrayList;

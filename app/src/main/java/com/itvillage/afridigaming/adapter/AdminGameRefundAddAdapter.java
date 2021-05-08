@@ -3,26 +3,18 @@ package com.itvillage.afridigaming.adapter;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.itvillage.afridigaming.R;
-import com.itvillage.afridigaming.config.Utility;
+import com.itvillage.afridigaming.util.Utility;
 import com.itvillage.afridigaming.services.UpdateAllRefundService;
-import com.itvillage.afridigaming.services.UpdateGameResultService;
 import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
 
 import java.util.ArrayList;

@@ -21,7 +21,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.itvillage.afridigaming.config.Utility;
+import com.itvillage.afridigaming.util.Utility;
 import com.itvillage.afridigaming.dto.response.UserCreateProfileResponse;
 import com.itvillage.afridigaming.services.GetUserService;
 import com.itvillage.afridigaming.services.PostMoneyRequestService;

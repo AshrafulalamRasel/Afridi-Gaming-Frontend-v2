@@ -21,7 +21,7 @@ import android.widget.Toast;
 import com.auth0.android.jwt.Claim;
 import com.auth0.android.jwt.JWT;
 import com.google.android.material.textfield.TextInputEditText;
-import com.itvillage.afridigaming.config.Utility;
+import com.itvillage.afridigaming.util.Utility;
 import com.itvillage.afridigaming.dto.response.LoginResponse;
 import com.itvillage.afridigaming.services.LoginService;
 import com.itvillage.afridigaming.util.ApplicationSharedPreferencesUtil;
@@ -30,9 +30,6 @@ import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
-import okhttp3.OkHttpClient;
-import okhttp3.Response;
-import okhttp3.ResponseBody;
 
 public class LoginActivity extends AppCompatActivity {
 

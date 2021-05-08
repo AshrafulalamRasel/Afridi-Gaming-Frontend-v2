@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.itvillage.afridigaming.ImagesListActivity;
 import com.itvillage.afridigaming.R;
-import com.itvillage.afridigaming.config.Utility;
+import com.itvillage.afridigaming.util.Utility;
 import com.itvillage.afridigaming.services.DeleteImageService;
 
 import java.util.ArrayList;
