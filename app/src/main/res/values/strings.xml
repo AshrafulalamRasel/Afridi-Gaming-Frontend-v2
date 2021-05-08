@@ -71,4 +71,6 @@
 **এবং সময়মত না থাকতে পারলে কোন রিফান করা হবে না । এবং আপনার টিমমেট ১ বা ২ বা ৩ জন থাকলেও গেম স্টার্ট করে দেওয়া হবে**\n
 
 * আশা করি সবাই নিয়মকানুন মেনে প্রত্যেকটি ম্যাচ খেলবেন ।</string>
+    <string name="rooIdAndPasswordInfo">রুম আইডি এবং পাসওয়ার্ড গেমটি শুরু হওয়ার 15 মিনিটের আগে প্রকাশিত হবে (The room ID and password will be published 15 minutes before the game starts)</string>
+    <string name="showMyRoomIdPassText">রুম আইডি এবং পাসওয়ার্ড দেখান (Show RoomId And Password)</string>
 </resources>

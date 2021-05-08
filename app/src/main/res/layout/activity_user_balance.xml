@@ -80,12 +80,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="420dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
         app:layout_constraintVertical_bias="0.045"
-        android:orientation="vertical"
 
         tools:ignore="MissingConstraints">
 
@@ -100,149 +100,179 @@
             android:textColor="#F30606"
             android:textSize="20dp"
             android:textStyle="bold" />
+
         <Button
             android:id="@+id/add_money_help_but"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="How to add money"/>
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="How to add money" />
+
         <Button
             android:id="@+id/withdraw_money_help_but"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:backgroundTint="#CD0B0B"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Withdraw Money"/>
+            android:text="Withdraw Money" />
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="25dp"
-            android:orientation="horizontal">
-            <androidx.cardview.widget.CardView
-                android:id="@+id/bkash_but"
-                android:layout_width="wrap_content"
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="#E42868"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.054"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/viewPage"
-                app:layout_constraintVertical_bias="0.147"
-                tools:ignore="MissingConstraints">
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
 
-                    <ImageView
-                        android:layout_width="150dp"
-                        android:layout_height="100dp"
-                        android:background="@drawable/bkash_logo" />
-
-                    <TextView
-                        android:layout_width="match_parent"
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/bkash_but"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="monospace"
-                        android:gravity="center"
-                        android:text="bKash"
-                        android:background="#F891C9"
-                        android:padding="3dp"
-                        android:textColor="@color/white"
-                        android:textSize="15dp"
-                        android:textStyle="bold" />
+                        app:cardBackgroundColor="#E42868"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.054"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/viewPage"
+                        app:layout_constraintVertical_bias="0.147"
+                        tools:ignore="MissingConstraints">
 
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="150dp"
+                                android:layout_height="100dp"
+                                android:background="@drawable/bkash_logo" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="#F891C9"
+                                android:fontFamily="monospace"
+                                android:gravity="center"
+                                android:padding="3dp"
+                                android:text="bKash"
+                                android:textColor="@color/white"
+                                android:textSize="15dp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/rocket_but"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        app:cardBackgroundColor="#AC2FC1"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.054"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/viewPage"
+                        app:layout_constraintVertical_bias="0.147"
+                        tools:ignore="MissingConstraints">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="150dp"
+                                android:layout_height="100dp"
+                                android:background="@drawable/rocket" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="#D45BE8"
+                                android:fontFamily="monospace"
+                                android:gravity="center"
+                                android:padding="3dp"
+                                android:text="Rocket"
+                                android:textColor="@color/white"
+                                android:textSize="15dp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
                 </LinearLayout>
 
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:id="@+id/rocket_but"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:cardBackgroundColor="#AC2FC1"
-                android:layout_marginLeft="30dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.054"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/viewPage"
-                app:layout_constraintVertical_bias="0.147"
-                tools:ignore="MissingConstraints">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_margin="10dp"
+                    android:background="@color/base_color"
+                    android:fontFamily="monospace"
+                    android:gravity="center"
+                    android:text="Indian Payment "
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
 
-                    <ImageView
-                        android:layout_width="150dp"
-                        android:layout_height="100dp"
-                        android:background="@drawable/rocket" />
-
-                    <TextView
-                        android:layout_width="match_parent"
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/paytm_but"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="monospace"
-                        android:gravity="center"
-                        android:text="Rocket"
-                        android:background="#D45BE8"
-                        android:padding="3dp"
-                        android:textColor="@color/white"
-                        android:textSize="15dp"
-                        android:textStyle="bold" />
+                        app:cardBackgroundColor="#3B3A36"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.054"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/viewPage"
+                        app:layout_constraintVertical_bias="0.147"
+                        tools:ignore="MissingConstraints">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#F4F1F1"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="150dp"
+                                android:layout_height="100dp"
+                                android:background="@drawable/paytm" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="#cccc"
+                                android:fontFamily="monospace"
+                                android:gravity="center"
+                                android:text="PayTM"
+                                android:textColor="@color/black"
+                                android:textSize="15dp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
 
                 </LinearLayout>
 
-            </androidx.cardview.widget.CardView>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="25dp"
-            android:orientation="horizontal">
-            <androidx.cardview.widget.CardView
-                android:id="@+id/paytm_but"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:cardBackgroundColor="#3B3A36"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.054"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/viewPage"
-                app:layout_constraintVertical_bias="0.147"
-                tools:ignore="MissingConstraints">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="150dp"
-                        android:layout_height="100dp"
-                        android:background="@drawable/paytm" />
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="monospace"
-                        android:gravity="center"
-                        android:text="PayTM"
-                        android:background="#cccc"
-                        android:textColor="@color/black"
-                        android:textSize="15dp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-        </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

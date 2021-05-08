@@ -30,4 +30,22 @@ public class ApplicationSharedPreferencesUtil {
     private SharedPreferences getDentistPointPerf() {
         return context.getSharedPreferences("DentistPointPref", Context.MODE_PRIVATE);
     }
+
+    public void putPref(String key, String value) {
+        SharedPreferences pref = getDentistPointPerf();
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString(key, value);
+        editor.commit();
+    }
+
+    public String getPref(String key) {
+        SharedPreferences pref = getDentistPointPerf();
+        return pref.getString(key, null);
+    }
+
+    public void clearSharedPreferences(String key) {
+        SharedPreferences pref = getDentistPointPerf();
+        pref.edit().remove("mobileString").commit();
+    }
+
 }

@@ -55,13 +55,6 @@ public class JoinNowUserActivity extends AppCompatActivity {
         playerId3EditText = findViewById(R.id.playerId3EditText);
         playerId4EditText = findViewById(R.id.playerId4EditText);
 
-//        radioSolo = findViewById(R.id.radioSolo);
-//        radioDuo = findViewById(R.id.radioDuo);
-//        radioSquad = findViewById(R.id.radioSquad);
-        /*
-        Edit Text Show By Game Type
-        * */
-        Log.e("0----",gameType.toLowerCase());
         switch (gameType.toLowerCase()) {
             case "solo":
                 getGameType = "Solo";
@@ -103,52 +96,58 @@ public class JoinNowUserActivity extends AppCompatActivity {
                 entryFeePerTotalMatchTextView.setText("Total Entry Fee : " + totalEntryFee);
                 break;
         }
-
-//        /*
-//        Radio Button Show By Game Type
-//        * */
-//        switch (gameType.toLowerCase()) {
-//            case "solo":
-//                radioSolo.setVisibility(View.VISIBLE);
-//                radioDuo.setVisibility(View.INVISIBLE);
-//                radioSquad.setVisibility(View.INVISIBLE);
-//
-//                break;
-//            case "duo":
-//                radioSolo.setVisibility(View.VISIBLE);
-//                radioDuo.setVisibility(View.VISIBLE);
-//                radioSquad.setVisibility(View.INVISIBLE);
-//
-//                break;
-//            case "squad":
-//                radioSolo.setVisibility(View.VISIBLE);
-//                radioDuo.setVisibility(View.VISIBLE);
-//                radioSquad.setVisibility(View.VISIBLE);
-//
-//            case "squad vs squad":
-//                radioSolo.setVisibility(View.VISIBLE);
-//                radioDuo.setVisibility(View.VISIBLE);
-//                radioSquad.setVisibility(View.VISIBLE);
-//                break;
-//        }
-
-//        RadioGroup rg = (RadioGroup) findViewById(R.id.gameTypeGroup);
-//        rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-//            public void onCheckedChanged(RadioGroup group, int checkedId) {
-//                squadPlayerNo = ((RadioButton) findViewById(checkedId)).getText().toString();
-//
-//                Toast.makeText(getBaseContext(), squadPlayerNo + " Selected", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-
-
         getUserProfileBalance();
 
         joinBut = findViewById(R.id.joinBut);
         joinBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                registrationInGame();
+                switch (gameType.toLowerCase()) {
+                    case "solo":
+                        if(playerId1EditText.getText().toString().equals("") )
+                        {
+                            Toast.makeText(getApplicationContext(),"Empty Filed Found",Toast.LENGTH_SHORT).show();
+                        }else
+                        {
+                            registrationInGame();
+                        }
+                        break;
+                    case "duo":
+                        if(playerId1EditText.getText().toString().equals("") ||
+                                playerId2EditText.getText().toString().equals(""))
+                        {
+                            Toast.makeText(getApplicationContext(),"Empty Filed Found",Toast.LENGTH_SHORT).show();
+                        }else
+                        {
+                            registrationInGame();
+                        }
+                        break;
+                    case "squad":
+                        if(playerId1EditText.getText().toString().equals("") ||
+                                playerId2EditText.getText().toString().equals("")||
+                                playerId3EditText.getText().toString().equals("") ||
+                                playerId4EditText.getText().toString().equals(""))
+                        {
+                            Toast.makeText(getApplicationContext(),"Empty Filed Found",Toast.LENGTH_SHORT).show();
+                        }else
+                        {
+                            registrationInGame();
+                        }
+                        break;
+                    case "squad vs squad":
+                        if(playerId1EditText.getText().toString().equals("") ||
+                                playerId2EditText.getText().toString().equals("")||
+                                playerId3EditText.getText().toString().equals("") ||
+                                playerId4EditText.getText().toString().equals(""))
+                        {
+                            Toast.makeText(getApplicationContext(),"Empty Filed Found",Toast.LENGTH_SHORT).show();
+                        }else
+                        {
+                            registrationInGame();
+                        }
+                        break;
+                }
+
             }
         });
 

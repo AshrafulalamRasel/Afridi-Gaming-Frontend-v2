@@ -81,7 +81,13 @@
             android:checked="false"
             android:text="Recharge"
             android:textSize="13dp" />
-
+        <RadioButton
+            android:id="@+id/radioPaytm"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="PayTM"
+            android:textSize="13dp" />
 
     </RadioGroup>
     <LinearLayout
