@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Afridi Gaming</string>
-    <string name="paytm_details">PAYTM WALLET NUMBER: +91 97516 41703\n
-        PAYTM BANK NAMBAR: +91 97516 41703\n
+    <string name="paytm_details">PAYTM WALLET NUMBER: \n+91 97516 41703\n
+        PAYTM BANK NAMBAR: \n+91 97516 41703\n
         IFSC CODE :PYTM0123456</string>
     <string name="have_ac">New User? <b>Sign Up</b></string>
     <string name="contractUs">Any Problem? <b>Contact Us</b> </string>

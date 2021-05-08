@@ -32,6 +32,7 @@ public class PaymentReportActivity extends AppCompatActivity {
     private ArrayList<Double> incomeInPerGameArray = new ArrayList<>();
     private ArrayList<Integer> totalInvestment = new ArrayList<>();
     private ArrayList<Double> currentAccountArray = new ArrayList<>();
+    private ArrayList<Double> refundArray = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,9 +62,12 @@ public class PaymentReportActivity extends AppCompatActivity {
                         gamePerInvestArray.add(paymentDetailsResponse.getGamePerInvest());
                         incomeInPerGameArray.add(paymentDetailsResponse.getIncomeInPerGame());
                         currentAccountArray.add(paymentDetailsResponse.getCurrentAccount());
+                        refundArray.add(paymentDetailsResponse.getReFound());
                         Log.e("v", paymentDetailsResponse.getEmail());
                     }
-                    PaymentReportListAdapter adapter = new PaymentReportListAdapter(this, usernameNameArray, emailArray, gameNameArray, winningStatusArray, perKillInGameArray, incomeInPerGameArray, currentAccountArray, totalInvestment);
+                    PaymentReportListAdapter adapter = new PaymentReportListAdapter(this, usernameNameArray,
+                            emailArray, gameNameArray, winningStatusArray, perKillInGameArray,
+                            incomeInPerGameArray, currentAccountArray, totalInvestment,refundArray);
                     report_lv = findViewById(R.id.report_lv);
                     report_lv.setAdapter(adapter);
 

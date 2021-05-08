@@ -37,12 +37,14 @@ public class PaymentReportListAdapter extends ArrayAdapter<String> {
     private ArrayList<Integer> gamePerInvestArray = new ArrayList<>();
     private ArrayList<Double> incomeInPerGameArray = new ArrayList<>();
     private ArrayList<Double> currentAccountArray = new ArrayList<>();
+    private ArrayList<Double> refundArray = new ArrayList<>();
 
 
     public PaymentReportListAdapter(Activity context, ArrayList<String> usernameNameArray, ArrayList<String> emailArray,
                                  ArrayList<String> gameNameArray, ArrayList<String> winningStatusArray,
                                  ArrayList<Integer> perKillInGameArray,
-                                 ArrayList<Double> incomeInPerGameArray, ArrayList<Double> currentAccount, ArrayList<Integer> gamePerInvestArray) {
+                                 ArrayList<Double> incomeInPerGameArray, ArrayList<Double> currentAccount,
+                                    ArrayList<Integer> gamePerInvestArray, ArrayList<Double> refundArray) {
         super(context, R.layout.custom_payment_report_list_items, usernameNameArray);
 
         this.context = context;
@@ -54,6 +56,7 @@ public class PaymentReportListAdapter extends ArrayAdapter<String> {
         this.gamePerInvestArray = gamePerInvestArray;
         this.incomeInPerGameArray = incomeInPerGameArray;
         this.currentAccountArray = currentAccount;
+        this.refundArray = refundArray;
     }
 
     public View getView(int position, View view, ViewGroup parent) {
@@ -65,6 +68,7 @@ public class PaymentReportListAdapter extends ArrayAdapter<String> {
         TextView numberOfKillText = rowView.findViewById(R.id.numberOfKillText);
         TextView currentBalanceText = rowView.findViewById(R.id.currentBalanceText);
         TextView incomeText = rowView.findViewById(R.id.incomeText);
+        TextView refundText = rowView.findViewById(R.id.refundext);
         Button gameStatusBut = rowView.findViewById(R.id.gameStatusBut);
 
         title_payment_report.setText(gameNameArray.get(position));
@@ -74,6 +78,7 @@ public class PaymentReportListAdapter extends ArrayAdapter<String> {
         currentBalanceText.setText(String.valueOf(currentAccountArray.get(position)));
         incomeText.setText(String.valueOf(incomeInPerGameArray.get(position)));
         gameStatusBut.setText(winningStatusArray.get(position));
+        refundText.setText(String.valueOf(refundArray.get(position)));
 
         return rowView;
 

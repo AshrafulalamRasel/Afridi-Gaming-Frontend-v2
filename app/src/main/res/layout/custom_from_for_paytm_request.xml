@@ -43,7 +43,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Ac No."
+            android:text="Send Your Account No."
             android:textColor="@color/base_color"
             android:textSize="12dp"
             android:textStyle="bold" />

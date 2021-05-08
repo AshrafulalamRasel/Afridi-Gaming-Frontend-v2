@@ -10,6 +10,15 @@ public class PaymentDetailsResponse {
     private int gamePerInvest;
     private Double incomeInPerGame;
     private Double currentAccount;
+    private Double reFound;
+
+    public Double getReFound() {
+        return reFound;
+    }
+
+    public void setReFound(Double reFound) {
+        this.reFound = reFound;
+    }
 
     public String getUsername() {
         return username;
