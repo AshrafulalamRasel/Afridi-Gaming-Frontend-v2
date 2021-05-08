@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        startService(new Intent(this, NotificationBackgroundService.class));
+       // startService(new Intent(this, NotificationBackgroundService.class));
         new Handler().postDelayed(new Runnable() {
             public void run() {
 

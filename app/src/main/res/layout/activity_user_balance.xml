@@ -150,6 +150,7 @@
                         android:fontFamily="monospace"
                         android:gravity="center"
                         android:text="bKash"
+                        android:background="#F891C9"
                         android:padding="3dp"
                         android:textColor="@color/white"
                         android:textSize="15dp"
@@ -188,6 +189,7 @@
                         android:fontFamily="monospace"
                         android:gravity="center"
                         android:text="Rocket"
+                        android:background="#D45BE8"
                         android:padding="3dp"
                         android:textColor="@color/white"
                         android:textSize="15dp"
@@ -196,6 +198,51 @@
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="25dp"
+            android:orientation="horizontal">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/paytm_but"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="#F0EFF3"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.054"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewPage"
+                app:layout_constraintVertical_bias="0.147"
+                tools:ignore="MissingConstraints">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="150dp"
+                        android:layout_height="100dp"
+                        android:background="@drawable/paytm" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="monospace"
+                        android:gravity="center"
+                        android:text="PayTM"
+                        android:background="#cccc"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

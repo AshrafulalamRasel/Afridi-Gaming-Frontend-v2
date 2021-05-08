@@ -12,10 +12,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,7 +36,7 @@ public class UserBalanceActivity extends AppCompatActivity {
 
     TextView amount,amountD,winning_amount;
     Button add_money_help_but,withdraw_money_help_but;
-    CardView bkash_but,rocket_but;
+    CardView bkash_but,rocket_but, paytm_but;
     String payAcType;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +53,7 @@ public class UserBalanceActivity extends AppCompatActivity {
         add_money_help_but = findViewById(R.id.add_money_help_but);
         bkash_but = (CardView)findViewById(R.id.bkash_but);
         rocket_but = (CardView)findViewById(R.id.rocket_but);
+        paytm_but = (CardView)findViewById(R.id.paytm_but);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         ViewGroup viewGroup = findViewById(android.R.id.content);
@@ -75,6 +78,12 @@ public class UserBalanceActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 moneyAddRequest("rocket");
+            }
+        });
+        paytm_but.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moneyAddRequestByPayTM();
             }
         });
         withdraw_money_help_but.setOnClickListener(new View.OnClickListener() {
@@ -107,6 +116,36 @@ public class UserBalanceActivity extends AppCompatActivity {
         });
     }
 
+    private void moneyAddRequestByPayTM() {
+        String[] options = { "PAYTM WALLET NUMBER", "PAYTM BANK NUMBER"};
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        ViewGroup viewGroup = findViewById(android.R.id.content);
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.custom_from_for_paytm_request, viewGroup, false);
+        EditText payment_amount = dialogView.findViewById(R.id.payment_amount);
+        EditText payment_last_digit = dialogView.findViewById(R.id.payment_last_digit);
+        Spinner payment_type = dialogView.findViewById(R.id.payment_type);
+        //Creating the ArrayAdapter instance having the country list
+        ArrayAdapter aa = new ArrayAdapter(this,android.R.layout.simple_spinner_item,options);
+        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //Setting the ArrayAdapter data on the Spinner
+        payment_type.setAdapter(aa);
+        Log.e("----",payment_type.getSelectedItem().toString());
+        Button sent_request = dialogView.findViewById(R.id.sent_request);
+        sent_request.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moneyRequest(payment_type.getSelectedItem().toString(),payment_amount.getText().toString(),payment_last_digit.getText().toString());
+                payment_amount.setText("");
+                payment_last_digit.setText("");
+
+            }
+        });
+
+        builder.setView(dialogView);
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
 
     @SuppressLint("CheckResult")
     private void withdrawMoney(String transactionMethod, String loadBalAmount, String acNo) {
@@ -123,7 +162,7 @@ public class UserBalanceActivity extends AppCompatActivity {
                     Utility.onSuccessAlert("Withdraw Request Send",this);
 
                 }, throwable -> {
-                    Utility.onErrorAlert("Withdraw Request Failed",this);
+                    Utility.onErrorAlert("Only Winning Money Withdraw And Account Balance Must Be 100 Tk.",this);
                 }, () -> {
 
                 });
@@ -181,7 +220,7 @@ public class UserBalanceActivity extends AppCompatActivity {
             HttpException httpException = (HttpException) throwable;
 
             if (httpException.code() == 500 || httpException.code() == 401) {
-                Utility.onErrorAlert("Keep 100tk In Your Account.",this);
+                Utility.onErrorAlert("Something Wrong",this);
 
             }
             Log.e("Error", "" + throwable.getMessage());
