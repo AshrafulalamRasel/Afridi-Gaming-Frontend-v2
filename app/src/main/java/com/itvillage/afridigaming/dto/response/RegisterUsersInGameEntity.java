@@ -18,6 +18,8 @@ public class RegisterUsersInGameEntity {
 
     private String partnerNameFour;
 
+    private String gameWinningStatus;
+
     public String getPartnerNameFour() {
         return partnerNameFour;
     }
@@ -80,5 +82,13 @@ public class RegisterUsersInGameEntity {
 
     public void setPartnerThreeName(String partnerThreeName) {
         this.partnerThreeName = partnerThreeName;
+    }
+
+    public String getGameWinningStatus() {
+        return gameWinningStatus;
+    }
+
+    public void setGameWinningStatus(String gameWinningStatus) {
+        this.gameWinningStatus = gameWinningStatus;
     }
 }

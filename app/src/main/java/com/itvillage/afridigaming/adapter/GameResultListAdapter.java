@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.itvillage.afridigaming.R;
@@ -21,13 +22,14 @@ public class GameResultListAdapter extends ArrayAdapter<String> {
     ArrayList<String> partnerOneNameArray ;
     ArrayList<String> partnerTwoNameArray ;
     ArrayList<String> partnerThreeNameArray ;
+    ArrayList<String> gameWinningStatusArray;
 
     public GameResultListAdapter(Activity context, ArrayList<String> totalKillArray,
             ArrayList<String> totalEarnArray,
             ArrayList<String> partnerTypeArray ,
             ArrayList<String> partnerOneNameArray ,
             ArrayList<String> partnerTwoNameArray ,
-            ArrayList<String> partnerThreeNameArray) {
+            ArrayList<String> partnerThreeNameArray, ArrayList<String> gameWinningStatusArray) {
         super(context, R.layout.custom_result_game_list_items,totalKillArray);
 
         this.context = context;
@@ -38,6 +40,7 @@ public class GameResultListAdapter extends ArrayAdapter<String> {
         this.partnerOneNameArray = partnerOneNameArray;
         this.partnerTwoNameArray = partnerTwoNameArray;
         this.partnerThreeNameArray = partnerThreeNameArray;
+        this.gameWinningStatusArray = gameWinningStatusArray;
 
 
     }
@@ -52,12 +55,19 @@ public class GameResultListAdapter extends ArrayAdapter<String> {
         TextView subtitle = rowView.findViewById(R.id.sub_title);
         TextView total_kill = rowView.findViewById(R.id.total_kille);
         TextView total_earn = rowView.findViewById(R.id.total_earne);
+        Button status = rowView.findViewById(R.id.status);
 
         serial_no.setText(String.valueOf(position + 1));
         player_id.setText(partnerOneNameArray.get(position));
         subtitle.setText(String.valueOf(partnerTwoNameArray.get(position) + " " + partnerThreeNameArray.get(position)));
         total_kill.setText(String.valueOf(totalKillArray.get(position)));
         total_earn.setText(String.valueOf(totalEarnArray.get(position)));
+        if(gameWinningStatusArray.get(position) == null)
+        {
+            status.setText("Winning Status Not Found");
+        }else{
+            status.setText(gameWinningStatusArray.get(position));
+        }
 
         return rowView;
 

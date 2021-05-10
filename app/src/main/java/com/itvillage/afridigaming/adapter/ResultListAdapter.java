@@ -87,6 +87,7 @@ public class ResultListAdapter extends ArrayAdapter<String> {
                 ArrayList<String> partnerOneNameArray = new ArrayList<>();
                 ArrayList<String> partnerTwoNameArray = new ArrayList<>();
                 ArrayList<String> partnerThreeNameArray = new ArrayList<>();
+                ArrayList<String> gameWinningStatusArray = new ArrayList<>();
 
 
                 for (RegisterUsersInGameEntity registerUsersInGameEntity : registerUsersInGameEntityArray.get(position)) {
@@ -96,9 +97,12 @@ public class ResultListAdapter extends ArrayAdapter<String> {
                     partnerOneNameArray.add(String.valueOf(registerUsersInGameEntity.getPartnerOneName()));
                     partnerTwoNameArray.add(registerUsersInGameEntity.getPartnerTwoName());
                     partnerThreeNameArray.add(registerUsersInGameEntity.getPartnerThreeName());
+                    gameWinningStatusArray.add(registerUsersInGameEntity.getGameWinningStatus());
                 }
 
-                GameResultListAdapter adapter = new GameResultListAdapter(context,totalKillArray,totalEarnArray,partnerTypeArray,partnerOneNameArray,partnerTwoNameArray,partnerThreeNameArray);
+                GameResultListAdapter adapter = new GameResultListAdapter(context,totalKillArray,
+                        totalEarnArray,partnerTypeArray,partnerOneNameArray,
+                        partnerTwoNameArray,partnerThreeNameArray,gameWinningStatusArray);
                 ListView playerList =  dialogView.findViewById(R.id.playerList);
                 playerList.setAdapter(adapter);
 
