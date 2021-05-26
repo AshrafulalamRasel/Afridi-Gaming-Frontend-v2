@@ -109,6 +109,26 @@
             android:layout_marginTop="10dp"
             android:text="How to add money" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textStyle="bold"
+            android:fontFamily="monospace"
+            android:textSize="15sp"
+            android:textColor="#880563"
+            android:text="@string/bkash_number"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:fontFamily="monospace"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:padding="5dp"
+            android:textColor="#4C066A"
+            android:text="@string/rocket_number"/>
         <Button
             android:id="@+id/withdraw_money_help_but"
             android:layout_width="wrap_content"
@@ -227,8 +247,7 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_margin="20dp"
                     android:orientation="horizontal">
 
                     <androidx.cardview.widget.CardView

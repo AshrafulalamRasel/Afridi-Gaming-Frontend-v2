@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
     android:padding="20dp">
 
 
@@ -71,7 +70,7 @@
             android:id="@+id/radioSolo"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Rocket"
+            android:text="PayTM Bank"
             android:textSize="13dp" />
 
         <RadioButton
@@ -86,7 +85,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:checked="false"
-            android:text="PayTM"
+            android:text="PayTM Wallet"
             android:textSize="13dp" />
 
     </RadioGroup>
