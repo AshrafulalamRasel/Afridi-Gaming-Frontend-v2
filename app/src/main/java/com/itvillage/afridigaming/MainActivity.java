@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                         }, 2000);
                     } else {
                         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
+                        builder.setCancelable(false);
                         builder.setTitle(checkUpdateResponse.get(0).getVersionNo() + " Update  is Available ");
                         builder.setMessage("Are you want to update?");
 
