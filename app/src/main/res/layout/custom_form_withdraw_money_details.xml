@@ -55,10 +55,16 @@
             android:inputType="number"
             android:layout_height="wrap_content" />
     </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select Withdraw Option"
+        android:textColor="@color/base_color"
+        android:textSize="12dp"
+        android:textStyle="bold" />
     <RadioGroup
         android:id="@+id/paymentTypeGroup"
-        android:layout_width="wrap_content"
-        android:orientation="horizontal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <RadioButton
             android:id="@+id/bkash_r"
@@ -78,7 +84,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:checked="false"
-            android:text="Recharge"
+            android:text="Rocket"
             android:textSize="13dp" />
         <RadioButton
             android:id="@+id/radioPaytm"

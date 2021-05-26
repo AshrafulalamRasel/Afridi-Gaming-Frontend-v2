@@ -18,7 +18,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.itvillage.afridigaming.BuildConfig;
 import com.itvillage.afridigaming.LoginActivity;
 import com.itvillage.afridigaming.PasswordChange;
 import com.itvillage.afridigaming.PaymentHistoryActivity;
