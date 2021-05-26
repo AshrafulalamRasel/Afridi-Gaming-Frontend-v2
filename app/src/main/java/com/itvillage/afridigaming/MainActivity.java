@@ -3,6 +3,8 @@ package com.itvillage.afridigaming;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -29,7 +31,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        checkUpdate();
+        ApplicationSharedPreferencesUtil applicationSharedPreferencesUtil = new ApplicationSharedPreferencesUtil(this);
+
+        if (String.valueOf(getCurrentAppVersion()).equals(applicationSharedPreferencesUtil.getPref("version"))) {
+            new Handler().postDelayed(new Runnable() {
+                public void run() {
+                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                }
+            }, 2000);
+        } else {
+            checkUpdate();
+        }
+
         startService(new Intent(this, NotificationBackgroundService.class));
 
 
@@ -70,16 +83,6 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });
 
-                        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                // Do nothing
-                                dialog.dismiss();
-                                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-                            }
-                        });
-
                         AlertDialog alert = builder.create();
                         alert.show();
                         Log.e(applicationSharedPreferencesUtil.getPref("version") + "###", checkUpdateResponse.get(0).getVersionNo());
@@ -95,5 +98,17 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
+    public int getCurrentAppVersion() {
+        try {
+            PackageInfo pInfo = getApplicationContext().getPackageManager().getPackageInfo(getApplicationContext().getPackageName(), 0);
+            String version = pInfo.versionName;
+            int verCode = pInfo.versionCode;
+            return verCode;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+            return 0;
+
+        }
+    }
 
 }
