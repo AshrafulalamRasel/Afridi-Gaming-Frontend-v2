@@ -27,7 +27,7 @@
             android:gravity="center"
             android:text="@string/bkash_number"
             android:textColor="@color/black"
-            android:textSize="25dp"
+            android:textSize="15dp"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -50,7 +50,7 @@
             android:gravity="center"
             android:text="@string/rocket_number"
             android:textColor="@color/black"
-            android:textSize="25dp"
+            android:textSize="15dp"
             android:textStyle="bold" />
     </LinearLayout>
 
