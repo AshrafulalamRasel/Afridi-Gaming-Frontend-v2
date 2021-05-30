@@ -144,6 +144,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -155,8 +156,8 @@
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/bkash_but"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
                         app:cardBackgroundColor="#E42868"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -172,8 +173,8 @@
                             android:orientation="vertical">
 
                             <ImageView
-                                android:layout_width="150dp"
-                                android:layout_height="100dp"
+                                android:layout_width="100dp"
+                                android:layout_height="80dp"
                                 android:background="@drawable/bkash_logo" />
 
                             <TextView
@@ -194,8 +195,8 @@
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/rocket_but"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
                         android:layout_marginLeft="30dp"
                         app:cardBackgroundColor="#AC2FC1"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -212,7 +213,7 @@
                             android:orientation="vertical">
 
                             <ImageView
-                                android:layout_width="150dp"
+                                android:layout_width="100dp"
                                 android:layout_height="100dp"
                                 android:background="@drawable/rocket" />
 
@@ -231,29 +232,12 @@
                         </LinearLayout>
 
                     </androidx.cardview.widget.CardView>
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_margin="10dp"
-                    android:background="@color/base_color"
-                    android:fontFamily="monospace"
-                    android:gravity="center"
-                    android:text="Indian Payment "
-                    android:textColor="@color/white"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:orientation="horizontal">
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/paytm_but"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_marginLeft="20dp"
                         app:cardBackgroundColor="#3B3A36"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -270,8 +254,8 @@
                             android:orientation="vertical">
 
                             <ImageView
-                                android:layout_width="150dp"
-                                android:layout_height="100dp"
+                                android:layout_width="100dp"
+                                android:layout_height="80dp"
                                 android:background="@drawable/paytm" />
 
                             <TextView
@@ -288,8 +272,9 @@
                         </LinearLayout>
 
                     </androidx.cardview.widget.CardView>
-
                 </LinearLayout>
+
+
 
             </LinearLayout>
         </ScrollView>
