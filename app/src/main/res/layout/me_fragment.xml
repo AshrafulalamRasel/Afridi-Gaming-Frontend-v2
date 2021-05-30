@@ -401,12 +401,13 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="10dp"
-                    android:layout_marginBottom="20dp"
+                    android:layout_marginBottom="100dp"
                     app:cardBackgroundColor="@color/base_color">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/changePassword"
                         android:layout_width="match_parent"
+
                         android:layout_height="match_parent"
                         android:padding="5dp">
 
@@ -427,6 +428,7 @@
                             android:textColor="@color/white"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
+
                             app:layout_constraintHorizontal_bias="0.04"
                             app:layout_constraintStart_toEndOf="@+id/changePasswordf"
                             app:layout_constraintTop_toTopOf="parent" />

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -94,24 +95,22 @@ public class HomeFragment extends Fragment {
                     mViewPager.setAdapter(adapterView);
 
                     int max = imageUrlResponses.size();
+                    Handler handler = new Handler();
 
-                    Timer timer = new Timer();
-                    TimerTask timerTask = new TimerTask() {
+                    final Runnable r = new Runnable() {
                         public void run() {
-
                             if (count <= max) {
                                 mViewPager.setCurrentItem(count, true);
                                 count++;
                             }else{
                                 count=0;
                             }
-
+                            handler.postDelayed(this, 1000);
                         }
                     };
-                    timer.schedule(timerTask, 2000, 1000); //
-
+                    handler.postDelayed(r, 1000);
                 }, throwable -> {
-                    throwable.printStackTrace();
+                   Log.e("Error",throwable.getMessage());
                 }, () -> {
 
                 });
