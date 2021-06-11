@@ -18,6 +18,7 @@ import android.os.Build;
 import android.os.IBinder;
 import android.os.SystemClock;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -92,6 +93,7 @@ public class NotificationBackgroundService extends Service {
 
     @SuppressLint("CheckResult")
     private void getNotificationDetails() {
+
         GetNotificationListService getNotificationListService = new GetNotificationListService(this);
         Observable<List<GetNotificationResponse>> listObservable =
                 getNotificationListService.getNotificationListService();
@@ -131,8 +133,6 @@ public class NotificationBackgroundService extends Service {
         timer = new Timer();
         timerTask = new TimerTask() {
             public void run() {
-                // addNotification();
-//                Log.i("Count", "=========  "+ (counter++));
                 getNotificationDetails();
 
             }
