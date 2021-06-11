@@ -1,6 +1,7 @@
 package com.itvillage.afridigaming.services;
 
 import android.annotation.SuppressLint;
+import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -8,8 +9,14 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.IBinder;
+import android.os.SystemClock;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
@@ -46,17 +53,6 @@ public class NotificationBackgroundService extends Service {
         return START_STICKY;
     }
 
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        stoptimertask();
-
-        Intent broadcastIntent = new Intent();
-        broadcastIntent.setAction("restartservice");
-        broadcastIntent.setClass(this, MainActivity.class);
-        this.sendBroadcast(broadcastIntent);
-    }
 
     private void addNotification(String title, String body) {
 
@@ -150,7 +146,21 @@ public class NotificationBackgroundService extends Service {
             timer = null;
         }
     }
+    @Override
+    public void onDestroy() {
+        //stopService(mServiceIntent);
+        Intent broadcastIntent = new Intent();
+        broadcastIntent.setAction("restartservice");
+        broadcastIntent.setClass(this, RestarterNotificationService.class);
+        this.sendBroadcast(broadcastIntent);
+        super.onDestroy();
+    }
 
+    public void ringtone() {
+        Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
+        Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
+        r.play();
+    }
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {

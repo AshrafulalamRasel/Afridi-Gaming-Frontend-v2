@@ -50,8 +50,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <receiver
+            android:name=".services.RestarterNotificationService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="RestarterNotificationService" />
+            </intent-filter>
+        </receiver>
 
-        <service android:name=".services.NotificationBackgroundService" />
+        <service android:name=".services.NotificationBackgroundService"
+            android:enabled="true" />
     </application>
 
 </manifest>
