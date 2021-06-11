@@ -51,6 +51,7 @@ public class NotificationBackgroundService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         super.onStartCommand(intent, flags, startId);
         startTimer();
+
         return START_STICKY;
     }
 
@@ -93,7 +94,6 @@ public class NotificationBackgroundService extends Service {
 
     @SuppressLint("CheckResult")
     private void getNotificationDetails() {
-
         GetNotificationListService getNotificationListService = new GetNotificationListService(this);
         Observable<List<GetNotificationResponse>> listObservable =
                 getNotificationListService.getNotificationListService();
@@ -102,6 +102,7 @@ public class NotificationBackgroundService extends Service {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(getNotificationResponse -> {
                     if (!getNotificationResponse.isEmpty()) {
+
                         ApplicationSharedPreferencesUtil applicationSharedPreferencesUtil = new ApplicationSharedPreferencesUtil(this);
 
                           if (getNotificationResponse.get(0).getId().equals(applicationSharedPreferencesUtil.getPref("previousId"))) {
