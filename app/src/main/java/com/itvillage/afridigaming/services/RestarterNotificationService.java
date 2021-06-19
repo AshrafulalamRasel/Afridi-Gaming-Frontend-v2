@@ -33,6 +33,7 @@ public class RestarterNotificationService extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         Log.i("Broadcast Listened", "Service tried to stop");
+        Toast.makeText(context.getApplicationContext(), "Notification Background Started",Toast.LENGTH_SHORT).show();
 
 
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

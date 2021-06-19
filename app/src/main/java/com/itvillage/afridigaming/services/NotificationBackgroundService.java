@@ -50,6 +50,7 @@ public class NotificationBackgroundService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         super.onStartCommand(intent, flags, startId);
+
         startTimer();
 
         return START_STICKY;
@@ -131,6 +132,7 @@ public class NotificationBackgroundService extends Service {
     private TimerTask timerTask;
 
     public void startTimer() {
+        Toast.makeText(getApplicationContext(), "Notification Service Started",Toast.LENGTH_SHORT).show();
         timer = new Timer();
         timerTask = new TimerTask() {
             public void run() {
