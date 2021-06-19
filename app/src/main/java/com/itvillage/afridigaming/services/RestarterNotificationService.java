@@ -70,9 +70,6 @@ public class RestarterNotificationService extends BroadcastReceiver {
                                     getNotificationResponse.get(0).getNotificationBody(),context);
                             applicationSharedPreferencesUtil.putPref("previousId", getNotificationResponse.get(0).getId());
                         }
-
-
-
                     } else {
                         //  Log.e("Notification Status: ", "No Notification Found");
                     }

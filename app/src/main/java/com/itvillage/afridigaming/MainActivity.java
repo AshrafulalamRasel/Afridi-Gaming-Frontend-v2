@@ -33,15 +33,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ApplicationSharedPreferencesUtil applicationSharedPreferencesUtil = new ApplicationSharedPreferencesUtil(this);
 
-        if (String.valueOf(getCurrentAppVersion()).equals(applicationSharedPreferencesUtil.getPref("version"))) {
-            new Handler().postDelayed(new Runnable() {
-                public void run() {
-                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-                }
-            }, 2000);
-        } else {
-            checkUpdate();
-        }
+        checkUpdate();
+//        if (String.valueOf(getCurrentAppVersion()).equals(applicationSharedPreferencesUtil.getPref("version"))) {
+//            new Handler().postDelayed(new Runnable() {
+//                public void run() {
+//                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+//                }
+//            }, 2000);
+//        } else {
+//            checkUpdate();
+//        }
 
         startService(new Intent(this, NotificationBackgroundService.class));
 
@@ -59,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 .subscribe(checkUpdateResponse -> {
                     ApplicationSharedPreferencesUtil applicationSharedPreferencesUtil = new ApplicationSharedPreferencesUtil(this);
 
-                    if (checkUpdateResponse.get(0).getVersionNo().equals(applicationSharedPreferencesUtil.getPref("version"))) {
+                    if (checkUpdateResponse.get(0).getVersionNo().equals(String.valueOf(getCurrentAppVersion()))) {
                         Log.e(applicationSharedPreferencesUtil.getPref("version") + "----", checkUpdateResponse.get(0).getVersionNo());
                         new Handler().postDelayed(new Runnable() {
                             public void run() {
@@ -70,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         AlertDialog.Builder builder = new AlertDialog.Builder(this);
                         builder.setCancelable(false);
-                        builder.setTitle(checkUpdateResponse.get(0).getVersionNo() + " Update  is Available ");
+                        builder.setTitle("V"+checkUpdateResponse.get(0).getVersionNo() + " Update  is Available ");
                         builder.setMessage("Are you want to update?");
 
                         builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
