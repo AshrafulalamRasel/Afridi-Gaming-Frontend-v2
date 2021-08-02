@@ -73,4 +73,10 @@
 * আশা করি সবাই নিয়মকানুন মেনে প্রত্যেকটি ম্যাচ খেলবেন ।</string>
     <string name="rooIdAndPasswordInfo">রুম আইডি এবং পাসওয়ার্ড গেমটি শুরু হওয়ার 15 মিনিটের আগে প্রকাশিত হবে (The room ID and password will be published 15 minutes before the game starts)</string>
     <string name="showMyRoomIdPassText">রুম আইডি এবং পাসওয়ার্ড দেখান (Show RoomId And Password)</string>
+
+<!--Validation-->
+<!--    LoginActivity-->
+    <string name="err_username">Invalid Username</string>
+    <string name="err_password">Invalid Password</string>
+    <string name="err_email">Invalid Email</string>
 </resources>

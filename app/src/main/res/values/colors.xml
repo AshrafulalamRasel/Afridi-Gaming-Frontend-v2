@@ -13,4 +13,5 @@
     <color name="base_color">#FFAB26</color>
     <color name="deep_base_color">#BF7808</color>
     <color name="login_card_color">#E48F09</color>
+    <color name="ass">#CCCCCC</color>
 </resources>

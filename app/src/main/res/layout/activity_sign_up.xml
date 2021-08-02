@@ -21,6 +21,13 @@
             android:layout_height="40dp"
             android:layout_margin="10dp"
             android:src="@drawable/left_arrow" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:textSize="30dp"
+            android:layout_margin="10dp"
+            android:text="Sign Up"/>
     </LinearLayout>
 
     <LinearLayout
@@ -39,6 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Username"
+            android:textColorHint="@color/ass"
             app:hintTextColor="@color/text_color"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2"
@@ -50,6 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:textColor="@color/black"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/round_bg_logo_color"
                 android:textColorHint="@color/deep_base_color" />
@@ -60,6 +69,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:textColorHint="@color/ass"
             android:hint="Enter your Email"
             app:hintTextColor="@color/text_color"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -72,6 +82,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:textColor="@color/black"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/round_bg_logo_color"
                 android:textColorHint="@color/deep_base_color" />
@@ -82,7 +93,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:hint="Enter Your Password"
+            android:textColorHint="@color/ass"
+            android:hint="Enter 6-30 Characters Password"
             app:hintTextColor="@color/text_color"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2"
@@ -94,6 +106,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:textColor="@color/black"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/round_bg_logo_color"
                 android:textColorHint="@color/deep_base_color" />

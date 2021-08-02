@@ -1,5 +1,7 @@
 package com.itvillage.afridigaming;
 
+import static com.basgeekball.awesomevalidation.ValidationStyle.BASIC;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -20,6 +22,7 @@ import android.widget.Toast;
 
 import com.auth0.android.jwt.Claim;
 import com.auth0.android.jwt.JWT;
+import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.google.android.material.textfield.TextInputEditText;
 import com.itvillage.afridigaming.util.Utility;
 import com.itvillage.afridigaming.dto.response.LoginResponse;
@@ -35,14 +38,21 @@ public class LoginActivity extends AppCompatActivity {
 
     private ProgressDialog dialog;
     private ApplicationSharedPreferencesUtil perfUtil;
-    private TextView contact_us,sign_up,forget_password;
+    private TextView contact_us, sign_up, forget_password;
     private Button sign_in_but;
-    private TextInputEditText emailEditText,password;
+    private TextInputEditText emailEditText, password;
+
+    private AwesomeValidation mAwesomeValidation = new AwesomeValidation(BASIC);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        // Validation
+        String pattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[!@#$%^&*+=?-]).{6,30}$";
+        mAwesomeValidation.addValidation(this, R.id.emailEditText, "[a-zA-Z0-9\\s]+", R.string.err_username);
+        mAwesomeValidation.addValidation(this, R.id.password, pattern, R.string.err_password);
+
 
         contact_us = findViewById(R.id.contact_us);
         sign_up = findViewById(R.id.sign_up);
@@ -61,9 +71,10 @@ public class LoginActivity extends AppCompatActivity {
         sign_in_but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sign_in_but.setText("Signing..");
-              login(emailEditText.getText().toString(), password.getText().toString());
-
+                if (mAwesomeValidation.validate()) {
+                    sign_in_but.setText("Signing..");
+                    login(emailEditText.getText().toString(), password.getText().toString());
+                }
 
             }
         });
@@ -96,15 +107,13 @@ public class LoginActivity extends AppCompatActivity {
         update_room_but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(retype_password_forget_password.getText().toString().equals(new_password_forget_password.getText().toString()))
-                {
-                    resetPassword(email.getText().toString(),new_password_forget_password.getText().toString());
-                }else {
-                    Toast.makeText(getApplicationContext(),"Password not match",Toast.LENGTH_SHORT).show();
+                if (retype_password_forget_password.getText().toString().equals(new_password_forget_password.getText().toString())) {
+                    resetPassword(email.getText().toString(), new_password_forget_password.getText().toString());
+                } else {
+                    Toast.makeText(getApplicationContext(), "Password not match", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
 
 
         builder.setView(dialogView);
@@ -125,10 +134,10 @@ public class LoginActivity extends AppCompatActivity {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(loginIn -> {
 
-                    Utility.onSuccessAlert("Password Reset Successfully",this);
+                    Utility.onSuccessAlert("Password Reset Successfully", this);
 
                 }, throwable -> {
-                    Utility.onErrorAlert("Invalid Email",this);
+                    Utility.onErrorAlert("Invalid Email", this);
                 }, () -> {
 
                 });
@@ -146,8 +155,8 @@ public class LoginActivity extends AppCompatActivity {
         responseObservable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(loginIn -> {
-                    Utility.loggedId =String.valueOf(loginIn.getId());
-                    Log.e("Access Token",String.valueOf(loginIn.getId()));
+                    Utility.loggedId = String.valueOf(loginIn.getId());
+                    Log.e("Access Token", String.valueOf(loginIn.getId()));
                     onLoginSuccess(loginIn);
 
                 }, throwable -> {
@@ -157,8 +166,9 @@ public class LoginActivity extends AppCompatActivity {
                 });
 
     }
-    private void onLoginFailure(Throwable throwable) {
 
+    private void onLoginFailure(Throwable throwable) {
+        sign_in_but.setText("Sign In");
         if (throwable instanceof HttpException) {
             HttpException httpException = (HttpException) throwable;
 
@@ -171,8 +181,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void onLoginSuccess(LoginResponse loginResponse) {
-
-        Log.e("Access Token",String.valueOf(loginResponse.getAccessToken()));
+        sign_in_but.setText("Sign In");
+        perfUtil.putPref("username", emailEditText.getText().toString());
+        perfUtil.putPref("password", password.getText().toString());
+        Log.e("Access Token", String.valueOf(loginResponse.getAccessToken()));
 
         perfUtil.saveAccessToken(String.valueOf(loginResponse.getAccessToken()));
 
@@ -181,14 +193,12 @@ public class LoginActivity extends AppCompatActivity {
         String parsedValue = subscriptionMetaData.asString();
 
 
-        Log.e("Access Token",parsedValue);
+        Log.e("Access Token", parsedValue);
 
-        if (parsedValue.equals("SUPER_ADMIN")){
+        if (parsedValue.equals("SUPER_ADMIN")) {
             Intent intent = new Intent(LoginActivity.this, AdminHomeActivity.class);
             startActivity(intent);
-        }
-
-        else if (parsedValue.equals("USER")){
+        } else if (parsedValue.equals("USER")) {
             Intent intent = new Intent(LoginActivity.this, UserHomeActivity.class);
             startActivity(intent);
         }
