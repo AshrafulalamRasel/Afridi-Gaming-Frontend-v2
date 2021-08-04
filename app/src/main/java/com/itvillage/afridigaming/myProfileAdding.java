@@ -1,5 +1,7 @@
 package com.itvillage.afridigaming;
 
+import static com.basgeekball.awesomevalidation.ValidationStyle.BASIC;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -10,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.google.android.material.textfield.TextInputEditText;
 import com.itvillage.afridigaming.util.Utility;
 import com.itvillage.afridigaming.services.UserCreateService;
@@ -23,7 +26,7 @@ public class myProfileAdding extends AppCompatActivity {
     private ImageView btnBack;
     private TextInputEditText firstNameEditText,lastNameEditText,mobileNumber;
     private Button crProfile;
-
+    private AwesomeValidation mAwesomeValidation = new AwesomeValidation(BASIC);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,19 +41,18 @@ public class myProfileAdding extends AppCompatActivity {
 
         crProfile = findViewById(R.id.crProfile);
 
-//        btnBack.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                startActivity(new Intent(getApplicationContext(), MeFragment.class));
-//            }
-//        });
+        // Validation
+        mAwesomeValidation.addValidation(this, R.id.firstNameEditText, "[a-zA-Z0-9\\s]+", R.string.err_username);
+        mAwesomeValidation.addValidation(this, R.id.lastNameEditText, "[a-zA-Z0-9\\s]+", R.string.err_password);
+        mAwesomeValidation.addValidation(this, R.id.mobileNumber, "[a-zA-Z0-9\\s]+", R.string.err_password);
+
 
         crProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createUserProfileLog(firstNameEditText.getText().toString(),lastNameEditText.getText().toString(),mobileNumber.getText().toString());
-               // startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                if(mAwesomeValidation.validate()) {
+                    createUserProfileLog(firstNameEditText.getText().toString(), lastNameEditText.getText().toString(), mobileNumber.getText().toString());
+                }
             }
         });
     }

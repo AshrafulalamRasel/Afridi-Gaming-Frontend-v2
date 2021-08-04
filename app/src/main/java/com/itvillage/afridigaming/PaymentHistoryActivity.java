@@ -30,7 +30,7 @@ public class PaymentHistoryActivity extends AppCompatActivity {
     private ArrayList<String> userNameArray = new ArrayList<>();
     private ArrayList<String> currentBalanceArray = new ArrayList<>();
     private ArrayList<String> updatedAtArray = new ArrayList<>();
-    private ArrayList<Boolean> statusArray = new ArrayList<>();
+    private ArrayList<String> statusArray = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +55,7 @@ public class PaymentHistoryActivity extends AppCompatActivity {
                         acNoOfPayableMobileNoArray.add(withDrawMoneyResponse.getLastThreeDigitOfPayableMobileNo());
                         userNameArray.add(withDrawMoneyResponse.getUserName());
                         currentBalanceArray.add("");
-                        statusArray.add(withDrawMoneyResponse.isAuthorityProcessed());
+                        statusArray.add(withDrawMoneyResponse.getBalanceStatus());
                         updatedAtArray.add(String.valueOf(withDrawMoneyResponse.getUpdatedAt()));
 
 

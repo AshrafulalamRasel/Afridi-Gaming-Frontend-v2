@@ -23,7 +23,6 @@ import io.reactivex.schedulers.Schedulers;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    private ImageView back;
     private TextInputEditText userNameEditText,emailEditText,passwordEditText;
     private Button sign_up_but;
     private AwesomeValidation mAwesomeValidation = new AwesomeValidation(BASIC);
@@ -33,25 +32,17 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        back = findViewById(R.id.back);
+
         userNameEditText = findViewById(R.id.userNameEditText);
         emailEditText = findViewById(R.id.emailEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
         sign_up_but = findViewById(R.id.signUpBut);
 
         // Validation
-        String pattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[!@#$%^&*+=?-]).{6,30}$";
+
         mAwesomeValidation.addValidation(this, R.id.userNameEditText, "[a-zA-Z0-9\\s]+", R.string.err_username);
         mAwesomeValidation.addValidation(this, R.id.emailEditText, android.util.Patterns.EMAIL_ADDRESS, R.string.err_email);
-        mAwesomeValidation.addValidation(this, R.id.passwordEditText, pattern, R.string.err_password);
-
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-            }
-        });
+        mAwesomeValidation.addValidation(this, R.id.passwordEditText, "[a-zA-Z0-9\\s]+", R.string.err_password);
 
         sign_up_but.setOnClickListener(new View.OnClickListener() {
             @Override

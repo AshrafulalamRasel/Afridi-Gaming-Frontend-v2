@@ -5,29 +5,26 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/base_color"
+    android:background="@color/white"
     tools:context=".SignUpActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/base_color"
+        android:background="@drawable/header_background"
         tools:ignore="MissingConstraints">
 
-        <ImageView
-            android:id="@+id/back"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_margin="10dp"
-            android:src="@drawable/left_arrow" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="monospace"
             android:textSize="30dp"
+            android:textAlignment="center"
             android:layout_margin="10dp"
-            android:text="Sign Up"/>
+            android:text="Sign Up"
+            android:gravity="center_horizontal" />
     </LinearLayout>
 
     <LinearLayout
@@ -117,6 +114,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+            android:background="@color/base_color"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:fontFamily="sans-serif"

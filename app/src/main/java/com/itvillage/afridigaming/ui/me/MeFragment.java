@@ -28,6 +28,7 @@ import com.itvillage.afridigaming.WithdrawHistoryActivity;
 import com.itvillage.afridigaming.dto.response.UserCreateProfileResponse;
 import com.itvillage.afridigaming.myProfileAdding;
 import com.itvillage.afridigaming.services.GetUserService;
+import com.itvillage.afridigaming.util.ApplicationSharedPreferencesUtil;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -38,7 +39,7 @@ public class MeFragment extends Fragment {
     private MeViewModel mViewModel;
     private TextView userProfileName, availableBalance, totalkill, totalWins, show_email;
     private View view;
-
+    private ApplicationSharedPreferencesUtil applicationSharedPreferencesUtil;
     public static MeFragment newInstance() {
         return new MeFragment();
     }
@@ -47,7 +48,7 @@ public class MeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.me_fragment, container, false);
-        ConstraintLayout myProfile = view.findViewById(R.id.myProfile);
+//        ConstraintLayout myProfile = view.findViewById(R.id.myProfile);
         ConstraintLayout moneyBag = view.findViewById(R.id.moneyBag);
         ConstraintLayout logoutUser = view.findViewById(R.id.logoutUser);
         ConstraintLayout changePassword = view.findViewById(R.id.changePassword);
@@ -61,6 +62,7 @@ public class MeFragment extends Fragment {
         totalWins = view.findViewById(R.id.totalWins);
         show_email = view.findViewById(R.id.show_email);
 
+        applicationSharedPreferencesUtil = new ApplicationSharedPreferencesUtil(view.getContext());
 
         getUserProfile();
 
@@ -162,16 +164,18 @@ public class MeFragment extends Fragment {
         logoutUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                applicationSharedPreferencesUtil.clearSharedPreferences("username");
+                applicationSharedPreferencesUtil.clearSharedPreferences("password");
                 startActivity(new Intent(view.getContext(), LoginActivity.class));
             }
         });
 
-        myProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(view.getContext(), myProfileAdding.class));
-            }
-        });
+//        myProfile.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(view.getContext(), myProfileAdding.class));
+//            }
+//        });
 
         changePassword.setOnClickListener(new View.OnClickListener() {
             @Override

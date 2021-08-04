@@ -61,14 +61,17 @@ public class WithdrawApprovalListAdapter extends ArrayAdapter<String> {
         TextView amt_text = (TextView) rowView.findViewById(R.id.amt_text);
         TextView last_three_digit = (TextView) rowView.findViewById(R.id.last_three_digit);
         TextView user_name = (TextView) rowView.findViewById(R.id.user_name);
+        TextView time_date = (TextView) rowView.findViewById(R.id.time_date);
 
         payment_way.setText(paymentGetawayNameArray.get(position));
         amt_text.setText(amountArray.get(position));
         last_three_digit.setText(lastThreeDigitOfPayableMobileNoArray.get(position));
-        user_name.setText("Requested By:" +userNameArray.get(position));
+        user_name.setText("Requested By: " +userNameArray.get(position));
 
         Button deny = rowView.findViewById(R.id.deny);
         Button approve = rowView.findViewById(R.id.approve);
+
+        time_date.setText("Submitted :"+updatedAtArray.get(position));
 
         approve.setOnClickListener(new View.OnClickListener() {
             @Override

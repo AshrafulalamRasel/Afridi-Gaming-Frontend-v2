@@ -11,13 +11,13 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/base_color"
         tools:ignore="MissingConstraints">
 
   <TextView
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:padding="10dp"
+      android:background="@drawable/header_background"
       android:gravity="center"
       android:textSize="20dp"
       android:text="Update Profile"/>
@@ -38,7 +38,7 @@
             android:id="@+id/firstName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="FirstName"
+            android:hint="First Name"
             app:hintTextColor="@color/text_color"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2"
@@ -60,7 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:hint="LastName"
+            android:hint="Last Name"
             app:hintTextColor="@color/text_color"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2"
@@ -108,7 +108,8 @@
             android:layout_marginRight="10dp"
             android:fontFamily="sans-serif"
             android:padding="15dp"
-            android:text="Update Profile"
+            android:backgroundTint="@color/base_color"
+            android:text="Update And Next"
             android:textAllCaps="false"
             android:textColor="@color/text_color"
             android:textStyle="bold"

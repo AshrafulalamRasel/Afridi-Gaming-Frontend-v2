@@ -262,4 +262,35 @@ public class GameResponse {
     public void setRegisterUsersInGameEntities(List<RegisterUsersInGameEntity> registerUsersInGameEntities) {
         this.registerUsersInGameEntities = registerUsersInGameEntities;
     }
+
+    @Override
+    public String toString() {
+        return "GameResponse{" +
+                "id='" + id + '\'' +
+                ", createdBy='" + createdBy + '\'' +
+                ", createdAt='" + createdAt + '\'' +
+                ", updatedBy='" + updatedBy + '\'' +
+                ", updatedAt='" + updatedAt + '\'' +
+                ", gameNumber='" + gameNumber + '\'' +
+                ", gameType='" + gameType + '\'' +
+                ", gameName='" + gameName + '\'' +
+                ", maxPlayers='" + maxPlayers + '\'' +
+                ", version='" + version + '\'' +
+                ", map='" + map + '\'' +
+                ", gameStatus='" + gameStatus + '\'' +
+                ", roomId='" + roomId + '\'' +
+                ", roomPassword='" + roomPassword + '\'' +
+                ", totalPrize=" + totalPrize +
+                ", winnerPrize=" + winnerPrize +
+                ", secondPrize=" + secondPrize +
+                ", thirdPrize=" + thirdPrize +
+                ", perKillPrize=" + perKillPrize +
+                ", entryFee=" + entryFee +
+                ", gameIsActive=" + gameIsActive +
+                ", gameOwnerId='" + gameOwnerId + '\'' +
+                ", gameplayOption='" + gameplayOption + '\'' +
+                ", gameplayStartTime='" + gameplayStartTime + '\'' +
+                ", registerUsersInGameEntities=" + registerUsersInGameEntities +
+                '}';
+    }
 }

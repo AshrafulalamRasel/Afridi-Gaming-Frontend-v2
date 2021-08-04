@@ -10,6 +10,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +25,8 @@ import com.auth0.android.jwt.Claim;
 import com.auth0.android.jwt.JWT;
 import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.google.android.material.textfield.TextInputEditText;
+import com.itvillage.afridigaming.dto.response.UserCreateProfileResponse;
+import com.itvillage.afridigaming.services.GetUserService;
 import com.itvillage.afridigaming.util.Utility;
 import com.itvillage.afridigaming.dto.response.LoginResponse;
 import com.itvillage.afridigaming.services.LoginService;
@@ -49,9 +52,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         // Validation
-        String pattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[!@#$%^&*+=?-]).{6,30}$";
         mAwesomeValidation.addValidation(this, R.id.emailEditText, "[a-zA-Z0-9\\s]+", R.string.err_username);
-        mAwesomeValidation.addValidation(this, R.id.password, pattern, R.string.err_password);
 
 
         contact_us = findViewById(R.id.contact_us);
@@ -96,6 +97,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void forgetPasswordDialog() {
+
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         ViewGroup viewGroup = findViewById(android.R.id.content);
         View dialogView = LayoutInflater.from(this).inflate(R.layout.custom_form_forget_password, viewGroup, false);
@@ -107,10 +109,21 @@ public class LoginActivity extends AppCompatActivity {
         update_room_but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (retype_password_forget_password.getText().toString().equals(new_password_forget_password.getText().toString())) {
-                    resetPassword(email.getText().toString(), new_password_forget_password.getText().toString());
-                } else {
-                    Toast.makeText(getApplicationContext(), "Password not match", Toast.LENGTH_SHORT).show();
+                if(TextUtils.isEmpty(retype_password_forget_password.getText()))
+                {
+                    retype_password_forget_password.setError("Required");
+                }if(TextUtils.isEmpty(new_password_forget_password.getText()))
+                {
+                    new_password_forget_password.setError("Required");
+                }if(TextUtils.isEmpty(email.getText()))
+                {
+                    email.setError("Required");
+                }else {
+                    if (retype_password_forget_password.getText().toString().equals(new_password_forget_password.getText().toString())) {
+                        resetPassword(email.getText().toString(), new_password_forget_password.getText().toString());
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Password not match", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
@@ -199,11 +212,34 @@ public class LoginActivity extends AppCompatActivity {
             Intent intent = new Intent(LoginActivity.this, AdminHomeActivity.class);
             startActivity(intent);
         } else if (parsedValue.equals("USER")) {
-            Intent intent = new Intent(LoginActivity.this, UserHomeActivity.class);
-            startActivity(intent);
+            userLoginSuccess();
+
         }
 
         Toast.makeText(getApplicationContext(), "Login Successful.", Toast.LENGTH_LONG).show();
+
+    }
+
+    @SuppressLint("CheckResult")
+    private void userLoginSuccess() {
+
+        GetUserService getUserService = new GetUserService(this);
+        Observable<UserCreateProfileResponse> userCreateProfileResponseObservable =
+                getUserService.getUserProfile();
+
+        userCreateProfileResponseObservable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(getUserProfile -> {
+
+                    Intent intent = new Intent(LoginActivity.this, UserHomeActivity.class);
+                    startActivity(intent);
+
+                }, throwable -> {
+                    startActivity(new Intent(getApplicationContext(), myProfileAdding.class));
+                    throwable.printStackTrace();
+                }, () -> {
+
+                });
 
     }
 }

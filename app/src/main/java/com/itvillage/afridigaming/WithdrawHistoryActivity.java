@@ -31,7 +31,7 @@ public class WithdrawHistoryActivity extends AppCompatActivity {
     private ArrayList<String> userNameArray = new ArrayList<>();
     private ArrayList<String> currentBalanceArray = new ArrayList<>();
     private ArrayList<String> updatedAtArray = new ArrayList<>();
-    private ArrayList<Boolean> statusArray = new ArrayList<>();
+    private ArrayList<String> statusArray = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +55,7 @@ public class WithdrawHistoryActivity extends AppCompatActivity {
                         amountArray.add(String.valueOf(withDrawMoneyResponse.getAmount()));
                         acNoOfPayableMobileNoArray.add(withDrawMoneyResponse.getLastThreeDigitOfPayableMobileNo());
                         userNameArray.add(withDrawMoneyResponse.getUserName());
-                        statusArray.add(withDrawMoneyResponse.isAuthorityProcessed());
+                        statusArray.add(withDrawMoneyResponse.getBalanceStatus());
                         currentBalanceArray.add("Current Balance: "+ String.valueOf(withDrawMoneyResponse.getCurrentBalance()));
                         updatedAtArray.add(String.valueOf(withDrawMoneyResponse.getUpdatedAt()));
 

@@ -36,12 +36,14 @@ public class ApprovalListAdapter extends ArrayAdapter<String> {
     private ArrayList<String> amountList;
     private ArrayList<String> mobileLastDigit;
     private ArrayList<String> balanceIdList ;
+    private ArrayList<String> dateTimeList ;
 
     private List<RegisterUsersInGameEntity> registerUsersInGameEntityArray;
     public ApprovalListAdapter(Activity context,
                                 ArrayList<String> userIdList, ArrayList<String> nameList,
                                 ArrayList<String> paymentGetwayList, ArrayList<String> amountList,
-                                ArrayList<String> mobileLastDigit,ArrayList<String> balanceIdList) {
+                                ArrayList<String> mobileLastDigit,ArrayList<String> balanceIdList
+                               ,ArrayList<String> dateTimeList) {
         super(context, R.layout.custom_approval_list_items, userIdList);
 
         this.context = context;
@@ -51,6 +53,7 @@ public class ApprovalListAdapter extends ArrayAdapter<String> {
         this.amountList = amountList;
         this.mobileLastDigit = mobileLastDigit;
         this.balanceIdList = balanceIdList;
+        this.dateTimeList = dateTimeList;
 
     }
 
@@ -62,11 +65,13 @@ public class ApprovalListAdapter extends ArrayAdapter<String> {
         TextView amt_text = (TextView) rowView.findViewById(R.id.amt_text);
         TextView last_three_digit = (TextView) rowView.findViewById(R.id.last_three_digit);
         TextView user_name = (TextView) rowView.findViewById(R.id.user_name);
+        TextView date_time = (TextView) rowView.findViewById(R.id.date_time);
 
         payment_way.setText(paymentGetwayList.get(position));
         amt_text.setText(amountList.get(position));
         last_three_digit.setText(mobileLastDigit.get(position));
-        user_name.setText("Requested By:" +nameList.get(position));
+        user_name.setText("Requested By: " +nameList.get(position));
+        date_time.setText("Submitted From: " +dateTimeList.get(position));
 
         Button deny = rowView.findViewById(R.id.deny);
         Button approve = rowView.findViewById(R.id.approve);

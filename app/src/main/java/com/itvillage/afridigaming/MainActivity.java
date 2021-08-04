@@ -18,7 +18,9 @@ import com.auth0.android.jwt.Claim;
 import com.auth0.android.jwt.JWT;
 import com.itvillage.afridigaming.dto.response.CheckUpdateResponse;
 import com.itvillage.afridigaming.dto.response.LoginResponse;
+import com.itvillage.afridigaming.dto.response.UserCreateProfileResponse;
 import com.itvillage.afridigaming.services.CheckUpdateService;
+import com.itvillage.afridigaming.services.GetUserService;
 import com.itvillage.afridigaming.services.LoginService;
 import com.itvillage.afridigaming.services.NotificationBackgroundService;
 import com.itvillage.afridigaming.util.ApplicationSharedPreferencesUtil;
@@ -52,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 //            checkUpdate();
 //        }
 
-        //  startService(new Intent(this, NotificationBackgroundService.class));
+      //  startService(new Intent(this, NotificationBackgroundService.class));
 
 
     }
@@ -69,12 +71,13 @@ public class MainActivity extends AppCompatActivity {
 
                     if (checkUpdateResponse.get(0).getVersionNo().equals(String.valueOf(getCurrentAppVersion()))) {
                         Log.e(applicationSharedPreferencesUtil.getPref("version") + "----", checkUpdateResponse.get(0).getVersionNo());
-                        new Handler().postDelayed(new Runnable() {
-                            public void run() {
-                                checkAutoLogin();
-
-                            }
-                        }, 2000);
+//                        new Handler().postDelayed(new Runnable() {
+//                            public void run() {
+//
+//
+//                            }
+//                        }, 2000);
+                        checkAutoLogin();
                     } else {
                         AlertDialog.Builder builder = new AlertDialog.Builder(this);
                         builder.setCancelable(false);
@@ -168,8 +171,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, AdminHomeActivity.class);
             startActivity(intent);
         } else if (parsedValue.equals("USER")) {
-            Intent intent = new Intent(MainActivity.this, UserHomeActivity.class);
-            startActivity(intent);
+            userLoginSuccess();
         }
 
         Toast.makeText(getApplicationContext(), "Login Successful.", Toast.LENGTH_LONG).show();
@@ -188,5 +190,26 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
+    @SuppressLint("CheckResult")
+    private void userLoginSuccess() {
 
+        GetUserService getUserService = new GetUserService(this);
+        Observable<UserCreateProfileResponse> userCreateProfileResponseObservable =
+                getUserService.getUserProfile();
+
+        userCreateProfileResponseObservable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(getUserProfile -> {
+
+                    Intent intent = new Intent(MainActivity.this, UserHomeActivity.class);
+                    startActivity(intent);
+
+                }, throwable -> {
+                    startActivity(new Intent(getApplicationContext(), myProfileAdding.class));
+                    throwable.printStackTrace();
+                }, () -> {
+
+                });
+
+    }
 }

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -15,6 +16,8 @@ import com.itvillage.afridigaming.services.GetAllActiveGamesService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -22,32 +25,32 @@ import io.reactivex.schedulers.Schedulers;
 
 public class GamesShowUserViewActivity extends AppCompatActivity {
 
-    ArrayList<String> gameIdArray = new ArrayList<>();
-    ArrayList<String> gameNameArray = new ArrayList<>();
-    ArrayList<String> gameSubNameArray = new ArrayList<>();
-    ArrayList<Integer> imageArray = new ArrayList<>();
+    private ArrayList<String> gameIdArray = new ArrayList<>();
+    private ArrayList<String> gameNameArray = new ArrayList<>();
+    private ArrayList<String> gameSubNameArray = new ArrayList<>();
+    private ArrayList<Integer> imageArray = new ArrayList<>();
 
-    ArrayList<String> gameTotalPrizeArray = new ArrayList<>();
-    ArrayList<String> gamePerKillPrizeArray = new ArrayList<>();
-    ArrayList<String> gameEntryFeeArray = new ArrayList<>();
-    ArrayList<String> gameTypeArray = new ArrayList<>();
-    ArrayList<String> gameVersionArray = new ArrayList<>();
-    ArrayList<String> gameMapArray = new ArrayList<>();
+    private ArrayList<String> gameTotalPrizeArray = new ArrayList<>();
+    private ArrayList<String> gamePerKillPrizeArray = new ArrayList<>();
+    private ArrayList<String> gameEntryFeeArray = new ArrayList<>();
+    private ArrayList<String> gameTypeArray = new ArrayList<>();
+    private ArrayList<String> gameVersionArray = new ArrayList<>();
+    private ArrayList<String> gameMapArray = new ArrayList<>();
 
-    ArrayList<String> winnerPrizeArray = new ArrayList<>();
-    ArrayList<String> secondPrizeArray = new ArrayList<>();
-    ArrayList<String> thirdPrizeArray = new ArrayList<>();
-    ArrayList<String> roomIdAndPassList = new ArrayList<>();
-    ArrayList<String> maxPlayersList = new ArrayList<>();
+    private ArrayList<String> winnerPrizeArray = new ArrayList<>();
+    private ArrayList<String> secondPrizeArray = new ArrayList<>();
+    private ArrayList<String> thirdPrizeArray = new ArrayList<>();
+    private ArrayList<String> roomIdAndPassList = new ArrayList<>();
+    private ArrayList<String> maxPlayersList = new ArrayList<>();
 
-    ArrayList<List<RegisterUsersInGameEntity>> RegisterUsersInGameEntityArray = new ArrayList<>();
+    private ArrayList<List<RegisterUsersInGameEntity>> RegisterUsersInGameEntityArray = new ArrayList<>();
 
     private ListView game_list_show;
+    private final String TAG = "GamesShowUserViewActivity.class";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_games_show_user_view);
-
         setAllGamesInList();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 

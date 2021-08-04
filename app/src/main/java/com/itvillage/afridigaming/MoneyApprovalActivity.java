@@ -30,6 +30,7 @@ public class MoneyApprovalActivity extends AppCompatActivity {
     ArrayList<String> amountList = new ArrayList<>();
     ArrayList<String> mobileLastDigit = new ArrayList<>();
     ArrayList<String> balanceIdList = new ArrayList<>();
+    ArrayList<String> dateTimeList = new ArrayList<>();
 
 
     @Override
@@ -57,10 +58,13 @@ public class MoneyApprovalActivity extends AppCompatActivity {
                         amountList.add(String.valueOf(requestedNotificationResponse.getAmount()));
                         balanceIdList.add(String.valueOf(requestedNotificationResponse.getId()));
                         mobileLastDigit.add(String.valueOf(requestedNotificationResponse.getLastThreeDigitOfPayableMobileNo()));
+                        dateTimeList.add(String.valueOf(requestedNotificationResponse.getCreatedAt()));
 
 
                     }
-                    ApprovalListAdapter adapter = new ApprovalListAdapter(this, userIdList, nameList, paymentGetwayList, amountList, mobileLastDigit, balanceIdList);
+                    ApprovalListAdapter adapter = new ApprovalListAdapter(this, userIdList,
+                            nameList, paymentGetwayList, amountList, mobileLastDigit,
+                            balanceIdList,dateTimeList);
                     list = (ListView) findViewById(R.id.approval_list);
                     list.setAdapter(adapter);
                 }, err -> {

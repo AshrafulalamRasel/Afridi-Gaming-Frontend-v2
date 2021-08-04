@@ -140,7 +140,7 @@ public class NotificationBackgroundService extends Service {
 
             }
         };
-        timer.schedule(timerTask, 20000, 1000); //
+        timer.schedule(timerTask, 1000, 1000); //
     }
 
     public void stoptimertask() {
@@ -151,6 +151,7 @@ public class NotificationBackgroundService extends Service {
     }
     @Override
     public void onDestroy() {
+        Toast.makeText(this, "Service Destroyed", Toast.LENGTH_LONG).show();
         //stopService(mServiceIntent);
         Intent broadcastIntent = new Intent();
         broadcastIntent.setAction("restartservice");
@@ -169,4 +170,7 @@ public class NotificationBackgroundService extends Service {
     public IBinder onBind(Intent intent) {
         return null;
     }
+
+
+
 }

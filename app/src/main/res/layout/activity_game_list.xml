@@ -1,37 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/base_color"
+    android:orientation="vertical"
     tools:context=".GameListActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif"
-        android:text="Game List"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/game_list"
-        app:layout_constraintEnd_toStartOf="@+id/addGameBut"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.307" />
 
     <Button
         android:id="@+id/addGameBut"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_margin="5dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
 
-        android:text="Add Game"
+        android:text="Add New Game"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.903"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
+    <EditText
+        android:id="@+id/match_no_src"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:hint="Search By Match No."/>
+    <Button
+        android:id="@+id/match_no_src_but"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="Search"/>
 
     <ListView
         android:id="@+id/game_list"
@@ -43,4 +44,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addGameBut"
         tools:ignore="MissingConstraints" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

@@ -45,7 +45,7 @@ public class ApplicationSharedPreferencesUtil {
 
     public void clearSharedPreferences(String key) {
         SharedPreferences pref = getDentistPointPerf();
-        pref.edit().remove("mobileString").commit();
+        pref.edit().remove(key).commit();
     }
 
 }

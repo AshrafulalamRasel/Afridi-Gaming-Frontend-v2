@@ -174,20 +174,8 @@
 
                             <ImageView
                                 android:layout_width="100dp"
-                                android:layout_height="80dp"
+                                android:layout_height="100dp"
                                 android:background="@drawable/bkash_logo" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="#F891C9"
-                                android:fontFamily="monospace"
-                                android:gravity="center"
-                                android:padding="3dp"
-                                android:text="bKash"
-                                android:textColor="@color/white"
-                                android:textSize="15dp"
-                                android:textStyle="bold" />
 
                         </LinearLayout>
 
@@ -217,17 +205,6 @@
                                 android:layout_height="100dp"
                                 android:background="@drawable/rocket" />
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="#D45BE8"
-                                android:fontFamily="monospace"
-                                android:gravity="center"
-                                android:padding="3dp"
-                                android:text="Rocket"
-                                android:textColor="@color/white"
-                                android:textSize="15dp"
-                                android:textStyle="bold" />
 
                         </LinearLayout>
 
@@ -255,19 +232,9 @@
 
                             <ImageView
                                 android:layout_width="100dp"
-                                android:layout_height="80dp"
+                                android:layout_height="100dp"
                                 android:background="@drawable/paytm" />
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="#cccc"
-                                android:fontFamily="monospace"
-                                android:gravity="center"
-                                android:text="PayTM"
-                                android:textColor="@color/black"
-                                android:textSize="15dp"
-                                android:textStyle="bold" />
 
                         </LinearLayout>
 

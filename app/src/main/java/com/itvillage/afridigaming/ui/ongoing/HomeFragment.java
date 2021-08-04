@@ -105,10 +105,10 @@ public class HomeFragment extends Fragment {
                             }else{
                                 count=0;
                             }
-                            handler.postDelayed(this, 1000);
+                            handler.postDelayed(this, 3000);
                         }
                     };
-                    handler.postDelayed(r, 1000);
+                    handler.postDelayed(r, 2000);
                 }, throwable -> {
                    Log.e("Error",throwable.getMessage());
                 }, () -> {

@@ -125,7 +125,7 @@ public class GameListAdapter extends ArrayAdapter<String> {
                 players.add(registerUsersInGameEntity.getPartnerNameFour());
             }
         }
-
+        //TODO: Add Dynamic Live Progress Bar
         int progressStatus = players.size();
         int progressMaxStatus = Integer.valueOf(maxPlayersList.get(position));
 

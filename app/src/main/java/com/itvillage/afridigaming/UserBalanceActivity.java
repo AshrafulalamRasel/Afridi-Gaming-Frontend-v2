@@ -1,8 +1,11 @@
 package com.itvillage.afridigaming;
 
+import static com.basgeekball.awesomevalidation.ValidationStyle.BASIC;
+
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -21,6 +24,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.itvillage.afridigaming.dto.response.UserCreateProfileResponse;
 import com.itvillage.afridigaming.services.GetUserService;
 import com.itvillage.afridigaming.services.PostMoneyRequestService;
@@ -34,10 +38,10 @@ import io.reactivex.schedulers.Schedulers;
 
 public class UserBalanceActivity extends AppCompatActivity {
 
-    TextView amount, amountD, winning_amount;
-    Button add_money_help_but, withdraw_money_help_but;
-    CardView bkash_but, rocket_but, paytm_but;
-    String payAcType;
+    private TextView amount, amountD, winning_amount;
+    private Button add_money_help_but, withdraw_money_help_but;
+    private CardView bkash_but, rocket_but, paytm_but;
+    private String payAcType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,8 +110,19 @@ public class UserBalanceActivity extends AppCompatActivity {
                 withdraw_but.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        withdrawMoney(payAcType, amount_withdraw.getText().toString(), amount_no_withdraw.getText().toString());
-                        alertDialog.dismiss();
+                        if(TextUtils.isEmpty(amount_no_withdraw.getText()))
+                        {
+                            amount_no_withdraw.setError("Required");
+                        }if(TextUtils.isEmpty(amount_withdraw.getText()))
+                        {
+                            amount_withdraw.setError("Required");
+                        }if(TextUtils.isEmpty(payAcType)){
+                            Toast.makeText(getBaseContext(), "Withdraw Not Selected", Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            withdrawMoney(payAcType, amount_withdraw.getText().toString(), amount_no_withdraw.getText().toString());
+                            alertDialog.dismiss();
+                        }
                     }
                 });
 
@@ -135,8 +150,11 @@ public class UserBalanceActivity extends AppCompatActivity {
         sent_request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (payment_amount.getText().toString().equals("")) {
-                    Toast.makeText(getApplicationContext(), "Empty Field Found", Toast.LENGTH_LONG).show();
+                if (TextUtils.isEmpty(payment_amount.getText())) {
+                    payment_amount.setError("Required");
+                }
+                if (TextUtils.isEmpty(payment_last_digit.getText())) {
+                    payment_last_digit.setError("Required");
                 } else {
                     moneyRequest(payment_type.getSelectedItem().toString(), payment_amount.getText().toString(), payment_last_digit.getText().toString());
                     payment_amount.setText("");
@@ -187,10 +205,16 @@ public class UserBalanceActivity extends AppCompatActivity {
         sent_request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                moneyRequest(by, payment_amount.getText().toString(), payment_last_digit.getText().toString());
-                payment_amount.setText("");
-                payment_last_digit.setText("");
-
+                if (TextUtils.isEmpty(payment_amount.getText())) {
+                    payment_amount.setError("Required");
+                }
+                if (TextUtils.isEmpty(payment_last_digit.getText())) {
+                    payment_last_digit.setError("Required");
+                } else {
+                    moneyRequest(by, payment_amount.getText().toString(), payment_last_digit.getText().toString());
+                    payment_amount.setText("");
+                    payment_last_digit.setText("");
+                }
             }
         });
 

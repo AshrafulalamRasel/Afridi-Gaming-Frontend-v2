@@ -7,6 +7,9 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Build;
 import android.util.Log;
 import android.widget.Toast;
@@ -36,11 +39,10 @@ public class RestarterNotificationService extends BroadcastReceiver {
         Toast.makeText(context.getApplicationContext(), "Notification Background Started",Toast.LENGTH_SHORT).show();
 
 
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//            context.startForegroundService(new Intent(context, NotificationBackgroundService.class));
-//        } else {
-//            context.startService(new Intent(context, NotificationBackgroundService.class));
-//        }
+        Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
+        Ringtone r = RingtoneManager.getRingtone(context, notification);
+        r.play();
+
         timer = new Timer();
         timerTask = new TimerTask() {
             public void run() {
@@ -48,9 +50,12 @@ public class RestarterNotificationService extends BroadcastReceiver {
 
             }
         };
-        timer.schedule(timerTask, 20000, 1000); //
+        timer.schedule(timerTask, 1000, 1000); //
 
     }
+
+
+
     private void getNotificationDetails(Context context) {
         GetNotificationListService getNotificationListService = new GetNotificationListService(context);
         Observable<List<GetNotificationResponse>> listObservable =

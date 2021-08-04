@@ -22,14 +22,14 @@ public class WithdrawListAdapter extends ArrayAdapter<String> {
     private ArrayList<String> userNameArray;
     private ArrayList<String> currentBalanceArray;
     private ArrayList<String> updatedAtArray;
-    private ArrayList<Boolean> statusArray;
+    private ArrayList<String> statusArray;
 
 
 
     public WithdrawListAdapter(Activity context,
                                ArrayList<String> paymentGetawayNameArray, ArrayList<String> amountArray,
                                ArrayList<String> acNoOfPayableMobileNoArray, ArrayList<String> userNameArray,
-                               ArrayList<String> currentBalanceArray, ArrayList<String> updatedAtArray,ArrayList<Boolean> balanceStatusArray) {
+                               ArrayList<String> currentBalanceArray, ArrayList<String> updatedAtArray,ArrayList<String> balanceStatusArray) {
         super(context, R.layout.custom_withdraw_history_list_items, paymentGetawayNameArray);
 
         this.context = context;
@@ -56,11 +56,7 @@ public class WithdrawListAdapter extends ArrayAdapter<String> {
         payment_getway.setText(paymentGetawayNameArray.get(position));
         date_time.setText(updatedAtArray.get(position));
         tk.setText(amountArray.get(position));
-        if(statusArray.get(position)) {
-            status_payment.setText("Request Status: Success");
-        }else{
-            status_payment.setText("Request Status: Pending");
-        }
+        status_payment.setText("Request Status: "+statusArray.get(position));
         return rowView;
 
     }
