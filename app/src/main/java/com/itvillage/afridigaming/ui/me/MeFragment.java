@@ -204,11 +204,19 @@ public class MeFragment extends Fragment {
         userCreateProfileResponseObservable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(getUserProfile -> {
-
+                    Double winningBalance = getUserProfile.getTotalEarn();
+                    Double acBalance = getUserProfile.getAcBalance();
+                    if(winningBalance == null)
+                    {
+                        winningBalance = 0.0;
+                    } if(acBalance == null)
+                    {
+                        acBalance = 0.0;
+                    }
                     userProfileName.setText(getUserProfile.getFirstName());
-                    availableBalance.setText(Double.toString(getUserProfile.getAcBalance()));
+                    availableBalance.setText(String.valueOf(acBalance));
                     totalkill.setText(Integer.toString(getUserProfile.getTotalKill()));
-                    totalWins.setText(Double.toString(getUserProfile.getTotalEarn()));
+                    totalWins.setText(String.valueOf(winningBalance));
                     show_email.setText(getUserProfile.getMobileNo());
 
                 }, throwable -> {

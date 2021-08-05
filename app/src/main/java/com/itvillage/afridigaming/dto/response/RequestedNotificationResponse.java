@@ -31,6 +31,16 @@ public class RequestedNotificationResponse {
 
     private boolean isAuthorityProcessed;
 
+    private String balanceStatus;
+
+    public String getBalanceStatus() {
+        return balanceStatus;
+    }
+
+    public void setBalanceStatus(String balanceStatus) {
+        this.balanceStatus = balanceStatus;
+    }
+
     public String getId() {
         return id;
     }

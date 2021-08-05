@@ -12,6 +12,15 @@ public class UserCreateProfileResponse {
     private Double acBalance;
     private int totalKill;
     private Double totalEarn;
+    private Double winningBalance;
+
+    public Double getWinningBalance() {
+        return winningBalance;
+    }
+
+    public void setWinningBalance(Double winningBalance) {
+        this.winningBalance = winningBalance;
+    }
 
     public String getFirstName() {
         return firstName;

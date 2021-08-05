@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 //            checkUpdate();
 //        }
 
-      //  startService(new Intent(this, NotificationBackgroundService.class));
+       startService(new Intent(this, NotificationBackgroundService.class));
 
 
     }

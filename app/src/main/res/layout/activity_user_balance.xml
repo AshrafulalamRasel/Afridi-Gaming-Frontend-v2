@@ -62,7 +62,17 @@
                 android:textColor="@color/black"
                 android:textSize="20dp"
                 android:textStyle="bold" />
-
+            <TextView
+                android:id="@+id/winning_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/border_background"
+                android:padding="20dp"
+                android:text="Winning : 00"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 

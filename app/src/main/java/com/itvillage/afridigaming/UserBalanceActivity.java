@@ -50,6 +50,7 @@ public class UserBalanceActivity extends AppCompatActivity {
 
         amount = findViewById(R.id.amount);
         amountD = findViewById(R.id.amountD);
+        winning_amount = findViewById(R.id.winning_amount);
         withdraw_money_help_but = findViewById(R.id.withdraw_money_help_but);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -110,16 +111,15 @@ public class UserBalanceActivity extends AppCompatActivity {
                 withdraw_but.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if(TextUtils.isEmpty(amount_no_withdraw.getText()))
-                        {
+                        if (TextUtils.isEmpty(amount_no_withdraw.getText())) {
                             amount_no_withdraw.setError("Required");
-                        }if(TextUtils.isEmpty(amount_withdraw.getText()))
-                        {
-                            amount_withdraw.setError("Required");
-                        }if(TextUtils.isEmpty(payAcType)){
-                            Toast.makeText(getBaseContext(), "Withdraw Not Selected", Toast.LENGTH_SHORT).show();
                         }
-                        else {
+                        if (TextUtils.isEmpty(amount_withdraw.getText())) {
+                            amount_withdraw.setError("Required");
+                        }
+                        if (TextUtils.isEmpty(payAcType)) {
+                            Toast.makeText(getBaseContext(), "Withdraw Not Selected", Toast.LENGTH_SHORT).show();
+                        } else {
                             withdrawMoney(payAcType, amount_withdraw.getText().toString(), amount_no_withdraw.getText().toString());
                             alertDialog.dismiss();
                         }
@@ -274,11 +274,17 @@ public class UserBalanceActivity extends AppCompatActivity {
         userCreateProfileResponseObservable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(getUserProfile -> {
-
-                    amount.setText(String.valueOf(getUserProfile.getAcBalance()));
-                    amountD.setText("Deposited :" + String.valueOf(getUserProfile.getAcBalance()));
-                    winning_amount.setText("Winning :" + String.valueOf(getUserProfile.getAcBalance()));
-
+                    Double acBalance = getUserProfile.getAcBalance();
+                    Double winingBalance = getUserProfile.getTotalEarn();
+                    if (acBalance == null) {
+                        acBalance = 0.0;
+                    }
+                    if (winingBalance == null) {
+                        winingBalance = 0.0;
+                    }
+                    amountD.setText("Deposited :" + String.valueOf(acBalance));
+                    winning_amount.setText("Winning :" + String.valueOf(winingBalance));
+                    amount.setText(String.valueOf(acBalance+winingBalance));
 
                 }, throwable -> {
                     throwable.printStackTrace();

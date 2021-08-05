@@ -17,8 +17,12 @@ import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
 
+import com.itvillage.afridigaming.ImagesListActivity;
 import com.itvillage.afridigaming.JoinNowUserActivity;
 import com.itvillage.afridigaming.R;
+import com.itvillage.afridigaming.dto.response.GetProgessBarInfoResponse;
+import com.itvillage.afridigaming.services.DeleteImageService;
+import com.itvillage.afridigaming.services.GetProgressBarInfoService;
 import com.itvillage.afridigaming.util.Utility;
 import com.itvillage.afridigaming.dto.response.RegisterUsersInGameEntity;
 import com.itvillage.afridigaming.dto.response.RoomIdAndPasswordResponse;
@@ -26,6 +30,8 @@ import com.itvillage.afridigaming.services.GetRoomIdPasswordService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -55,6 +61,7 @@ public class GameListAdapter extends ArrayAdapter<String> {
     private ArrayList<String> maxPlayersList;
 
     private ArrayList<List<RegisterUsersInGameEntity>> registerUsersInGameEntityArray;
+    private int progressStatus,progressMaxStatus;
 
 
     public GameListAdapter(Activity context, ArrayList<String> gameIdArray, ArrayList<String> gameNameArray,
@@ -125,13 +132,33 @@ public class GameListAdapter extends ArrayAdapter<String> {
                 players.add(registerUsersInGameEntity.getPartnerNameFour());
             }
         }
-        //TODO: Add Dynamic Live Progress Bar
-        int progressStatus = players.size();
-        int progressMaxStatus = Integer.valueOf(maxPlayersList.get(position));
+        new Timer().scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                System.out.println(gameIdArray.get(position));
+                GetProgressBarInfoService getRoomIdPasswordService = new GetProgressBarInfoService(context);
+                Observable<GetProgessBarInfoResponse> responseObservable =
+                        getRoomIdPasswordService.getProgessBarInfoByGameId(gameIdArray.get(position));
 
-        player_fill_up_showed.setText(progressStatus + "/" + progressMaxStatus);
-        progressBar.setMax(progressMaxStatus);
-        progressBar.setProgress(progressStatus);
+                responseObservable.subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(res -> {
+                            progressStatus = Integer.valueOf(res.getTotalJoinPlayerInGame());
+                            progressMaxStatus = Integer.valueOf(res.getTotalPlayerInGame());
+
+                            player_fill_up_showed.setText(progressStatus + "/" + progressMaxStatus);
+                            progressBar.setMax(progressMaxStatus);
+                            progressBar.setProgress(progressStatus);
+                        }, throwable -> {
+
+                        }, () -> {
+
+                        });
+
+            }
+        },1000,1000);
+
+
 
 
         titleText.setText(gameNameArray.get(position));
@@ -235,6 +262,7 @@ public class GameListAdapter extends ArrayAdapter<String> {
         return rowView;
 
     }
+
 
     @SuppressLint("CheckResult")
     private void getGameIdAndPass(String roomId) {
