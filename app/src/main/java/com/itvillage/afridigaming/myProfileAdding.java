@@ -5,6 +5,7 @@ import static com.basgeekball.awesomevalidation.ValidationStyle.BASIC;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -69,7 +70,8 @@ public class myProfileAdding extends AppCompatActivity {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(createUser -> {
 
-                    Utility.onSuccessAlert("Successfully Updated",this);
+                    Intent intent = new Intent(myProfileAdding.this, UserHomeActivity.class);
+                    startActivity(intent);
 
                 }, throwable -> {
                     Utility.onErrorAlert("Something Wrong",this);
