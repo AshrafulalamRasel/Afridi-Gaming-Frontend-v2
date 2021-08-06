@@ -66,7 +66,8 @@ public class JoinNowUserActivity extends AppCompatActivity {
                 entryFeePerTotalMatchTextView.setText("Total Entry Fee : " + totalEntryFee);
                 break;
             case "duo":
-                getGameType = "Duo";                playerId1EditText.setVisibility(View.VISIBLE);
+                getGameType = "Duo";
+                playerId1EditText.setVisibility(View.VISIBLE);
                 playerId2EditText.setVisibility(View.VISIBLE);
                 playerId3EditText.setVisibility(View.INVISIBLE);
                 playerId4EditText.setVisibility(View.INVISIBLE);
@@ -164,7 +165,6 @@ public class JoinNowUserActivity extends AppCompatActivity {
                     myBalance = String.valueOf(getUserProfile.getAcBalance());
                     myBalanceTextView.setText("Available Balance : " + myBalance);
                     gameNameTextView.setText(gameName);
-                    entryFeePerTotalMatchTextView.setText("Total Entry Fee : " + entryFeePerPerson);
                     entryFeePerMatchTextView.setText("Game Entry Fee Per Person: " + entryFeePerPerson);
                 }, err -> {
 

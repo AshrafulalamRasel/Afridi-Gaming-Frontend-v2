@@ -204,22 +204,40 @@ public class GameListAdapter extends ArrayAdapter<String> {
         joinNowBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (progressStatus < progressMaxStatus) {
-                    if (progressStatus == progressMaxStatus) {
-                        Utility.onErrorAlert("Players Full", context);
-                    } else {
-                        Intent intent = new Intent(context, JoinNowUserActivity.class);
-                        intent.putExtra("gameId", gameIdArray.get(position));
-                        intent.putExtra("gameName", gameNameArray.get(position));
-                        intent.putExtra("gameType", gameTypeArray.get(position));
-                        intent.putExtra("gameName", gameNameArray.get(position));
-                        intent.putExtra("totalEntryFee", String.valueOf(Integer.valueOf(gameEntryFeeArray.get(position)) * 3));
-                        intent.putExtra("entryFeePerPerson", gameEntryFeeArray.get(position));
-                        context.startActivity(intent);
-                    }
-                } else {
-                    Utility.onErrorAlert("Players Full", context);
-                }
+                GetProgressBarInfoService getRoomIdPasswordService = new GetProgressBarInfoService(context);
+                Observable<GetProgessBarInfoResponse> responseObservable =
+                        getRoomIdPasswordService.getProgessBarInfoByGameId(gameIdArray.get(position));
+
+                responseObservable.subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(res -> {
+                            int progressStatus = Integer.valueOf(res.getTotalJoinPlayerInGame());
+                            int progressMaxStatus = Integer.valueOf(res.getTotalPlayerInGame());
+                            if (progressStatus < progressMaxStatus) {
+                                if (progressStatus == progressMaxStatus) {
+                                    Utility.onErrorAlert("Players Full", context);
+                                } else {
+                                    Intent intent = new Intent(context, JoinNowUserActivity.class);
+                                    intent.putExtra("gameId", gameIdArray.get(position));
+                                    intent.putExtra("gameName", gameNameArray.get(position));
+                                    intent.putExtra("gameType", gameTypeArray.get(position));
+                                    intent.putExtra("gameName", gameNameArray.get(position));
+                                    intent.putExtra("totalEntryFee", String.valueOf(Integer.valueOf(gameEntryFeeArray.get(position)) * 3));
+                                    intent.putExtra("entryFeePerPerson", gameEntryFeeArray.get(position));
+                                    context.startActivity(intent);
+                                }
+                            } else {
+                                Utility.onErrorAlert("Players Full", context);
+                            }
+                           // player_fill_up_showed.setText(progressStatus + "/" + progressMaxStatus);
+                           // progressBar.setMax(progressMaxStatus);
+                           // progressBar.setProgress(progressStatus);
+                        }, throwable -> {
+
+                        }, () -> {
+
+                        });
+
             }
         });
         playersListBut.setOnClickListener(new View.OnClickListener() {
