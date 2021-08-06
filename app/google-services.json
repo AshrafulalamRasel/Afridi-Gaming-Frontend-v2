@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "843126154411",
+    "project_id": "afridi-gaming-a9a4a",
+    "storage_bucket": "afridi-gaming-a9a4a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:843126154411:android:bcfae622b8b6ea885ac3ee",
+        "android_client_info": {
+          "package_name": "com.itvillage.afridigaming"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "843126154411-83cesj43mvb824baojupvladph1lkb8h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJKU2U_4wUNJ7J6F7fWTtQ36x-DtOgi_Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "843126154411-83cesj43mvb824baojupvladph1lkb8h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -11,11 +11,15 @@ import android.os.Handler;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.auth0.android.jwt.Claim;
 import com.auth0.android.jwt.JWT;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.itvillage.afridigaming.dto.response.CheckUpdateResponse;
 import com.itvillage.afridigaming.dto.response.LoginResponse;
 import com.itvillage.afridigaming.dto.response.UserCreateProfileResponse;
@@ -42,8 +46,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         applicationSharedPreferencesUtil = new ApplicationSharedPreferencesUtil(this);
+        checkAutoLogin();
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            Log.e("FirebaseNotification:","failed");
+                            return;
+                        }else {
+                            Log.e("FirebaseNotification:","Success");
+                        }
+                    }
+                });
 
-        checkUpdate();
+       // checkUpdate();
 //        if (String.valueOf(getCurrentAppVersion()).equals(applicationSharedPreferencesUtil.getPref("version"))) {
 //            new Handler().postDelayed(new Runnable() {
 //                public void run() {
@@ -54,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
 //            checkUpdate();
 //        }
 
-       startService(new Intent(this, NotificationBackgroundService.class));
+      //startService(new Intent(this, NotificationBackgroundService.class));
 
 
     }

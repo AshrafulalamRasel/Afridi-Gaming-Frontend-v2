@@ -81,4 +81,15 @@ dependencies {
 
     //awesome Validator
     implementation 'com.basgeekball:awesome-validation:4.3'
+
+    //Firebase
+    // Import the BoM for the Firebase platform
+    implementation platform('com.google.firebase:firebase-bom:28.3.0')
+
+    // Declare the dependencies for the Firebase Cloud Messaging and Analytics libraries
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation 'com.google.firebase:firebase-messaging'
+    implementation 'com.google.firebase:firebase-analytics'
+
 }
+apply plugin: 'com.google.gms.google-services'

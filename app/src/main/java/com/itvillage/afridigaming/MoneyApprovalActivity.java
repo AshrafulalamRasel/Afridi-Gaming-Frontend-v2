@@ -123,14 +123,15 @@ public class MoneyApprovalActivity extends AppCompatActivity {
                     balanceIdList = new ArrayList<>();
                     dateTimeList = new ArrayList<>();
                     for (RequestedNotificationResponse requestedNotificationResponse : res) {
-                        userIdList.add(requestedNotificationResponse.getUserId());
-                        nameList.add(requestedNotificationResponse.getName());
-                        paymentGetwayList.add(requestedNotificationResponse.getPaymentGetawayName());
-                        amountList.add(String.valueOf(requestedNotificationResponse.getAmount()));
-                        balanceIdList.add(String.valueOf(requestedNotificationResponse.getId()));
-                        mobileLastDigit.add(String.valueOf(requestedNotificationResponse.getLastThreeDigitOfPayableMobileNo()));
-                        dateTimeList.add(String.valueOf(requestedNotificationResponse.getCreatedAt()));
-
+                        if(requestedNotificationResponse.getBalanceStatus() == null) {
+                            userIdList.add(requestedNotificationResponse.getUserId());
+                            nameList.add(requestedNotificationResponse.getName());
+                            paymentGetwayList.add(requestedNotificationResponse.getPaymentGetawayName());
+                            amountList.add(String.valueOf(requestedNotificationResponse.getAmount()));
+                            balanceIdList.add(String.valueOf(requestedNotificationResponse.getId()));
+                            mobileLastDigit.add(String.valueOf(requestedNotificationResponse.getLastThreeDigitOfPayableMobileNo()));
+                            dateTimeList.add(String.valueOf(requestedNotificationResponse.getCreatedAt()));
+                        }
 
                     }
                     ApprovalListAdapter adapter = new ApprovalListAdapter(this, userIdList,
