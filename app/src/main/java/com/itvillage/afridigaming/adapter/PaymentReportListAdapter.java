@@ -21,6 +21,7 @@ public class PaymentReportListAdapter extends ArrayAdapter<String> {
     private ArrayList<String> usernameNameArray = new ArrayList<>();
     private ArrayList<String> emailArray = new ArrayList<>();
     private ArrayList<String> gameNameArray = new ArrayList<>();
+    private ArrayList<String> updateAtArray = new ArrayList<>();
     private ArrayList<String> winningStatusArray = new ArrayList<>();
     private ArrayList<Integer> perKillInGameArray = new ArrayList<>();
     private ArrayList<Integer> gamePerInvestArray = new ArrayList<>();
@@ -33,7 +34,8 @@ public class PaymentReportListAdapter extends ArrayAdapter<String> {
                                  ArrayList<String> gameNameArray, ArrayList<String> winningStatusArray,
                                  ArrayList<Integer> perKillInGameArray,
                                  ArrayList<Double> incomeInPerGameArray, ArrayList<Double> currentAccount,
-                                    ArrayList<Integer> gamePerInvestArray, ArrayList<Double> refundArray) {
+                                    ArrayList<Integer> gamePerInvestArray, ArrayList<Double> refundArray,
+                                    ArrayList<String> updateAtArray) {
         super(context, R.layout.custom_payment_report_list_items, usernameNameArray);
 
         this.context = context;
@@ -46,6 +48,7 @@ public class PaymentReportListAdapter extends ArrayAdapter<String> {
         this.incomeInPerGameArray = incomeInPerGameArray;
         this.currentAccountArray = currentAccount;
         this.refundArray = refundArray;
+        this.updateAtArray = updateAtArray;
     }
 
     public View getView(int position, View view, ViewGroup parent) {
@@ -55,6 +58,7 @@ public class PaymentReportListAdapter extends ArrayAdapter<String> {
         TextView user_name_payment_report = rowView.findViewById(R.id.user_name_payment_report);
         TextView totalInvestText = rowView.findViewById(R.id.totalInvestText);
         TextView numberOfKillText = rowView.findViewById(R.id.numberOfKillText);
+        TextView timeDate = rowView.findViewById(R.id.time_date);
         TextView currentBalanceText = rowView.findViewById(R.id.currentBalanceText);
         TextView incomeText = rowView.findViewById(R.id.incomeText);
         TextView refundText = rowView.findViewById(R.id.refundext);
@@ -68,6 +72,7 @@ public class PaymentReportListAdapter extends ArrayAdapter<String> {
         incomeText.setText(String.valueOf(incomeInPerGameArray.get(position)));
         gameStatusBut.setText(winningStatusArray.get(position));
         refundText.setText(String.valueOf(refundArray.get(position)));
+        timeDate.setText(String.valueOf(updateAtArray.get(position)));
 
         return rowView;
 

@@ -1,210 +1,193 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@color/white"
     tools:context=".AdminHomeActivity">
-
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
     <LinearLayout
-        android:id="@+id/game_list"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/add_money"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.132"
-        tools:ignore="MissingConstraints">
+        android:gravity="center"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/game_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/add_money"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.132"
+            tools:ignore="MissingConstraints">
 
-        <ImageView
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:background="@drawable/game" />
+            <ImageView
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:background="@drawable/game" />
 
-        <TextView
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/base_color"
+                android:fontFamily="monospace"
+                android:gravity="center"
+                android:text="Game List"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/add_money"
+            android:layout_width="131dp"
+            android:layout_height="170dp"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.752"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.121"
+            tools:ignore="MissingConstraints">
+
+            <ImageView
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:background="@drawable/check" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/base_color"
+                android:fontFamily="monospace"
+                android:gravity="center"
+                android:text="Approve Request"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/withdraw_request_admin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/logoutAdmin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.171"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/game_list"
+            app:layout_constraintVertical_bias="0.038"
+            tools:ignore="MissingConstraints">
+
+            <ImageView
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:background="@drawable/add_money" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/base_color"
+                android:fontFamily="monospace"
+                android:gravity="center"
+                android:padding="4dp"
+                android:text="Withdraw Request"
+                android:textColor="@color/black"
+                android:textSize="10dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/refund_admin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/logoutAdmin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.725"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/game_list"
+            app:layout_constraintVertical_bias="0.055"
+            tools:ignore="MissingConstraints">
+            <ImageView
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:background="@drawable/refund" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/base_color"
+                android:fontFamily="monospace"
+                android:gravity="center"
+                android:padding="4dp"
+                android:text="Refund Request"
+                android:textColor="@color/black"
+                android:textSize="10dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bannerUpdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/logoutAdmin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.154"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/game_list"
+            app:layout_constraintVertical_bias="0.492"
+            tools:ignore="MissingConstraints">
+
+            <ImageView
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:background="@drawable/advertisement" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/base_color"
+                android:fontFamily="monospace"
+                android:gravity="center"
+                android:padding="4dp"
+                android:text="Update Banner"
+                android:textColor="@color/black"
+                android:textSize="10dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/logoutAdmin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/base_color"
-            android:fontFamily="monospace"
-            android:gravity="center"
-            android:text="Game List"
-            android:textColor="@color/black"
-            android:textSize="15dp"
-            android:textStyle="bold" />
-
+            android:text="Logout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
     </LinearLayout>
+</ScrollView>
 
-
-    <LinearLayout
-        android:id="@+id/add_money"
-        android:layout_width="131dp"
-        android:layout_height="170dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.752"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.121"
-        tools:ignore="MissingConstraints">
-
-        <ImageView
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:background="@drawable/check" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/base_color"
-            android:fontFamily="monospace"
-            android:gravity="center"
-            android:text="Approve Request"
-            android:textColor="@color/black"
-            android:textSize="15dp"
-            android:textStyle="bold" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/withdraw_request_admin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/logoutAdmin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.171"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/game_list"
-        app:layout_constraintVertical_bias="0.038"
-        tools:ignore="MissingConstraints">
-
-        <ImageView
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:background="@drawable/add_money" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/base_color"
-            android:fontFamily="monospace"
-            android:gravity="center"
-            android:padding="4dp"
-            android:text="Withdraw Request"
-            android:textColor="@color/black"
-            android:textSize="10dp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/refund_admin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/logoutAdmin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.725"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/game_list"
-        app:layout_constraintVertical_bias="0.055"
-        tools:ignore="MissingConstraints">
-        <ImageView
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:background="@drawable/refund" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/base_color"
-            android:fontFamily="monospace"
-            android:gravity="center"
-            android:padding="4dp"
-            android:text="Refund Request"
-            android:textColor="@color/black"
-            android:textSize="10dp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/bannerUpdate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="90dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/logoutAdmin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.154"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/game_list"
-        app:layout_constraintVertical_bias="0.492"
-        tools:ignore="MissingConstraints">
-
-        <ImageView
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:background="@drawable/advertisement" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/base_color"
-            android:fontFamily="monospace"
-            android:gravity="center"
-            android:padding="4dp"
-            android:text="Update Banner"
-            android:textColor="@color/black"
-            android:textSize="10dp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-<!--    <LinearLayout-->
-<!--        android:id="@+id/notification"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="vertical"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/logoutAdmin"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.224"-->
-<!--        app:layout_constraintStart_toEndOf="@+id/bannerUpdate"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/refund_admin"-->
-<!--        app:layout_constraintVertical_bias="0.095"-->
-<!--        tools:ignore="MissingConstraints">-->
-
-<!--        <ImageView-->
-<!--            android:layout_width="130dp"-->
-<!--            android:layout_height="128dp"-->
-<!--            android:background="@drawable/notification" />-->
-
-<!--        <TextView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:background="@color/base_color"-->
-<!--            android:fontFamily="monospace"-->
-<!--            android:gravity="center"-->
-<!--            android:padding="4dp"-->
-<!--            android:text="Notification"-->
-<!--            android:textColor="@color/black"-->
-<!--            android:textSize="10dp"-->
-<!--            android:textStyle="bold" />-->
-<!--    </LinearLayout>-->
-
-    <Button
-        android:id="@+id/logoutAdmin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Logout"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

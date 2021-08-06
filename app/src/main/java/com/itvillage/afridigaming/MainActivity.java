@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-       // checkUpdate();
+        checkUpdate();
 //        if (String.valueOf(getCurrentAppVersion()).equals(applicationSharedPreferencesUtil.getPref("version"))) {
 //            new Handler().postDelayed(new Runnable() {
 //                public void run() {

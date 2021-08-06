@@ -6,11 +6,20 @@ public class PaymentDetailsResponse {
     private String email;
     private String gameName;
     private String winningStatus;
+    private String updatedAt;
     private int perKillInGame;
     private int gamePerInvest;
     private Double incomeInPerGame;
     private Double currentAccount;
     private Double reFound;
+
+    public String getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 
     public Double getReFound() {
         return reFound;

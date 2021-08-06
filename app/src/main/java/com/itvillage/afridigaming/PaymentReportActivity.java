@@ -27,6 +27,7 @@ public class PaymentReportActivity extends AppCompatActivity {
     private ArrayList<String> emailArray = new ArrayList<>();
     private ArrayList<String> gameNameArray = new ArrayList<>();
     private ArrayList<String> winningStatusArray = new ArrayList<>();
+    private ArrayList<String> updatedAtArray = new ArrayList<>();
     private ArrayList<Integer> perKillInGameArray = new ArrayList<>();
     private ArrayList<Integer> gamePerInvestArray = new ArrayList<>();
     private ArrayList<Double> incomeInPerGameArray = new ArrayList<>();
@@ -63,11 +64,12 @@ public class PaymentReportActivity extends AppCompatActivity {
                         incomeInPerGameArray.add(paymentDetailsResponse.getIncomeInPerGame());
                         currentAccountArray.add(paymentDetailsResponse.getCurrentAccount());
                         refundArray.add(paymentDetailsResponse.getReFound());
+                        updatedAtArray.add(paymentDetailsResponse.getUpdatedAt());
                         Log.e("v", paymentDetailsResponse.getEmail());
                     }
                     PaymentReportListAdapter adapter = new PaymentReportListAdapter(this, usernameNameArray,
                             emailArray, gameNameArray, winningStatusArray, perKillInGameArray,
-                            incomeInPerGameArray, currentAccountArray, totalInvestment,refundArray);
+                            incomeInPerGameArray, currentAccountArray, totalInvestment,refundArray,updatedAtArray);
                     report_lv = findViewById(R.id.report_lv);
                     report_lv.setAdapter(adapter);
 

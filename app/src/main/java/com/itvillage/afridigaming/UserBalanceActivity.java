@@ -185,7 +185,20 @@ public class UserBalanceActivity extends AppCompatActivity {
                     Utility.onSuccessAlert("Withdraw Request Send", this);
 
                 }, throwable -> {
-                    Utility.onErrorAlert("Only Winning Money Withdraw And Account Balance Must Be 100 Tk.", this);
+                    if (throwable instanceof HttpException) {
+                        HttpException httpException = (HttpException) throwable;
+
+                        if (httpException.code() == 500 || httpException.code() == 401) {
+                            Utility.onErrorAlert("Only Winning Money Withdraw And Account Balance Must Be 100 Tk.", this);
+
+                        }if(httpException.code() == 400)
+                        {
+                            Utility.onErrorAlert("Previous Withdraw pending. Please Wait. ", this);
+
+                        }
+                        Log.e("Error", "" + throwable.getMessage());
+                    }
+
                 }, () -> {
 
                 });
