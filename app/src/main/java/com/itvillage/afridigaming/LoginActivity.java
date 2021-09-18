@@ -45,14 +45,14 @@ public class LoginActivity extends AppCompatActivity {
     private Button sign_in_but;
     private TextInputEditText emailEditText, password;
 
-    private AwesomeValidation mAwesomeValidation = new AwesomeValidation(BASIC);
+   // private AwesomeValidation mAwesomeValidation = new AwesomeValidation(BASIC);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         // Validation
-        mAwesomeValidation.addValidation(this, R.id.emailEditText, "[a-zA-Z0-9\\s]+", R.string.err_username);
+       // mAwesomeValidation.addValidation(this, R.id.emailEditText, "[a-zA-Z0-9\\s]+", R.string.err_username);
 
 
         contact_us = findViewById(R.id.contact_us);
@@ -72,10 +72,10 @@ public class LoginActivity extends AppCompatActivity {
         sign_in_but.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mAwesomeValidation.validate()) {
+               // if (emailEditText.getText().toString().equals("")) {
                     sign_in_but.setText("Signing..");
                     login(emailEditText.getText().toString(), password.getText().toString());
-                }
+              //  }
 
             }
         });
